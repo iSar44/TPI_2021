@@ -2,14 +2,13 @@
 
 ## Table des matières
 
-- [1. Introduction](#1-introduction)
-  - [1.1 Structure des fichiers](#1.1-structureFichiers)
-- [2. Rappel de l'énoncé](#2-rappelDeLenonce)
-  - [2.1 Organisation](#2.1-organisation)
-  - [2.2 Livrables](#2.2-livrables)
-  - [2.3 Matériel et logiciels à disposition](#2.3-materielEtLogiciels)
-  - [2.4 Description de l'application Web](#2.4-descriptionWebApp)
--
+- [<u>TIP 2021</u>](#utip-2021u)
+  - [Table des matières](#table-des-matières)
+  - [1. Introduction](#1-introduction)
+    - [1.1 Structure des fichiers](#11-structure-des-fichiers)
+  - [2. Rappel de l'énoncé](#2-rappel-de-lénoncé)
+  - [3. Méthodologie](#3-méthodologie)
+  - [4. Planification](#4-planification)
 
 ## 1. Introduction
 
@@ -29,6 +28,14 @@
     └── index.php
 
 ```
+
+## 2. Rappel de l'énoncé
+
+## 3. Méthodologie
+
+![Alt text](ressources/methodologie.svg)
+
+## 4. Planification
 
 ```php
     public function __construct($unUsername, $unPrenom, $unNom, $unAge, $unNumTel, $unEmail, $unMdp)
