@@ -5,16 +5,32 @@
 - [TIP 2021](#tip-2021)
   - [Table des matières](#table-des-matières)
   - [1. Introduction](#1-introduction)
-    - [1.1 Structure des fichiers](#11-structure-des-fichiers)
+    - [1.1 Installation](#11-installation)
+    - [1.2 Structure des fichiers](#12-structure-des-fichiers)
   - [2. Rappel de l'énoncé](#2-rappel-de-lénoncé)
   - [3. Méthodologie](#3-méthodologie)
   - [4. Planification](#4-planification)
 
 ## 1. Introduction
 
-### 1.1 Structure des fichiers
+### 1.1 Installation
 
+**Installer GIT**
+
+```sh
+$ sudo apt update
+$ sudo apt install git
 ```
+
+**Cloner le projet**
+
+```sh
+$ sudo git clone https://github.com/iSar44/TIP_2021.git
+```
+
+### 1.2 Structure des fichiers
+
+```sh
 .
 ├── db
 │   ├── configDb
@@ -26,7 +42,6 @@
 │       └── utilisateur.php
 └── public
     └── index.php
-
 ```
 
 ## 2. Rappel de l'énoncé
