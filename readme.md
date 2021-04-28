@@ -1,8 +1,8 @@
-# <u>TIP 2021</u>
+# TIP 2021
 
 ## Table des matières
 
-- [<u>TIP 2021</u>](#utip-2021u)
+- [TIP 2021](#tip-2021)
   - [Table des matières](#table-des-matières)
   - [1. Introduction](#1-introduction)
     - [1.1 Structure des fichiers](#11-structure-des-fichiers)
