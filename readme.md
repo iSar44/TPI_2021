@@ -33,7 +33,7 @@
 
 ## 3. Méthodologie
 
-![Alt text](ressources/methodologie.svg)
+<img src="./ressources/methodologie.svg" style="height: 500px;">
 
 ## 4. Planification
 
