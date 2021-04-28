@@ -1,8 +1,8 @@
-# TIP 2021 :page_with_curl:
+# TPI 2021 :page_with_curl:
 
 ## Table des matières
 
-- [TIP 2021 :page_with_curl:](#tip-2021-page_with_curl)
+- [TPI 2021 :page_with_curl:](#tip-2021-page_with_curl)
   - [Table des matières](#table-des-matières)
   - [1. Introduction](#1-introduction)
     - [1.1 Installation :computer:](#11-installation-computer)
