@@ -1,19 +1,19 @@
-# TIP 2021
+# TIP 2021 :page_with_curl:
 
 ## Table des matières
 
-- [TIP 2021](#tip-2021)
+- [TIP 2021 :page_with_curl:](#tip-2021-page_with_curl)
   - [Table des matières](#table-des-matières)
   - [1. Introduction](#1-introduction)
-    - [1.1 Installation](#11-installation)
-    - [1.2 Structure des fichiers](#12-structure-des-fichiers)
+    - [1.1 Installation :computer:](#11-installation-computer)
+    - [1.2 Structure des fichiers :brick:](#12-structure-des-fichiers-brick)
   - [2. Rappel de l'énoncé](#2-rappel-de-lénoncé)
   - [3. Méthodologie](#3-méthodologie)
   - [4. Planification](#4-planification)
 
 ## 1. Introduction
 
-### 1.1 Installation
+### 1.1 Installation :computer:
 
 **Installer GIT**
 
@@ -28,7 +28,7 @@ $ sudo apt install git
 $ sudo git clone https://github.com/iSar44/TIP_2021.git
 ```
 
-### 1.2 Structure des fichiers
+### 1.2 Structure des fichiers :brick:
 
 ```sh
 .
