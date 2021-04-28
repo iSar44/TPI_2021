@@ -6,7 +6,7 @@
   - [Table des matières](#table-des-matières)
   - [1. Introduction](#1-introduction)
     - [1.1 Installation :computer:](#11-installation-computer)
-    - [1.2 Structure des fichiers :brick:](#12-structure-des-fichiers-brick)
+    - [1.2 Structure des fichiers :construction:](#12-structure-des-fichiers-construction)
   - [2. Rappel de l'énoncé](#2-rappel-de-lénoncé)
   - [3. Méthodologie](#3-méthodologie)
   - [4. Planification](#4-planification)
@@ -28,7 +28,7 @@ $ sudo apt install git
 $ sudo git clone https://github.com/iSar44/TIP_2021.git
 ```
 
-### 1.2 Structure des fichiers :brick:
+### 1.2 Structure des fichiers :construction:
 
 ```sh
 .
