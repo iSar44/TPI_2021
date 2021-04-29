@@ -1,9 +1,10 @@
 <?php
-require_once '../classes/database.php';
-require_once '../classes/utilisateur.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/TPI_2021/db/classes/database.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/TPI_2021/db/classes/utilisateur.php';
 
 
-class Db_Controller{
+class Db_Controller
+{
 
     private Utilisateur $aUser;
 
@@ -12,7 +13,7 @@ class Db_Controller{
      *
      * @return Utilisateur
      */
-    public function getAUser() : Utilisateur
+    public function getAUser(): Utilisateur
     {
         return $this->aUser;
     }
@@ -24,7 +25,7 @@ class Db_Controller{
      *
      * @return self
      */
-    public function setAUser(Utilisateur $aUser) : self
+    public function setAUser(Utilisateur $aUser): self
     {
         $this->aUser = $aUser;
 
@@ -38,7 +39,8 @@ class Db_Controller{
      * @param Utilisateur $aUser
      * @return boolean
      */
-    public function AddUser(Utilisateur $aUser): bool{
+    public function AddUser(Utilisateur $aUser): bool
+    {
 
         $query = Database::GetInstance()->prepare("INSERT INTO utilisateur (nomUtilisateur, prenom, nom, age, numTel, email, mdp) VALUES (:nomUtilisateur, :prenom, :nom, :age, :numTel, :email, :mdp)");
 
@@ -61,7 +63,6 @@ class Db_Controller{
 
         $success = $query->execute();
         return $success;
-
     }
 
 
@@ -70,7 +71,8 @@ class Db_Controller{
      *
      * @return array
      */
-    public function SelectAll(): array{
+    public function SelectAll(): array
+    {
 
         $query = Database::GetInstance()->prepare("SELECT * FROM utilisateur");
         $query->setFetchMode(PDO::FETCH_ASSOC);
@@ -79,6 +81,4 @@ class Db_Controller{
         $result = $query->fetchAll();
         return $result;
     }
-
-
 }

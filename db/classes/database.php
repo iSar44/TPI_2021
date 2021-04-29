@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @author M. Dominique Aigroz
  */
@@ -6,7 +7,7 @@
 /**
  * @remark Mettre le bon chemin d'accès à votre fichier contenant les constantes
  */
-require_once '../configDb/paramconn.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/TPI_2021/db/configDb/paramconn.php';
 
 class Database
 {
@@ -52,16 +53,15 @@ class Database
         return self::$objInstance;
     }
 
-	/**
-	 * @brief	Passes on any static calls to this class onto the singleton PDO instance
-	 * @param 	$chrMethod		The method to call
-	 * @param 	$arrArguments	The method's parameters
-	 * @return 	$mix			The method's return value
-	 */
+    /**
+     * @brief	Passes on any static calls to this class onto the singleton PDO instance
+     * @param 	$chrMethod		The method to call
+     * @param 	$arrArguments	The method's parameters
+     * @return 	$mix			The method's return value
+     */
     final public static function __callStatic($chrMethod, $arrArguments)
     {
         $objInstance = self::GetInstance();
         return call_user_func_array(array($objInstance, $chrMethod), $arrArguments);
     }
-
 }
