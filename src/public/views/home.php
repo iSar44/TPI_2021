@@ -1,7 +1,8 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'] . '/TPI_2021/db/classes/database.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/TPI_2021/db/controllers/db_controller.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/TPI_2021/db/classes/utilisateur.php';
+require_once('./src/model/db_model/database.php');
+require_once('./src/model/classes/session.php');
+require_once('./src/controllers/db_controller.php');
+require_once('./src/model/classes/utilisateur.php');
 
 $dbControl = new Db_Controller();
 
@@ -20,7 +21,6 @@ if (isset($_POST['send'])) {
 
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,36 +28,30 @@ if (isset($_POST['send'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/TPI_2021/src/public/assets/css/global.css">
+    <link rel="stylesheet" href="/TPI_2021/src/public/assets/css/Header-Blue.css">
+    <link rel="stylesheet" href="/TPI_2021/src/public/assets/css/Dark-NavBar.css">
+    <link rel="stylesheet" href="/TPI_2021/src/public/assets/css/Navigation-with-Button.css">
+    <link rel="stylesheet" href="/TPI_2021/src/public/assets/css/Footer-Basic.css">
+    <link rel="stylesheet" href="/TPI_2021/src/public/assets/css/footer.css">
+    <title>Page d'accueil</title>
 </head>
 
+
 <body>
-    <form method="POST" action="#" style="display:flex; flex-direction:column; width:70vw; margin:auto">
-        <span>USERNAME:</span>
-        <input type="text" name="username" required />
-        <span>FIRST NAME:</span>
-        <input type="text" name="fname" required />
-        <span>LAST NAME:</span>
-        <input type="text" name="lname" required />
-        <span>AGE:</span>
-        <input type="text" name="age" required />
-        <span>PHONE NUMBER:</span>
-        <input type="text" name="phoneNumber" required />
-        <span>EMAIL:</span>
-        <input type="text" name="email" required />
-        <span>PASSWORD:</span>
-        <input type="text" name="pwd" required />
-        <br />
-        <br />
-        <input type="submit" value="Envoyer" name="send" />
-    </form>
-    <?php
+    <!-- Barre de navigation -->
+    <header class="header-blue">
+        <?php require_once('./src/public/views/struct/nav.php'); ?>
+    </header>
 
-    echo "<pre>";
-    print_r($dbControl->SelectAll());
-    echo "</pre>";
 
-    ?>
+    <!-- Footer -->
+    <?php require_once('./src/public/views/struct/footer.php'); ?>
+    <!-- JS script for Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
 </body>
 
 </html>
