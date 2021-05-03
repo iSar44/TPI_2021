@@ -7,7 +7,8 @@
 /**
  * @remark Mettre le bon chemin d'accès à votre fichier contenant les constantes
  */
-require_once $_SERVER['DOCUMENT_ROOT'] . '/TPI_2021/db/configDb/paramconn.php';
+// require_once $_SERVER['DOCUMENT_ROOT'] . '/TPI_2021/db/configDb/paramconn.php';
+require_once('./src/db/configDb/paramconn.php');
 
 class Database
 {

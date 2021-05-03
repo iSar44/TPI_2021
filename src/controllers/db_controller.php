@@ -1,6 +1,6 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'] . '/TPI_2021/db/classes/database.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/TPI_2021/db/classes/utilisateur.php';
+require_once('./src/model/db_model/database.php');
+require_once('./src/model/classes/utilisateur.php');
 
 
 class Db_Controller
