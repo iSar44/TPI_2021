@@ -1,4 +1,5 @@
 <?php
+require_once('./src/model/classes/session.php');
 require_once('./src/model/db_model/database.php');
 require_once('./src/model/classes/session.php');
 require_once('./src/controllers/db_controller.php');
@@ -35,17 +36,28 @@ if (isset($_POST['send'])) {
     <link rel="stylesheet" href="/TPI_2021/src/public/assets/css/Header-Blue.css">
     <link rel="stylesheet" href="/TPI_2021/src/public/assets/css/Dark-NavBar.css">
     <link rel="stylesheet" href="/TPI_2021/src/public/assets/css/Navigation-with-Button.css">
+    <link rel="stylesheet" href="/TPI_2021/src/public/assets/css/TableSearchSort.css">
+    <link rel="stylesheet" href="/TPI_2021/src/public/assets/css/Filter.css">
     <link rel="stylesheet" href="/TPI_2021/src/public/assets/css/Footer-Basic.css">
-    <title>Page d'accueil</title>
+    <link rel="shortcut icon" href="/TPI_2021/src/public/ressources/favicon.ico" type="image/x-icon">
+    <title>Home</title>
 </head>
 
 
-<body>
+<body class="d-flex flex-column min-vh-100">
     <!-- Barre de navigation -->
-    <header class="header-blue">
+    <header class=" header-blue">
         <?php require_once('./src/public/views/struct/nav.php'); ?>
     </header>
 
+    <section>
+        <?php require_once('./src/public/views/struct/filterResults.php'); ?>
+        <?php require_once('./src/public/views/struct/sectionCrudEnCours.php'); ?>
+    </section>
+
+    <section>
+        <?php require_once('./src/public/views/struct/sectionCrudTermine.php'); ?>
+    </section>
 
     <!-- Footer -->
     <?php require_once('./src/public/views/struct/footer.php'); ?>
