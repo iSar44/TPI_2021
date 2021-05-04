@@ -46,6 +46,8 @@
 
 ## <u>2ème jour - 04/05/2021</u>
 
+### Matin:
+
 - 7:30 : Le début d'une nouvelle journée commence. La veille j'ai eu une visio-conférence avec M. Aigroz et les deux autres élèves qu'il suit pour le TPI. Nous avons eu l'occasion de pouvoir clarifier certains détails ainsi qu'obtenir des réponses à nos questions. M. Aigroz m'a indiqué que je dois consacrer la journée d'aujourd'hui à l'élaboration des maquettes des pages du site internet et par la suite approfondir le MCD car comme je le pensais, il était bien trop léger.
 
 - 09:01 : Vu que j'avais un doute concernant l'énoncé, j'ai décidé de poser la question à M. Aigroz
@@ -64,4 +66,34 @@
 
 <img src="../MCD/TPI_2021_MCD.png" height="auto">
 
-- 11:40 : C'est tout pour la matinée!
+- 11:40 : C'est tout pour la matinée! 🍕
+
+### Après-midi:
+
+- 12:40 : En ayant terminé le matin les choses demandées par M. Aigroz, je décide de passer au design du site, je vais me concentrer en particulier sur la page d'accueil et la page d'authentification.
+
+- 13:00 : Recherche des templates sur Bootstrap Studio pour le CRUD de la page d'accueil
+
+- 13:00 : Template trouvée, je passe à l'intégration du CRUD dans ma page d'accueil
+
+- 14:15 : Début de la pause ☕, l'intégration du CRUD est presque terminée, il ne reste plus qu'à ajuster la CSS afin que les éléments du filtre pour la recherche soient correctement alignés
+
+- 14:35 : Fin de la pause, je reprends le travail
+
+- 15:00 : Design de la page d'accueil terminé ✅
+
+<img src="../maquetteSite/tpi2021_homepage.png">
+
+- 15:10 : Je passe à la page d'authentification, recherche des templates sur Bootstrap Studio pour le login
+
+- 15:20 : Template choisie, je passe à l'intégration
+
+- 15:40 : Je décide d'ajouter un effet parallax à la page
+
+- 15:55 : Design de la page d'authentification terminé
+
+<img src="../maquetteSite/login.png">
+
+- 16:00 : En essayant de respecter la règle que je me suis imposée, je passer à la partie documentation de la journée 📄
+
+- 16:45 : Fin de la journée, enfin.. 😵
