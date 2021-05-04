@@ -1,0 +1,35 @@
+.filter h1 {
+  text-align: center;
+}
+
+.filter span {
+  font-size: large;
+}
+
+.filter select {
+  width: 170px;
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 0 0 2px #aaa;
+  background: #eee;
+  margin: 10px;
+}
+
+.filter {
+  text-align: center;
+}
+
+.filter input {
+  margin: 30px;
+  width: 25%;
+  padding: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border: none;
+  border-radius: 5px;
+}
+
+* {
+  outline: none;
+}
