@@ -60,4 +60,8 @@
 
 - 10:05 : Fin de la pause, j'ai terminé les maquettes provisoires, dès à présent je vais continuer le travail sur le MCD
 
-<object src="../maquetteSite/maquettePages.pdf" type="application/pdf"></object>
+- 11:20 : Nouvelle version du MCD ❗
+
+<img src="../MCD/TPI_2021_MCD.png" height="auto">
+
+- 11:40 : C'est tout pour la matinée!
