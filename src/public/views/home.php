@@ -36,7 +36,6 @@ if (isset($_POST['send'])) {
     <link rel="stylesheet" href="/TPI_2021/src/public/assets/css/Dark-NavBar.css">
     <link rel="stylesheet" href="/TPI_2021/src/public/assets/css/Navigation-with-Button.css">
     <link rel="stylesheet" href="/TPI_2021/src/public/assets/css/Footer-Basic.css">
-    <link rel="stylesheet" href="/TPI_2021/src/public/assets/css/footer.css">
     <title>Page d'accueil</title>
 </head>
 
