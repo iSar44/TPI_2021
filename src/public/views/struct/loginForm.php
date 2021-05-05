@@ -1,4 +1,4 @@
-<form method="post">
+<form method="POST" action="./">
     <h2 class="visually-hidden">Login Form</h2>
     <div class="illustration">
         <i class="bi bi-door-open"></i>
