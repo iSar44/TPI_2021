@@ -1,312 +1,312 @@
 {
-    "mockup": {
-        "controls": {
-            "control": [
-                {
-                    "ID": "2",
-                    "typeID": "FieldSet",
-                    "zOrder": "0",
-                    "w": "410",
-                    "h": "315",
-                    "measuredW": "200",
-                    "measuredH": "170",
-                    "x": "65",
-                    "y": "205",
-                    "properties": {
-                        "text": "Formulaire de modification"
-                    }
-                },
-                {
-                    "ID": "3",
-                    "typeID": "AppBar",
-                    "zOrder": "1",
-                    "w": "991",
-                    "h": "44",
-                    "measuredW": "377",
-                    "measuredH": "44",
-                    "x": "32",
-                    "y": "133",
-                    "properties": {
-                        "text": "tournamentManager/admin/update",
-                        "icons": {
-                            "icons": []
-                        }
-                    }
-                },
-                {
-                    "ID": "4",
-                    "typeID": "BrowserWindow",
-                    "zOrder": "2",
-                    "w": "1000",
-                    "h": "650",
-                    "measuredW": "450",
-                    "measuredH": "400",
-                    "x": "26",
-                    "y": "64",
-                    "properties": {
-                        "text": "A Web Page\nhttps://modifierTournoi.php"
-                    }
-                },
-                {
-                    "ID": "5",
-                    "typeID": "FieldSet",
-                    "zOrder": "3",
-                    "w": "410",
-                    "h": "315",
-                    "measuredW": "200",
-                    "measuredH": "170",
-                    "x": "65",
-                    "y": "202",
-                    "properties": {
-                        "text": "Formulaire de modification"
-                    }
-                },
-                {
-                    "ID": "6",
-                    "typeID": "Label",
-                    "zOrder": "4",
-                    "w": "105",
-                    "measuredW": "92",
-                    "measuredH": "21",
-                    "x": "93",
-                    "y": "244",
-                    "properties": {
-                        "text": "Titre du tournoi:"
-                    }
-                },
-                {
-                    "ID": "7",
-                    "typeID": "Label",
-                    "zOrder": "5",
-                    "w": "105",
-                    "measuredW": "70",
-                    "measuredH": "21",
-                    "x": "93",
-                    "y": "274",
-                    "properties": {
-                        "text": "Description:"
-                    }
-                },
-                {
-                    "ID": "8",
-                    "typeID": "Label",
-                    "zOrder": "6",
-                    "w": "218",
-                    "measuredW": "205",
-                    "measuredH": "21",
-                    "x": "93",
-                    "y": "307",
-                    "properties": {
-                        "text": "Date/Heure démarrage du tournoi:"
-                    }
-                },
-                {
-                    "ID": "9",
-                    "typeID": "Label",
-                    "zOrder": "7",
-                    "w": "118",
-                    "measuredW": "115",
-                    "measuredH": "21",
-                    "x": "93",
-                    "y": "344",
-                    "properties": {
-                        "text": "Nombre d'équipes: "
-                    }
-                },
-                {
-                    "ID": "10",
-                    "typeID": "Label",
-                    "zOrder": "8",
-                    "w": "236",
-                    "measuredW": "233",
-                    "measuredH": "21",
-                    "x": "93",
-                    "y": "378",
-                    "properties": {
-                        "text": "Date/Heure ouverture des inscriptions: "
-                    }
-                },
-                {
-                    "ID": "11",
-                    "typeID": "Label",
-                    "zOrder": "9",
-                    "w": "236",
-                    "measuredW": "234",
-                    "measuredH": "21",
-                    "x": "93",
-                    "y": "413",
-                    "properties": {
-                        "text": "Date/Heure fermeture des inscriptions: "
-                    }
-                },
-                {
-                    "ID": "12",
-                    "typeID": "TextInput",
-                    "zOrder": "10",
-                    "w": "155",
-                    "measuredW": "88",
-                    "measuredH": "27",
-                    "x": "198",
-                    "y": "241",
-                    "properties": {
-                        "text": "CSGO CFPT"
-                    }
-                },
-                {
-                    "ID": "13",
-                    "typeID": "TextInput",
-                    "zOrder": "11",
-                    "w": "150",
-                    "measuredW": "113",
-                    "measuredH": "27",
-                    "x": "170",
-                    "y": "271",
-                    "properties": {
-                        "text": "Tournoi du CFPT"
-                    }
-                },
-                {
-                    "ID": "14",
-                    "typeID": "DateChooser",
-                    "zOrder": "12",
-                    "measuredW": "136",
-                    "measuredH": "25",
-                    "x": "310",
-                    "y": "305",
-                    "properties": {
-                        "text": "01/ 05/ 2021    "
-                    }
-                },
-                {
-                    "ID": "15",
-                    "typeID": "DateChooser",
-                    "zOrder": "13",
-                    "measuredW": "136",
-                    "measuredH": "25",
-                    "x": "336",
-                    "y": "376",
-                    "properties": {
-                        "text": "20/ 04/ 2021   "
-                    }
-                },
-                {
-                    "ID": "16",
-                    "typeID": "DateChooser",
-                    "zOrder": "14",
-                    "measuredW": "134",
-                    "measuredH": "25",
-                    "x": "336",
-                    "y": "411",
-                    "properties": {
-                        "text": "27/ 04/ 2021   "
-                    }
-                },
-                {
-                    "ID": "17",
-                    "typeID": "NumericStepper",
-                    "zOrder": "15",
-                    "measuredW": "46",
-                    "measuredH": "24",
-                    "x": "211",
-                    "y": "343",
-                    "properties": {
-                        "text": "16"
-                    }
-                },
-                {
-                    "ID": "18",
-                    "typeID": "Button",
-                    "zOrder": "16",
-                    "w": "164",
-                    "h": "27",
-                    "measuredW": "72",
-                    "measuredH": "27",
-                    "x": "179",
-                    "y": "474",
-                    "properties": {
-                        "text": "Modifier"
-                    }
-                },
-                {
-                    "ID": "19",
-                    "typeID": "AppBar",
-                    "zOrder": "17",
-                    "w": "994",
-                    "h": "44",
-                    "measuredW": "377",
-                    "measuredH": "44",
-                    "x": "29",
-                    "y": "133",
-                    "properties": {
-                        "text": "tournamentManager/admin/update",
-                        "icons": {
-                            "icons": []
-                        }
-                    }
-                },
-                {
-                    "ID": "20",
-                    "typeID": "Label",
-                    "zOrder": "18",
-                    "w": "145",
-                    "measuredW": "131",
-                    "measuredH": "21",
-                    "x": "848",
-                    "y": "144",
-                    "properties": {
-                        "text": "Type compte: K-Admin"
-                    }
-                },
-                {
-                    "ID": "21",
-                    "typeID": "Label",
-                    "zOrder": "19",
-                    "w": "180",
-                    "measuredW": "173",
-                    "measuredH": "21",
-                    "x": "95",
-                    "y": "445",
-                    "properties": {
-                        "text": "Temps entre les rondes (opt):"
-                    }
-                },
-                {
-                    "ID": "22",
-                    "typeID": "NumericStepper",
-                    "zOrder": "20",
-                    "w": "56",
-                    "measuredW": "41",
-                    "measuredH": "24",
-                    "x": "275",
-                    "y": "444"
-                },
-                {
-                    "ID": "23",
-                    "typeID": "Label",
-                    "zOrder": "21",
-                    "w": "56",
-                    "measuredW": "51",
-                    "measuredH": "21",
-                    "x": "338",
-                    "y": "447",
-                    "properties": {
-                        "text": "(heures)"
-                    }
-                }
-            ]
+  "mockup": {
+    "controls": {
+      "control": [
+        {
+          "ID": "2",
+          "typeID": "FieldSet",
+          "zOrder": "0",
+          "w": "410",
+          "h": "315",
+          "measuredW": "200",
+          "measuredH": "170",
+          "x": "65",
+          "y": "205",
+          "properties": {
+            "text": "Formulaire de modification"
+          }
         },
-        "attributes": {
-            "name": "updateTournament",
-            "order": 1000059.0950593997,
-            "parentID": null,
-            "notes": null
+        {
+          "ID": "3",
+          "typeID": "AppBar",
+          "zOrder": "1",
+          "w": "991",
+          "h": "44",
+          "measuredW": "377",
+          "measuredH": "44",
+          "x": "32",
+          "y": "133",
+          "properties": {
+            "text": "tournamentManager/admin/update",
+            "icons": {
+              "icons": []
+            }
+          }
         },
-        "branchID": "Master",
-        "resourceID": "C2B21758-4233-4568-8941-FE59385E1F42",
-        "mockupH": "650",
-        "mockupW": "1000",
-        "measuredW": "1026",
-        "measuredH": "714",
-        "version": "1.0"
-    }
+        {
+          "ID": "4",
+          "typeID": "BrowserWindow",
+          "zOrder": "2",
+          "w": "1000",
+          "h": "650",
+          "measuredW": "450",
+          "measuredH": "400",
+          "x": "26",
+          "y": "64",
+          "properties": {
+            "text": "A Web Page\nhttps://modifierTournoi.php"
+          }
+        },
+        {
+          "ID": "5",
+          "typeID": "FieldSet",
+          "zOrder": "3",
+          "w": "410",
+          "h": "315",
+          "measuredW": "200",
+          "measuredH": "170",
+          "x": "65",
+          "y": "202",
+          "properties": {
+            "text": "Formulaire de modification"
+          }
+        },
+        {
+          "ID": "6",
+          "typeID": "Label",
+          "zOrder": "4",
+          "w": "105",
+          "measuredW": "92",
+          "measuredH": "21",
+          "x": "93",
+          "y": "244",
+          "properties": {
+            "text": "Titre du tournoi:"
+          }
+        },
+        {
+          "ID": "7",
+          "typeID": "Label",
+          "zOrder": "5",
+          "w": "105",
+          "measuredW": "70",
+          "measuredH": "21",
+          "x": "93",
+          "y": "274",
+          "properties": {
+            "text": "Description:"
+          }
+        },
+        {
+          "ID": "8",
+          "typeID": "Label",
+          "zOrder": "6",
+          "w": "218",
+          "measuredW": "205",
+          "measuredH": "21",
+          "x": "93",
+          "y": "307",
+          "properties": {
+            "text": "Date/Heure démarrage du tournoi:"
+          }
+        },
+        {
+          "ID": "9",
+          "typeID": "Label",
+          "zOrder": "7",
+          "w": "118",
+          "measuredW": "115",
+          "measuredH": "21",
+          "x": "93",
+          "y": "344",
+          "properties": {
+            "text": "Nombre d'équipes: "
+          }
+        },
+        {
+          "ID": "10",
+          "typeID": "Label",
+          "zOrder": "8",
+          "w": "236",
+          "measuredW": "233",
+          "measuredH": "21",
+          "x": "93",
+          "y": "378",
+          "properties": {
+            "text": "Date/Heure ouverture des inscriptions: "
+          }
+        },
+        {
+          "ID": "11",
+          "typeID": "Label",
+          "zOrder": "9",
+          "w": "236",
+          "measuredW": "234",
+          "measuredH": "21",
+          "x": "93",
+          "y": "413",
+          "properties": {
+            "text": "Date/Heure fermeture des inscriptions: "
+          }
+        },
+        {
+          "ID": "12",
+          "typeID": "TextInput",
+          "zOrder": "10",
+          "w": "155",
+          "measuredW": "88",
+          "measuredH": "27",
+          "x": "198",
+          "y": "241",
+          "properties": {
+            "text": "CSGO CFPT"
+          }
+        },
+        {
+          "ID": "13",
+          "typeID": "TextInput",
+          "zOrder": "11",
+          "w": "150",
+          "measuredW": "113",
+          "measuredH": "27",
+          "x": "170",
+          "y": "271",
+          "properties": {
+            "text": "Tournoi du CFPT"
+          }
+        },
+        {
+          "ID": "14",
+          "typeID": "DateChooser",
+          "zOrder": "12",
+          "measuredW": "136",
+          "measuredH": "25",
+          "x": "310",
+          "y": "305",
+          "properties": {
+            "text": "01/ 05/ 2021    "
+          }
+        },
+        {
+          "ID": "15",
+          "typeID": "DateChooser",
+          "zOrder": "13",
+          "measuredW": "136",
+          "measuredH": "25",
+          "x": "336",
+          "y": "376",
+          "properties": {
+            "text": "20/ 04/ 2021   "
+          }
+        },
+        {
+          "ID": "16",
+          "typeID": "DateChooser",
+          "zOrder": "14",
+          "measuredW": "134",
+          "measuredH": "25",
+          "x": "336",
+          "y": "411",
+          "properties": {
+            "text": "27/ 04/ 2021   "
+          }
+        },
+        {
+          "ID": "17",
+          "typeID": "NumericStepper",
+          "zOrder": "15",
+          "measuredW": "46",
+          "measuredH": "24",
+          "x": "211",
+          "y": "343",
+          "properties": {
+            "text": "16"
+          }
+        },
+        {
+          "ID": "18",
+          "typeID": "Button",
+          "zOrder": "16",
+          "w": "164",
+          "h": "27",
+          "measuredW": "72",
+          "measuredH": "27",
+          "x": "179",
+          "y": "474",
+          "properties": {
+            "text": "Modifier"
+          }
+        },
+        {
+          "ID": "19",
+          "typeID": "AppBar",
+          "zOrder": "17",
+          "w": "994",
+          "h": "44",
+          "measuredW": "377",
+          "measuredH": "44",
+          "x": "29",
+          "y": "133",
+          "properties": {
+            "text": "tournamentManager/admin/update",
+            "icons": {
+              "icons": []
+            }
+          }
+        },
+        {
+          "ID": "20",
+          "typeID": "Label",
+          "zOrder": "18",
+          "w": "145",
+          "measuredW": "131",
+          "measuredH": "21",
+          "x": "848",
+          "y": "144",
+          "properties": {
+            "text": "Type compte: K-Admin"
+          }
+        },
+        {
+          "ID": "21",
+          "typeID": "Label",
+          "zOrder": "19",
+          "w": "180",
+          "measuredW": "173",
+          "measuredH": "21",
+          "x": "95",
+          "y": "445",
+          "properties": {
+            "text": "Temps entre les rondes (opt):"
+          }
+        },
+        {
+          "ID": "22",
+          "typeID": "NumericStepper",
+          "zOrder": "20",
+          "w": "56",
+          "measuredW": "41",
+          "measuredH": "24",
+          "x": "275",
+          "y": "444"
+        },
+        {
+          "ID": "23",
+          "typeID": "Label",
+          "zOrder": "21",
+          "w": "56",
+          "measuredW": "51",
+          "measuredH": "21",
+          "x": "338",
+          "y": "447",
+          "properties": {
+            "text": "(heures)"
+          }
+        }
+      ]
+    },
+    "attributes": {
+      "name": "updateTournament",
+      "order": 1000059.0950593997,
+      "parentID": null,
+      "notes": null
+    },
+    "branchID": "Master",
+    "resourceID": "C2B21758-4233-4568-8941-FE59385E1F42",
+    "mockupH": "650",
+    "mockupW": "1000",
+    "measuredW": "1026",
+    "measuredH": "714",
+    "version": "1.0"
+  }
 }

@@ -1,266 +1,266 @@
 {
-    "mockup": {
-        "controls": {
-            "control": [
-                {
-                    "ID": "1",
-                    "typeID": "BrowserWindow",
-                    "zOrder": "0",
-                    "w": "1000",
-                    "h": "650",
-                    "measuredW": "450",
-                    "measuredH": "400",
-                    "x": "32",
-                    "y": "64",
-                    "properties": {
-                        "text": "A Web Page\nhttps://creerTournoi.php"
-                    }
-                },
-                {
-                    "ID": "2",
-                    "typeID": "AppBar",
-                    "zOrder": "1",
-                    "w": "1000",
-                    "h": "44",
-                    "measuredW": "372",
-                    "measuredH": "44",
-                    "x": "32",
-                    "y": "133",
-                    "properties": {
-                        "text": "tournamentManager/admin/create",
-                        "icons": {
-                            "icons": []
-                        }
-                    }
-                },
-                {
-                    "ID": "3",
-                    "typeID": "Label",
-                    "zOrder": "2",
-                    "w": "145",
-                    "measuredW": "131",
-                    "measuredH": "21",
-                    "x": "838",
-                    "y": "144",
-                    "properties": {
-                        "text": "Type compte: K-Admin"
-                    }
-                },
-                {
-                    "ID": "5",
-                    "typeID": "FieldSet",
-                    "zOrder": "3",
-                    "w": "410",
-                    "h": "315",
-                    "measuredW": "200",
-                    "measuredH": "170",
-                    "x": "71",
-                    "y": "202",
-                    "properties": {
-                        "text": "Formulaire de création"
-                    }
-                },
-                {
-                    "ID": "6",
-                    "typeID": "Label",
-                    "zOrder": "4",
-                    "w": "105",
-                    "measuredW": "92",
-                    "measuredH": "21",
-                    "x": "99",
-                    "y": "244",
-                    "properties": {
-                        "text": "Titre du tournoi:"
-                    }
-                },
-                {
-                    "ID": "7",
-                    "typeID": "Label",
-                    "zOrder": "5",
-                    "w": "105",
-                    "measuredW": "70",
-                    "measuredH": "21",
-                    "x": "99",
-                    "y": "274",
-                    "properties": {
-                        "text": "Description:"
-                    }
-                },
-                {
-                    "ID": "8",
-                    "typeID": "Label",
-                    "zOrder": "6",
-                    "w": "218",
-                    "measuredW": "205",
-                    "measuredH": "21",
-                    "x": "99",
-                    "y": "307",
-                    "properties": {
-                        "text": "Date/Heure démarrage du tournoi:"
-                    }
-                },
-                {
-                    "ID": "9",
-                    "typeID": "Label",
-                    "zOrder": "7",
-                    "w": "118",
-                    "measuredW": "115",
-                    "measuredH": "21",
-                    "x": "99",
-                    "y": "344",
-                    "properties": {
-                        "text": "Nombre d'équipes: "
-                    }
-                },
-                {
-                    "ID": "10",
-                    "typeID": "Label",
-                    "zOrder": "8",
-                    "w": "236",
-                    "measuredW": "233",
-                    "measuredH": "21",
-                    "x": "99",
-                    "y": "378",
-                    "properties": {
-                        "text": "Date/Heure ouverture des inscriptions: "
-                    }
-                },
-                {
-                    "ID": "11",
-                    "typeID": "Label",
-                    "zOrder": "9",
-                    "w": "236",
-                    "measuredW": "234",
-                    "measuredH": "21",
-                    "x": "99",
-                    "y": "413",
-                    "properties": {
-                        "text": "Date/Heure fermeture des inscriptions: "
-                    }
-                },
-                {
-                    "ID": "12",
-                    "typeID": "TextInput",
-                    "zOrder": "10",
-                    "w": "155",
-                    "measuredW": "79",
-                    "measuredH": "27",
-                    "x": "204",
-                    "y": "241"
-                },
-                {
-                    "ID": "13",
-                    "typeID": "TextInput",
-                    "zOrder": "11",
-                    "w": "150",
-                    "measuredW": "79",
-                    "measuredH": "27",
-                    "x": "176",
-                    "y": "271"
-                },
-                {
-                    "ID": "14",
-                    "typeID": "DateChooser",
-                    "zOrder": "12",
-                    "measuredW": "90",
-                    "measuredH": "25",
-                    "x": "316",
-                    "y": "305"
-                },
-                {
-                    "ID": "15",
-                    "typeID": "DateChooser",
-                    "zOrder": "13",
-                    "measuredW": "90",
-                    "measuredH": "25",
-                    "x": "342",
-                    "y": "376"
-                },
-                {
-                    "ID": "16",
-                    "typeID": "DateChooser",
-                    "zOrder": "14",
-                    "measuredW": "90",
-                    "measuredH": "25",
-                    "x": "342",
-                    "y": "411"
-                },
-                {
-                    "ID": "17",
-                    "typeID": "NumericStepper",
-                    "zOrder": "15",
-                    "measuredW": "46",
-                    "measuredH": "24",
-                    "x": "217",
-                    "y": "343",
-                    "properties": {
-                        "text": "16"
-                    }
-                },
-                {
-                    "ID": "18",
-                    "typeID": "Button",
-                    "zOrder": "16",
-                    "w": "164",
-                    "h": "27",
-                    "measuredW": "58",
-                    "measuredH": "27",
-                    "x": "185",
-                    "y": "474",
-                    "properties": {
-                        "text": "Créer"
-                    }
-                },
-                {
-                    "ID": "19",
-                    "typeID": "Label",
-                    "zOrder": "17",
-                    "w": "180",
-                    "measuredW": "173",
-                    "measuredH": "21",
-                    "x": "99",
-                    "y": "437",
-                    "properties": {
-                        "text": "Temps entre les rondes (opt):"
-                    }
-                },
-                {
-                    "ID": "20",
-                    "typeID": "NumericStepper",
-                    "zOrder": "18",
-                    "w": "56",
-                    "measuredW": "41",
-                    "measuredH": "24",
-                    "x": "279",
-                    "y": "436"
-                },
-                {
-                    "ID": "21",
-                    "typeID": "Label",
-                    "zOrder": "19",
-                    "w": "56",
-                    "measuredW": "51",
-                    "measuredH": "21",
-                    "x": "342",
-                    "y": "439",
-                    "properties": {
-                        "text": "(heures)"
-                    }
-                }
-            ]
+  "mockup": {
+    "controls": {
+      "control": [
+        {
+          "ID": "1",
+          "typeID": "BrowserWindow",
+          "zOrder": "0",
+          "w": "1000",
+          "h": "650",
+          "measuredW": "450",
+          "measuredH": "400",
+          "x": "32",
+          "y": "64",
+          "properties": {
+            "text": "A Web Page\nhttps://creerTournoi.php"
+          }
         },
-        "attributes": {
-            "name": "createTournament",
-            "order": 1000049.0801317686,
-            "parentID": null,
-            "notes": null
+        {
+          "ID": "2",
+          "typeID": "AppBar",
+          "zOrder": "1",
+          "w": "1000",
+          "h": "44",
+          "measuredW": "372",
+          "measuredH": "44",
+          "x": "32",
+          "y": "133",
+          "properties": {
+            "text": "tournamentManager/admin/create",
+            "icons": {
+              "icons": []
+            }
+          }
         },
-        "branchID": "Master",
-        "resourceID": "F47BEF5B-E7E4-48F2-8042-7CF1143BD508",
-        "mockupH": "650",
-        "mockupW": "1000",
-        "measuredW": "1032",
-        "measuredH": "714",
-        "version": "1.0"
-    }
+        {
+          "ID": "3",
+          "typeID": "Label",
+          "zOrder": "2",
+          "w": "145",
+          "measuredW": "131",
+          "measuredH": "21",
+          "x": "838",
+          "y": "144",
+          "properties": {
+            "text": "Type compte: K-Admin"
+          }
+        },
+        {
+          "ID": "5",
+          "typeID": "FieldSet",
+          "zOrder": "3",
+          "w": "410",
+          "h": "315",
+          "measuredW": "200",
+          "measuredH": "170",
+          "x": "71",
+          "y": "202",
+          "properties": {
+            "text": "Formulaire de création"
+          }
+        },
+        {
+          "ID": "6",
+          "typeID": "Label",
+          "zOrder": "4",
+          "w": "105",
+          "measuredW": "92",
+          "measuredH": "21",
+          "x": "99",
+          "y": "244",
+          "properties": {
+            "text": "Titre du tournoi:"
+          }
+        },
+        {
+          "ID": "7",
+          "typeID": "Label",
+          "zOrder": "5",
+          "w": "105",
+          "measuredW": "70",
+          "measuredH": "21",
+          "x": "99",
+          "y": "274",
+          "properties": {
+            "text": "Description:"
+          }
+        },
+        {
+          "ID": "8",
+          "typeID": "Label",
+          "zOrder": "6",
+          "w": "218",
+          "measuredW": "205",
+          "measuredH": "21",
+          "x": "99",
+          "y": "307",
+          "properties": {
+            "text": "Date/Heure démarrage du tournoi:"
+          }
+        },
+        {
+          "ID": "9",
+          "typeID": "Label",
+          "zOrder": "7",
+          "w": "118",
+          "measuredW": "115",
+          "measuredH": "21",
+          "x": "99",
+          "y": "344",
+          "properties": {
+            "text": "Nombre d'équipes: "
+          }
+        },
+        {
+          "ID": "10",
+          "typeID": "Label",
+          "zOrder": "8",
+          "w": "236",
+          "measuredW": "233",
+          "measuredH": "21",
+          "x": "99",
+          "y": "378",
+          "properties": {
+            "text": "Date/Heure ouverture des inscriptions: "
+          }
+        },
+        {
+          "ID": "11",
+          "typeID": "Label",
+          "zOrder": "9",
+          "w": "236",
+          "measuredW": "234",
+          "measuredH": "21",
+          "x": "99",
+          "y": "413",
+          "properties": {
+            "text": "Date/Heure fermeture des inscriptions: "
+          }
+        },
+        {
+          "ID": "12",
+          "typeID": "TextInput",
+          "zOrder": "10",
+          "w": "155",
+          "measuredW": "79",
+          "measuredH": "27",
+          "x": "204",
+          "y": "241"
+        },
+        {
+          "ID": "13",
+          "typeID": "TextInput",
+          "zOrder": "11",
+          "w": "150",
+          "measuredW": "79",
+          "measuredH": "27",
+          "x": "176",
+          "y": "271"
+        },
+        {
+          "ID": "14",
+          "typeID": "DateChooser",
+          "zOrder": "12",
+          "measuredW": "90",
+          "measuredH": "25",
+          "x": "316",
+          "y": "305"
+        },
+        {
+          "ID": "15",
+          "typeID": "DateChooser",
+          "zOrder": "13",
+          "measuredW": "90",
+          "measuredH": "25",
+          "x": "342",
+          "y": "376"
+        },
+        {
+          "ID": "16",
+          "typeID": "DateChooser",
+          "zOrder": "14",
+          "measuredW": "90",
+          "measuredH": "25",
+          "x": "342",
+          "y": "411"
+        },
+        {
+          "ID": "17",
+          "typeID": "NumericStepper",
+          "zOrder": "15",
+          "measuredW": "46",
+          "measuredH": "24",
+          "x": "217",
+          "y": "343",
+          "properties": {
+            "text": "16"
+          }
+        },
+        {
+          "ID": "18",
+          "typeID": "Button",
+          "zOrder": "16",
+          "w": "164",
+          "h": "27",
+          "measuredW": "58",
+          "measuredH": "27",
+          "x": "185",
+          "y": "474",
+          "properties": {
+            "text": "Créer"
+          }
+        },
+        {
+          "ID": "19",
+          "typeID": "Label",
+          "zOrder": "17",
+          "w": "180",
+          "measuredW": "173",
+          "measuredH": "21",
+          "x": "99",
+          "y": "437",
+          "properties": {
+            "text": "Temps entre les rondes (opt):"
+          }
+        },
+        {
+          "ID": "20",
+          "typeID": "NumericStepper",
+          "zOrder": "18",
+          "w": "56",
+          "measuredW": "41",
+          "measuredH": "24",
+          "x": "279",
+          "y": "436"
+        },
+        {
+          "ID": "21",
+          "typeID": "Label",
+          "zOrder": "19",
+          "w": "56",
+          "measuredW": "51",
+          "measuredH": "21",
+          "x": "342",
+          "y": "439",
+          "properties": {
+            "text": "(heures)"
+          }
+        }
+      ]
+    },
+    "attributes": {
+      "name": "createTournament",
+      "order": 1000049.0801317686,
+      "parentID": null,
+      "notes": null
+    },
+    "branchID": "Master",
+    "resourceID": "F47BEF5B-E7E4-48F2-8042-7CF1143BD508",
+    "mockupH": "650",
+    "mockupW": "1000",
+    "measuredW": "1032",
+    "measuredH": "714",
+    "version": "1.0"
+  }
 }
