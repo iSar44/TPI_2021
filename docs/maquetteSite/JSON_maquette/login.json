@@ -1,0 +1,142 @@
+{
+    "mockup": {
+        "controls": {
+            "control": [
+                {
+                    "ID": "0",
+                    "typeID": "BrowserWindow",
+                    "zOrder": "0",
+                    "w": "1112",
+                    "h": "720",
+                    "measuredW": "450",
+                    "measuredH": "400",
+                    "x": "50",
+                    "y": "69",
+                    "properties": {
+                        "text": "A Web Page\nhttps://login.php"
+                    }
+                },
+                {
+                    "ID": "1",
+                    "typeID": "AppBar",
+                    "zOrder": "1",
+                    "w": "1112",
+                    "h": "44",
+                    "measuredW": "320",
+                    "measuredH": "44",
+                    "x": "50",
+                    "y": "142",
+                    "properties": {
+                        "text": "tournamentManager/guest/login",
+                        "icons": {
+                            "icons": []
+                        }
+                    }
+                },
+                {
+                    "ID": "2",
+                    "typeID": "Button",
+                    "zOrder": "2",
+                    "w": "159",
+                    "h": "27",
+                    "measuredW": "61",
+                    "measuredH": "27",
+                    "x": "964",
+                    "y": "150",
+                    "properties": {
+                        "text": "Log In"
+                    }
+                },
+                {
+                    "ID": "8",
+                    "typeID": "FieldSet",
+                    "zOrder": "3",
+                    "w": "492",
+                    "h": "368",
+                    "measuredW": "200",
+                    "measuredH": "170",
+                    "x": "344",
+                    "y": "245",
+                    "properties": {
+                        "text": "Formulaire de connexion"
+                    }
+                },
+                {
+                    "ID": "14",
+                    "typeID": "TextInput",
+                    "zOrder": "4",
+                    "w": "246",
+                    "measuredW": "79",
+                    "measuredH": "27",
+                    "x": "533",
+                    "y": "339"
+                },
+                {
+                    "ID": "15",
+                    "typeID": "Label",
+                    "zOrder": "5",
+                    "w": "54",
+                    "measuredW": "47",
+                    "measuredH": "23",
+                    "x": "401",
+                    "y": "342",
+                    "properties": {
+                        "size": "15",
+                        "text": "E-mail:"
+                    }
+                },
+                {
+                    "ID": "16",
+                    "typeID": "TextInput",
+                    "zOrder": "6",
+                    "w": "246",
+                    "measuredW": "79",
+                    "measuredH": "27",
+                    "x": "533",
+                    "y": "397"
+                },
+                {
+                    "ID": "17",
+                    "typeID": "Label",
+                    "zOrder": "7",
+                    "w": "114",
+                    "measuredW": "100",
+                    "measuredH": "23",
+                    "x": "401",
+                    "y": "400",
+                    "properties": {
+                        "size": "15",
+                        "text": "Mot de passe: "
+                    }
+                },
+                {
+                    "ID": "18",
+                    "typeID": "Button",
+                    "zOrder": "8",
+                    "w": "194",
+                    "h": "36",
+                    "measuredW": "103",
+                    "measuredH": "27",
+                    "x": "495",
+                    "y": "482",
+                    "properties": {
+                        "text": "Se connecter"
+                    }
+                }
+            ]
+        },
+        "attributes": {
+            "name": "login",
+            "order": 1000006.8593608178,
+            "parentID": null,
+            "notes": null
+        },
+        "branchID": "Master",
+        "resourceID": "BC1198E6-943E-47B2-971D-0F58C33CAD26",
+        "mockupH": "720",
+        "mockupW": "1112",
+        "measuredW": "1162",
+        "measuredH": "789",
+        "version": "1.0"
+    }
+}

@@ -1,0 +1,379 @@
+{
+    "mockup": {
+        "controls": {
+            "control": [
+                {
+                    "ID": "38",
+                    "typeID": "BrowserWindow",
+                    "zOrder": "0",
+                    "w": "1012",
+                    "h": "648",
+                    "measuredW": "450",
+                    "measuredH": "400",
+                    "x": "111",
+                    "y": "47"
+                },
+                {
+                    "ID": "39",
+                    "typeID": "AppBar",
+                    "zOrder": "1",
+                    "w": "1005",
+                    "h": "44",
+                    "measuredW": "367",
+                    "measuredH": "44",
+                    "x": "111",
+                    "y": "121",
+                    "properties": {
+                        "text": "tournamentManager/admin/home",
+                        "icons": {
+                            "icons": []
+                        }
+                    }
+                },
+                {
+                    "ID": "40",
+                    "typeID": "DataGrid",
+                    "zOrder": "2",
+                    "w": "931",
+                    "h": "179",
+                    "measuredW": "680",
+                    "measuredH": "215",
+                    "x": "158",
+                    "y": "312",
+                    "properties": {
+                        "text": "Nom du tournoi, Nb Equipes, Date/Heure du lancement, Statut, Description, Actions\nCSGO CFPT, 8, 01/05/2021 15:30:00, En cours, Tournoi de CSGO\nModern Warfare, 16, 24/04/2021 09:00:00, En cours, Tournoi de MW\nMinecraft, 16, 18/04/2021 17:10:00, En cours, Tournoi de Minecraft\nCall Of Duty Black Ops III, N/A, 14/04/2021 14:45:00, En cours, Tournoi de COD\nCall Of Duty Warzone, 8, 05/05/2021 16:00:00, En cours, Tournoi de Warzone\nMotoGP 21, 16, 10/05/2021 13:00:00, En cours, Tournoi de MotoGP\n{30, 10, 20, 10, 20, 10, 10, 10}",
+                        "verticalScrollbar": "true",
+                        "hasHeader": "false"
+                    }
+                },
+                {
+                    "ID": "41",
+                    "typeID": "DataGrid",
+                    "zOrder": "3",
+                    "w": "906",
+                    "h": "120",
+                    "measuredW": "622",
+                    "measuredH": "125",
+                    "x": "158",
+                    "y": "530",
+                    "properties": {
+                        "text": "Nom du tournoi, Nb Equipes, Date/Heure du lancement, Statut, Description, Actions\nCSGO CFPT, 16, 04/04/2021 15:36:25, Terminé, Tournoi de CSGO\nModern Warfare, 16, 24/03/2021 09:34:58, Terminé, Tournoi de MW\nMinecraft, 8, 15/03/2021 17:10:45, Terminé, Tournoi de Minecraft\n{40, 10, 20, 10, 20, 10}",
+                        "verticalScrollbar": "true",
+                        "hasHeader": "false"
+                    }
+                },
+                {
+                    "ID": "42",
+                    "typeID": "Button",
+                    "zOrder": "4",
+                    "w": "78",
+                    "h": "27",
+                    "measuredW": "47",
+                    "measuredH": "27",
+                    "x": "970",
+                    "y": "562",
+                    "properties": {
+                        "text": "Voir"
+                    }
+                },
+                {
+                    "ID": "43",
+                    "typeID": "Button",
+                    "zOrder": "5",
+                    "w": "78",
+                    "h": "27",
+                    "measuredW": "47",
+                    "measuredH": "27",
+                    "x": "970",
+                    "y": "596",
+                    "properties": {
+                        "text": "Voir"
+                    }
+                },
+                {
+                    "ID": "44",
+                    "typeID": "Button",
+                    "zOrder": "6",
+                    "w": "78",
+                    "h": "27",
+                    "measuredW": "47",
+                    "measuredH": "27",
+                    "x": "970",
+                    "y": "623",
+                    "properties": {
+                        "text": "Voir"
+                    }
+                },
+                {
+                    "ID": "45",
+                    "typeID": "Label",
+                    "zOrder": "7",
+                    "w": "34",
+                    "measuredW": "20",
+                    "measuredH": "21",
+                    "x": "163",
+                    "y": "198",
+                    "properties": {
+                        "text": "De:"
+                    }
+                },
+                {
+                    "ID": "46",
+                    "typeID": "Label",
+                    "zOrder": "8",
+                    "w": "116",
+                    "measuredW": "112",
+                    "measuredH": "21",
+                    "x": "163",
+                    "y": "174",
+                    "properties": {
+                        "text": "Filtrer les résultats:"
+                    }
+                },
+                {
+                    "ID": "47",
+                    "typeID": "Label",
+                    "zOrder": "9",
+                    "w": "17",
+                    "measuredW": "11",
+                    "measuredH": "21",
+                    "x": "163",
+                    "y": "237",
+                    "properties": {
+                        "text": "A:"
+                    }
+                },
+                {
+                    "ID": "48",
+                    "typeID": "ComboBox",
+                    "zOrder": "10",
+                    "measuredW": "135",
+                    "measuredH": "27",
+                    "x": "197",
+                    "y": "271",
+                    "properties": {
+                        "text": "Tournois en cours"
+                    }
+                },
+                {
+                    "ID": "49",
+                    "typeID": "Label",
+                    "zOrder": "11",
+                    "measuredW": "37",
+                    "measuredH": "21",
+                    "x": "147",
+                    "y": "274",
+                    "properties": {
+                        "text": "Statut:"
+                    }
+                },
+                {
+                    "ID": "50",
+                    "typeID": "DateChooser",
+                    "zOrder": "12",
+                    "measuredW": "90",
+                    "measuredH": "25",
+                    "x": "197",
+                    "y": "196"
+                },
+                {
+                    "ID": "51",
+                    "typeID": "DateChooser",
+                    "zOrder": "13",
+                    "measuredW": "90",
+                    "measuredH": "25",
+                    "x": "197",
+                    "y": "235"
+                },
+                {
+                    "ID": "52",
+                    "typeID": "NumericStepper",
+                    "zOrder": "14",
+                    "measuredW": "41",
+                    "measuredH": "24",
+                    "x": "489",
+                    "y": "196",
+                    "properties": {
+                        "text": "8"
+                    }
+                },
+                {
+                    "ID": "53",
+                    "typeID": "Label",
+                    "zOrder": "15",
+                    "w": "119",
+                    "measuredW": "115",
+                    "measuredH": "21",
+                    "x": "370",
+                    "y": "197",
+                    "properties": {
+                        "text": "Nombre d'équipes: "
+                    }
+                },
+                {
+                    "ID": "54",
+                    "typeID": "Label",
+                    "zOrder": "16",
+                    "w": "75",
+                    "measuredW": "67",
+                    "measuredH": "21",
+                    "x": "370",
+                    "y": "235",
+                    "properties": {
+                        "text": "Texte libre: "
+                    }
+                },
+                {
+                    "ID": "55",
+                    "typeID": "TextInput",
+                    "zOrder": "17",
+                    "w": "148",
+                    "measuredW": "79",
+                    "measuredH": "27",
+                    "x": "445",
+                    "y": "232"
+                },
+                {
+                    "ID": "56",
+                    "typeID": "Button",
+                    "zOrder": "18",
+                    "w": "223",
+                    "h": "27",
+                    "measuredW": "94",
+                    "measuredH": "27",
+                    "x": "370",
+                    "y": "271",
+                    "properties": {
+                        "text": "Rechercher"
+                    }
+                },
+                {
+                    "ID": "57",
+                    "typeID": "ButtonBar",
+                    "zOrder": "19",
+                    "w": "228",
+                    "h": "27",
+                    "measuredW": "209",
+                    "measuredH": "27",
+                    "x": "844",
+                    "y": "345",
+                    "properties": {
+                        "text": "Voir, Modifier, Supprimer"
+                    }
+                },
+                {
+                    "ID": "58",
+                    "typeID": "ButtonBar",
+                    "zOrder": "20",
+                    "w": "228",
+                    "h": "27",
+                    "measuredW": "209",
+                    "measuredH": "27",
+                    "x": "844",
+                    "y": "373",
+                    "properties": {
+                        "text": "Voir, Modifier, Supprimer"
+                    }
+                },
+                {
+                    "ID": "59",
+                    "typeID": "ButtonBar",
+                    "zOrder": "21",
+                    "w": "228",
+                    "h": "27",
+                    "measuredW": "209",
+                    "measuredH": "27",
+                    "x": "844",
+                    "y": "403",
+                    "properties": {
+                        "text": "Voir, Modifier, Supprimer"
+                    }
+                },
+                {
+                    "ID": "60",
+                    "typeID": "ButtonBar",
+                    "zOrder": "22",
+                    "w": "228",
+                    "h": "27",
+                    "measuredW": "209",
+                    "measuredH": "27",
+                    "x": "844",
+                    "y": "433",
+                    "properties": {
+                        "text": "Voir, Modifier, Supprimer"
+                    }
+                },
+                {
+                    "ID": "61",
+                    "typeID": "ButtonBar",
+                    "zOrder": "23",
+                    "w": "228",
+                    "h": "27",
+                    "measuredW": "209",
+                    "measuredH": "27",
+                    "x": "844",
+                    "y": "460",
+                    "properties": {
+                        "text": "Voir, Modifier, Supprimer"
+                    }
+                },
+                {
+                    "ID": "62",
+                    "typeID": "Label",
+                    "zOrder": "24",
+                    "w": "145",
+                    "measuredW": "131",
+                    "measuredH": "21",
+                    "x": "919",
+                    "y": "137",
+                    "properties": {
+                        "text": "Type compte: K-Admin"
+                    }
+                },
+                {
+                    "ID": "63",
+                    "typeID": "CircleButton",
+                    "zOrder": "25",
+                    "w": "64",
+                    "h": "48",
+                    "measuredW": "48",
+                    "measuredH": "48",
+                    "x": "990",
+                    "y": "187",
+                    "properties": {
+                        "icon": {
+                            "ID": "plus",
+                            "size": "small"
+                        }
+                    }
+                },
+                {
+                    "ID": "64",
+                    "typeID": "Label",
+                    "zOrder": "26",
+                    "measuredW": "127",
+                    "measuredH": "24",
+                    "x": "847",
+                    "y": "199",
+                    "properties": {
+                        "size": "16",
+                        "text": "Créer un tournoi: "
+                    }
+                }
+            ]
+        },
+        "attributes": {
+            "name": "accueil_compteK-Admin",
+            "order": 1000016.7127289484,
+            "parentID": null,
+            "notes": null
+        },
+        "branchID": "Master",
+        "resourceID": "9FD1F7C3-AB0E-4A49-B200-8CA6F3236E83",
+        "mockupH": "648",
+        "mockupW": "1012",
+        "measuredW": "1123",
+        "measuredH": "695",
+        "version": "1.0"
+    }
+}

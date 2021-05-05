@@ -1,0 +1,175 @@
+{
+    "mockup": {
+        "controls": {
+            "control": [
+                {
+                    "ID": "0",
+                    "typeID": "BrowserWindow",
+                    "zOrder": "0",
+                    "w": "1112",
+                    "h": "720",
+                    "measuredW": "450",
+                    "measuredH": "400",
+                    "x": "26",
+                    "y": "77",
+                    "properties": {
+                        "text": "A Web Page\nhttps://infoTournoi.php"
+                    }
+                },
+                {
+                    "ID": "1",
+                    "typeID": "AppBar",
+                    "zOrder": "1",
+                    "w": "1112",
+                    "h": "44",
+                    "measuredW": "399",
+                    "measuredH": "44",
+                    "x": "26",
+                    "y": "141",
+                    "properties": {
+                        "text": "tournamentManager/player/getDetails",
+                        "icons": {
+                            "icons": []
+                        }
+                    }
+                },
+                {
+                    "ID": "2",
+                    "typeID": "Label",
+                    "zOrder": "2",
+                    "w": "145",
+                    "measuredW": "122",
+                    "measuredH": "21",
+                    "x": "963",
+                    "y": "152",
+                    "properties": {
+                        "text": "Type compte: Joueur"
+                    }
+                },
+                {
+                    "ID": "3",
+                    "typeID": "FieldSet",
+                    "zOrder": "3",
+                    "w": "508",
+                    "h": "151",
+                    "measuredW": "200",
+                    "measuredH": "170",
+                    "x": "286",
+                    "y": "201",
+                    "properties": {
+                        "text": "Tournoi: League of Legends"
+                    }
+                },
+                {
+                    "ID": "11",
+                    "typeID": "Label",
+                    "zOrder": "4",
+                    "measuredW": "42",
+                    "measuredH": "21",
+                    "x": "316",
+                    "y": "224",
+                    "properties": {
+                        "text": "Etape: "
+                    }
+                },
+                {
+                    "ID": "32",
+                    "typeID": "Label",
+                    "zOrder": "5",
+                    "measuredW": "195",
+                    "measuredH": "21",
+                    "x": "515",
+                    "y": "224",
+                    "properties": {
+                        "text": "Nombre d'équipes actuellement: "
+                    }
+                },
+                {
+                    "ID": "33",
+                    "typeID": "TextInput",
+                    "zOrder": "6",
+                    "measuredW": "22",
+                    "measuredH": "27",
+                    "x": "718",
+                    "y": "221",
+                    "properties": {
+                        "text": "3"
+                    }
+                },
+                {
+                    "ID": "81",
+                    "typeID": "VerticalScrollBar",
+                    "zOrder": "7",
+                    "h": "586",
+                    "measuredW": "16",
+                    "measuredH": "100",
+                    "x": "1121",
+                    "y": "185"
+                },
+                {
+                    "ID": "82",
+                    "typeID": "Label",
+                    "zOrder": "8",
+                    "measuredW": "117",
+                    "measuredH": "21",
+                    "x": "363",
+                    "y": "224",
+                    "properties": {
+                        "text": "Inscription en cours"
+                    }
+                },
+                {
+                    "ID": "83",
+                    "typeID": "Label",
+                    "zOrder": "9",
+                    "measuredW": "194",
+                    "measuredH": "21",
+                    "x": "515",
+                    "y": "251",
+                    "properties": {
+                        "text": "Nombre d'équipes max autorisé: "
+                    }
+                },
+                {
+                    "ID": "84",
+                    "typeID": "TextInput",
+                    "zOrder": "10",
+                    "measuredW": "22",
+                    "measuredH": "27",
+                    "x": "718",
+                    "y": "248",
+                    "properties": {
+                        "text": "8"
+                    }
+                },
+                {
+                    "ID": "85",
+                    "typeID": "Button",
+                    "zOrder": "11",
+                    "w": "210",
+                    "h": "27",
+                    "measuredW": "79",
+                    "measuredH": "27",
+                    "x": "427",
+                    "y": "302",
+                    "properties": {
+                        "text": "S'inscrire"
+                    }
+                }
+            ]
+        },
+        "attributes": {
+            "name": "infoTournoiInscription",
+            "order": 1000090.120216958,
+            "parentID": null,
+            "notes": null
+        },
+        "branchID": "Master",
+        "resourceID": "A2BD1600-03FF-4704-A760-EFDEF942750D",
+        "mockupH": "720",
+        "mockupW": "1112",
+        "measuredW": "1138",
+        "measuredH": "797",
+        "version": "1.0"
+    }
+}

@@ -1,0 +1,500 @@
+{
+    "mockup": {
+        "controls": {
+            "control": [
+                {
+                    "ID": "0",
+                    "typeID": "BrowserWindow",
+                    "zOrder": "0",
+                    "w": "1112",
+                    "h": "720",
+                    "measuredW": "450",
+                    "measuredH": "400",
+                    "x": "26",
+                    "y": "77",
+                    "properties": {
+                        "text": "A Web Page\nhttps://infoTournoi.php"
+                    }
+                },
+                {
+                    "ID": "1",
+                    "typeID": "AppBar",
+                    "zOrder": "1",
+                    "w": "1112",
+                    "h": "44",
+                    "measuredW": "399",
+                    "measuredH": "44",
+                    "x": "26",
+                    "y": "141",
+                    "properties": {
+                        "text": "tournamentManager/admin/getDetails",
+                        "icons": {
+                            "icons": []
+                        }
+                    }
+                },
+                {
+                    "ID": "2",
+                    "typeID": "Label",
+                    "zOrder": "2",
+                    "w": "145",
+                    "measuredW": "131",
+                    "measuredH": "21",
+                    "x": "963",
+                    "y": "152",
+                    "properties": {
+                        "text": "Type compte: K-Admin"
+                    }
+                },
+                {
+                    "ID": "3",
+                    "typeID": "FieldSet",
+                    "zOrder": "3",
+                    "w": "508",
+                    "h": "509",
+                    "measuredW": "200",
+                    "measuredH": "170",
+                    "x": "286",
+                    "y": "201",
+                    "properties": {
+                        "text": "Tournoi: CSGO CFPT"
+                    }
+                },
+                {
+                    "ID": "11",
+                    "typeID": "Label",
+                    "zOrder": "4",
+                    "measuredW": "100",
+                    "measuredH": "21",
+                    "x": "317",
+                    "y": "231",
+                    "properties": {
+                        "text": "Ronde en cours :"
+                    }
+                },
+                {
+                    "ID": "12",
+                    "typeID": "TextInput",
+                    "zOrder": "5",
+                    "measuredW": "22",
+                    "measuredH": "27",
+                    "x": "425",
+                    "y": "228",
+                    "properties": {
+                        "text": "2"
+                    }
+                },
+                {
+                    "ID": "14",
+                    "typeID": "FieldSet",
+                    "zOrder": "6",
+                    "w": "471",
+                    "h": "140",
+                    "measuredW": "200",
+                    "measuredH": "170",
+                    "x": "304",
+                    "y": "327",
+                    "properties": {
+                        "text": "Résultat intermédiaire"
+                    }
+                },
+                {
+                    "ID": "20",
+                    "typeID": "TextArea",
+                    "zOrder": "7",
+                    "w": "61",
+                    "h": "38",
+                    "measuredW": "200",
+                    "measuredH": "140",
+                    "x": "463",
+                    "y": "272",
+                    "properties": {
+                        "text": "Team A\nTeam B"
+                    }
+                },
+                {
+                    "ID": "22",
+                    "typeID": "TextArea",
+                    "zOrder": "8",
+                    "w": "61",
+                    "h": "38",
+                    "measuredW": "200",
+                    "measuredH": "140",
+                    "x": "601",
+                    "y": "272",
+                    "properties": {
+                        "text": "Team F\nTeam G"
+                    }
+                },
+                {
+                    "ID": "27",
+                    "typeID": "TextArea",
+                    "zOrder": "9",
+                    "w": "61",
+                    "h": "38",
+                    "measuredW": "200",
+                    "measuredH": "140",
+                    "x": "533",
+                    "y": "272",
+                    "properties": {
+                        "text": "Team P\nTeam O"
+                    }
+                },
+                {
+                    "ID": "29",
+                    "typeID": "TextArea",
+                    "zOrder": "10",
+                    "w": "61",
+                    "h": "40",
+                    "measuredW": "200",
+                    "measuredH": "140",
+                    "x": "671",
+                    "y": "271",
+                    "properties": {
+                        "text": "Team K\nTeam J"
+                    }
+                },
+                {
+                    "ID": "31",
+                    "typeID": "Label",
+                    "zOrder": "11",
+                    "measuredW": "98",
+                    "measuredH": "21",
+                    "x": "318",
+                    "y": "280",
+                    "properties": {
+                        "text": "Match en cours: "
+                    }
+                },
+                {
+                    "ID": "32",
+                    "typeID": "Label",
+                    "zOrder": "12",
+                    "measuredW": "115",
+                    "measuredH": "21",
+                    "x": "470",
+                    "y": "231",
+                    "properties": {
+                        "text": "Nombre d'équipes: "
+                    }
+                },
+                {
+                    "ID": "33",
+                    "typeID": "TextInput",
+                    "zOrder": "13",
+                    "measuredW": "22",
+                    "measuredH": "27",
+                    "x": "587",
+                    "y": "228",
+                    "properties": {
+                        "text": "8"
+                    }
+                },
+                {
+                    "ID": "36",
+                    "typeID": "Label",
+                    "zOrder": "14",
+                    "measuredW": "64",
+                    "measuredH": "21",
+                    "x": "332",
+                    "y": "350",
+                    "properties": {
+                        "text": "Ronde n°1:"
+                    }
+                },
+                {
+                    "ID": "37",
+                    "typeID": "TextArea",
+                    "zOrder": "15",
+                    "w": "85",
+                    "h": "61",
+                    "measuredW": "200",
+                    "measuredH": "140",
+                    "x": "400",
+                    "y": "350",
+                    "properties": {
+                        "text": "Team A - 1\nvs\nTeam F - 0"
+                    }
+                },
+                {
+                    "ID": "38",
+                    "typeID": "TextArea",
+                    "zOrder": "16",
+                    "w": "85",
+                    "h": "61",
+                    "measuredW": "200",
+                    "measuredH": "140",
+                    "x": "485",
+                    "y": "351",
+                    "properties": {
+                        "text": "Team B - 1\nvs\nTeam G - 0"
+                    }
+                },
+                {
+                    "ID": "39",
+                    "typeID": "TextArea",
+                    "zOrder": "17",
+                    "w": "85",
+                    "h": "61",
+                    "measuredW": "200",
+                    "measuredH": "140",
+                    "x": "570",
+                    "y": "351",
+                    "properties": {
+                        "text": "Team P - 1\nvs\nTeam K - 0"
+                    }
+                },
+                {
+                    "ID": "40",
+                    "typeID": "TextArea",
+                    "zOrder": "18",
+                    "w": "85",
+                    "h": "61",
+                    "measuredW": "200",
+                    "measuredH": "140",
+                    "x": "655",
+                    "y": "351",
+                    "properties": {
+                        "text": "Team O - 1\nvs\nTeam J - 0"
+                    }
+                },
+                {
+                    "ID": "41",
+                    "typeID": "Label",
+                    "zOrder": "19",
+                    "measuredW": "384",
+                    "measuredH": "21",
+                    "x": "363",
+                    "y": "430",
+                    "properties": {
+                        "text": "Les résultats s'afficheront au fur à mesure que le tournoi avance..."
+                    }
+                },
+                {
+                    "ID": "43",
+                    "typeID": "FieldSet",
+                    "zOrder": "20",
+                    "w": "471",
+                    "h": "216",
+                    "measuredW": "245",
+                    "measuredH": "170",
+                    "x": "304",
+                    "y": "478",
+                    "properties": {
+                        "text": "Formulaire d'attribution des résultats"
+                    }
+                },
+                {
+                    "ID": "51",
+                    "typeID": "Label",
+                    "zOrder": "21",
+                    "w": "146",
+                    "measuredW": "141",
+                    "measuredH": "21",
+                    "x": "387",
+                    "y": "506",
+                    "properties": {
+                        "text": "Matchs de la ronde n°2:"
+                    }
+                },
+                {
+                    "ID": "66",
+                    "typeID": "TextArea",
+                    "zOrder": "22",
+                    "w": "61",
+                    "h": "46",
+                    "measuredW": "200",
+                    "measuredH": "140",
+                    "x": "318",
+                    "y": "540",
+                    "properties": {
+                        "text": "Team A\nTeam B"
+                    }
+                },
+                {
+                    "ID": "67",
+                    "typeID": "NumericStepper",
+                    "zOrder": "23",
+                    "w": "46",
+                    "measuredW": "41",
+                    "measuredH": "24",
+                    "x": "387",
+                    "y": "538",
+                    "properties": {
+                        "text": "0"
+                    }
+                },
+                {
+                    "ID": "68",
+                    "typeID": "NumericStepper",
+                    "zOrder": "24",
+                    "w": "46",
+                    "measuredW": "41",
+                    "measuredH": "24",
+                    "x": "387",
+                    "y": "563",
+                    "properties": {
+                        "text": "0"
+                    }
+                },
+                {
+                    "ID": "69",
+                    "typeID": "TextArea",
+                    "zOrder": "25",
+                    "w": "61",
+                    "h": "46",
+                    "measuredW": "200",
+                    "measuredH": "140",
+                    "x": "318",
+                    "y": "614",
+                    "properties": {
+                        "text": "Team P\nTeam O"
+                    }
+                },
+                {
+                    "ID": "70",
+                    "typeID": "NumericStepper",
+                    "zOrder": "26",
+                    "w": "46",
+                    "measuredW": "41",
+                    "measuredH": "24",
+                    "x": "387",
+                    "y": "612",
+                    "properties": {
+                        "text": "0"
+                    }
+                },
+                {
+                    "ID": "71",
+                    "typeID": "NumericStepper",
+                    "zOrder": "27",
+                    "w": "46",
+                    "measuredW": "41",
+                    "measuredH": "24",
+                    "x": "387",
+                    "y": "637",
+                    "properties": {
+                        "text": "0"
+                    }
+                },
+                {
+                    "ID": "74",
+                    "typeID": "TextArea",
+                    "zOrder": "28",
+                    "w": "61",
+                    "h": "46",
+                    "measuredW": "200",
+                    "measuredH": "140",
+                    "x": "458",
+                    "y": "540",
+                    "properties": {
+                        "text": "Team F\nTeam G"
+                    }
+                },
+                {
+                    "ID": "75",
+                    "typeID": "NumericStepper",
+                    "zOrder": "29",
+                    "w": "46",
+                    "measuredW": "41",
+                    "measuredH": "24",
+                    "x": "527",
+                    "y": "538",
+                    "properties": {
+                        "text": "0"
+                    }
+                },
+                {
+                    "ID": "76",
+                    "typeID": "NumericStepper",
+                    "zOrder": "30",
+                    "w": "46",
+                    "measuredW": "41",
+                    "measuredH": "24",
+                    "x": "527",
+                    "y": "563",
+                    "properties": {
+                        "text": "0"
+                    }
+                },
+                {
+                    "ID": "77",
+                    "typeID": "TextArea",
+                    "zOrder": "31",
+                    "w": "61",
+                    "h": "46",
+                    "measuredW": "200",
+                    "measuredH": "140",
+                    "x": "458",
+                    "y": "614",
+                    "properties": {
+                        "text": "Team K\nTeam J"
+                    }
+                },
+                {
+                    "ID": "78",
+                    "typeID": "NumericStepper",
+                    "zOrder": "32",
+                    "w": "46",
+                    "measuredW": "41",
+                    "measuredH": "24",
+                    "x": "527",
+                    "y": "612",
+                    "properties": {
+                        "text": "0"
+                    }
+                },
+                {
+                    "ID": "79",
+                    "typeID": "NumericStepper",
+                    "zOrder": "33",
+                    "w": "46",
+                    "measuredW": "41",
+                    "measuredH": "24",
+                    "x": "527",
+                    "y": "637",
+                    "properties": {
+                        "text": "0"
+                    }
+                },
+                {
+                    "ID": "80",
+                    "typeID": "Button",
+                    "zOrder": "34",
+                    "w": "128",
+                    "h": "59",
+                    "measuredW": "100",
+                    "measuredH": "27",
+                    "x": "609",
+                    "y": "563",
+                    "properties": {
+                        "text": "Mettre à jour"
+                    }
+                },
+                {
+                    "ID": "81",
+                    "typeID": "VerticalScrollBar",
+                    "zOrder": "35",
+                    "h": "586",
+                    "measuredW": "16",
+                    "measuredH": "100",
+                    "x": "1121",
+                    "y": "185"
+                }
+            ]
+        },
+        "attributes": {
+            "name": "infoTournoi_admin",
+            "order": 1000070.4923938311,
+            "parentID": null,
+            "notes": null
+        },
+        "branchID": "Master",
+        "resourceID": "1C5FBA80-7D7D-4813-B35A-5E9D8D5D4F51",
+        "mockupH": "720",
+        "mockupW": "1112",
+        "measuredW": "1138",
+        "measuredH": "797",
+        "version": "1.0"
+    }
+}

@@ -1,0 +1,200 @@
+{
+    "mockup": {
+        "controls": {
+            "control": [
+                {
+                    "ID": "0",
+                    "typeID": "BrowserWindow",
+                    "zOrder": "0",
+                    "w": "1000",
+                    "h": "650",
+                    "measuredW": "450",
+                    "measuredH": "400",
+                    "x": "26",
+                    "y": "83",
+                    "properties": {
+                        "text": "A Web Page\nhttps://desinscriptionTournoi.php"
+                    }
+                },
+                {
+                    "ID": "1",
+                    "typeID": "AppBar",
+                    "zOrder": "1",
+                    "w": "1000",
+                    "h": "44",
+                    "measuredW": "399",
+                    "measuredH": "44",
+                    "x": "26",
+                    "y": "135",
+                    "properties": {
+                        "text": "tournamentManager/player/getDetails",
+                        "icons": {
+                            "icons": []
+                        }
+                    }
+                },
+                {
+                    "ID": "2",
+                    "typeID": "Label",
+                    "zOrder": "2",
+                    "w": "145",
+                    "measuredW": "122",
+                    "measuredH": "21",
+                    "x": "839",
+                    "y": "146",
+                    "properties": {
+                        "text": "Type compte: Joueur"
+                    }
+                },
+                {
+                    "ID": "8",
+                    "typeID": "Icon",
+                    "zOrder": "3",
+                    "measuredW": "48",
+                    "measuredH": "48",
+                    "x": "633",
+                    "y": "280",
+                    "properties": {
+                        "icon": {
+                            "ID": "exclamation-triangle",
+                            "size": "large"
+                        }
+                    }
+                },
+                {
+                    "ID": "9",
+                    "typeID": "TextArea",
+                    "zOrder": "4",
+                    "w": "287",
+                    "h": "64",
+                    "measuredW": "200",
+                    "measuredH": "140",
+                    "x": "697",
+                    "y": "280",
+                    "properties": {
+                        "text": "Les équipes peuvent se désinscrire 24 heures avant la date/heure de fermeture des inscriptions. \n"
+                    }
+                },
+                {
+                    "ID": "11",
+                    "typeID": "FieldSet",
+                    "zOrder": "5",
+                    "w": "508",
+                    "h": "205",
+                    "measuredW": "200",
+                    "measuredH": "170",
+                    "x": "84",
+                    "y": "209",
+                    "properties": {
+                        "text": "Tournoi: League of Legends"
+                    }
+                },
+                {
+                    "ID": "12",
+                    "typeID": "Label",
+                    "zOrder": "6",
+                    "w": "42",
+                    "measuredW": "42",
+                    "measuredH": "21",
+                    "x": "114",
+                    "y": "239",
+                    "properties": {
+                        "text": "Etape: "
+                    }
+                },
+                {
+                    "ID": "13",
+                    "typeID": "Label",
+                    "zOrder": "7",
+                    "w": "195",
+                    "measuredW": "195",
+                    "measuredH": "21",
+                    "x": "313",
+                    "y": "239",
+                    "properties": {
+                        "text": "Nombre d'équipes actuellement: "
+                    }
+                },
+                {
+                    "ID": "14",
+                    "typeID": "TextInput",
+                    "zOrder": "8",
+                    "w": "22",
+                    "measuredW": "22",
+                    "measuredH": "27",
+                    "x": "516",
+                    "y": "235",
+                    "properties": {
+                        "text": "5"
+                    }
+                },
+                {
+                    "ID": "15",
+                    "typeID": "Label",
+                    "zOrder": "9",
+                    "w": "117",
+                    "measuredW": "117",
+                    "measuredH": "21",
+                    "x": "161",
+                    "y": "239",
+                    "properties": {
+                        "text": "Inscription en cours"
+                    }
+                },
+                {
+                    "ID": "16",
+                    "typeID": "Label",
+                    "zOrder": "10",
+                    "w": "194",
+                    "measuredW": "194",
+                    "measuredH": "21",
+                    "x": "313",
+                    "y": "274",
+                    "properties": {
+                        "text": "Nombre d'équipes max autorisé: "
+                    }
+                },
+                {
+                    "ID": "17",
+                    "typeID": "TextInput",
+                    "zOrder": "11",
+                    "w": "22",
+                    "measuredW": "22",
+                    "measuredH": "27",
+                    "x": "516",
+                    "y": "270",
+                    "properties": {
+                        "text": "8"
+                    }
+                },
+                {
+                    "ID": "18",
+                    "typeID": "Button",
+                    "zOrder": "12",
+                    "w": "210",
+                    "h": "35",
+                    "measuredW": "109",
+                    "measuredH": "27",
+                    "x": "226",
+                    "y": "348",
+                    "properties": {
+                        "text": "Se désinscrire"
+                    }
+                }
+            ]
+        },
+        "attributes": {
+            "name": "infoTournoiDesincription",
+            "order": 1000040.2203172783,
+            "parentID": null,
+            "notes": null
+        },
+        "branchID": "Master",
+        "resourceID": "CD5F834B-606B-4A98-A326-DD8656F03FF8",
+        "mockupH": "650",
+        "mockupW": "1000",
+        "measuredW": "1026",
+        "measuredH": "733",
+        "version": "1.0"
+    }
+}
