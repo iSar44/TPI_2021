@@ -2,7 +2,7 @@
     <div class="card-header py-3">
         <div class="row table-topper align-items-center">
             <div class="filter">
-                <h1>Filtrer les résultats</h1>
+                <h1>Filtrer les tournois</h1>
                 <form>
                     <span for="datetime">Du:</span>
                     <input type="datetime-local" />
@@ -20,7 +20,11 @@
                         <option value="8">8</option>
                         <option value="16">16</option>
                     </select>
-                    <input type="text" placeholder="Recherche libre" />
+                    <!-- <input type="text" placeholder="Recherche libre" /> -->
+                    <br />
+                    <span>Recherche parmi les tournois: </span>
+                    <textarea name="keywords" class="md-textarea form-control" rows="3"></textarea>
+
                     <input class="btn btn-primary" type="submit" value="Rechercher" />
                 </form>
             </div>
