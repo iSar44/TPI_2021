@@ -2,21 +2,28 @@
 require_once('./src/model/classes/session.php');
 require_once('./src/model/db_model/database.php');
 require_once('./src/model/classes/session.php');
-require_once('./src/controllers/db_controller.php');
-require_once('./src/model/classes/utilisateur.php');
-
-$dbControl = new Db_Controller();
-
-$message = "";
-
-if (isset($_POST['send'])) {
+// require_once('./src/controllers/db_controller.php');
+// require_once('./src/model/classes/utilisateur.php');
+require_once('./src/model/classes/utilisateur_tM.php');
+require_once('./src/controllers/utilisateur_tM_controller.php');
 
 
-    $newUser = new Utilisateur($_POST['username'], $_POST['fname'], $_POST['lname'], $_POST['age'], $_POST['phoneNumber'], $_POST['email'], $_POST['pwd']);
-    $dbControl->AddUser($newUser);
+$u_controller = new Utilisateur_tM_Controller();
 
-    $message .= "SUCCESS!";
-}
+// $message = "";
+
+// if (isset($_POST['send'])) {
+
+
+//     $newUser = new Utilisateur($_POST['username'], $_POST['fname'], $_POST['lname'], $_POST['age'], $_POST['phoneNumber'], $_POST['email'], $_POST['pwd']);
+//     $dbControl->AddUser($newUser);
+
+//     $message .= "SUCCESS!";
+// }
+
+
+
+$res = $u_controller->SelectAll();
 
 
 
@@ -49,6 +56,15 @@ if (isset($_POST['send'])) {
     <header class=" header-blue">
         <?php require_once('./src/public/views/struct/nav.php'); ?>
     </header>
+
+    <pre>
+    <?php
+
+    var_dump($res);
+
+    ?>
+    </pre>
+
 
     <section>
         <?php require_once('./src/public/views/struct/filterResults.php'); ?>
