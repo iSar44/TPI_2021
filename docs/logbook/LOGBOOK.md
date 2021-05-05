@@ -82,7 +82,7 @@
 
 - 15:00 : Design de la page d'accueil terminé ✅
 
-<img src="../maquetteSite/tpi2021_homepage.png">
+<img src="../maquetteSite/screenshots/tpi2021_homepage.png">
 
 - 15:10 : Je passe à la page d'authentification, recherche des templates sur Bootstrap Studio pour le login
 
@@ -92,8 +92,28 @@
 
 - 15:55 : Design de la page d'authentification terminé
 
-<img src="../maquetteSite/login.png">
+<img src="../maquetteSite/screenshots/login.png">
 
 - 16:00 : En essayant de respecter la règle que je me suis imposée, je passer à la partie documentation de la journée 📄
 
 - 16:45 : Fin de la journée, enfin.. 😵
+
+## <u>3ème jour - 05/05/2021</u>
+
+### Matin:
+
+- 7:30 : Lors du "webmeeting" de la veille, M. Aigroz m'a conseillé de retravailler mes maquettes en supprimant certaines qui seront inutiles par contre il faut impérativement que je refasse les maquettes pour la page du détails des tournois, avec les différents use-cases (utilisateur déconnecté/connecté, compte admin). C'est ce que je vais faire maintenant.
+
+- 9:40 : Début de la pause.
+
+- 10:05 : Fin de la pause.
+
+- 10:45 : J'ai terminé la grande majorité des maquettes avec les différents use-cases.
+
+- 10:50 : Je vais approfondir la documentation technique.
+
+- 11:40 : Pause de midi.
+
+### Après-midi:
+
+- 12:40 :
