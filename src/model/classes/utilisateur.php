@@ -1,6 +1,6 @@
 <?php
-
-class Utilisateur{
+class Utilisateur
+{
 
     #region Champs
     private $idUser;
@@ -25,7 +25,7 @@ class Utilisateur{
     /**
      * Set the value of idUser
      */
-    public function setIdUser($idUser) : self
+    public function setIdUser($idUser): self
     {
         $this->idUser = $idUser;
 
@@ -43,7 +43,7 @@ class Utilisateur{
     /**
      * Set the value of userName
      */
-    public function setUserName($userName) : self
+    public function setUserName($userName): self
     {
         $this->userName = $userName;
 
@@ -61,7 +61,7 @@ class Utilisateur{
     /**
      * Set the value of fname
      */
-    public function setFname($fname) : self
+    public function setFname($fname): self
     {
         $this->fname = $fname;
 
@@ -79,7 +79,7 @@ class Utilisateur{
     /**
      * Set the value of lname
      */
-    public function setLname($lname) : self
+    public function setLname($lname): self
     {
         $this->lname = $lname;
 
@@ -97,7 +97,7 @@ class Utilisateur{
     /**
      * Set the value of age
      */
-    public function setAge($age) : self
+    public function setAge($age): self
     {
         $this->age = $age;
 
@@ -115,7 +115,7 @@ class Utilisateur{
     /**
      * Set the value of phoneNumber
      */
-    public function setPhoneNumber($phoneNumber) : self
+    public function setPhoneNumber($phoneNumber): self
     {
         $this->phoneNumber = $phoneNumber;
 
@@ -133,7 +133,7 @@ class Utilisateur{
     /**
      * Set the value of email
      */
-    public function setEmail($email) : self
+    public function setEmail($email): self
     {
         $this->email = $email;
 
@@ -151,7 +151,7 @@ class Utilisateur{
     /**
      * Set the value of pwd
      */
-    public function setPwd($pwd) : self
+    public function setPwd($pwd): self
     {
         $this->pwd = $pwd;
 
