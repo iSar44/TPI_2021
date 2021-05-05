@@ -44,7 +44,7 @@
                     "x": "148",
                     "y": "302",
                     "properties": {
-                        "text": "Nom du tournoi, Nb Equipes, Date/Heure du lancement, Statut, Description, Action\nCSGO CFPT, 8, 01/05/2021 15:30:00, En cours, Tournoi de CSGO\nModern Warfare, 16, 24/04/2021 09:00:00, En cours, Tournoi de MW\nMinecraft, 16, 18/04/2021 17:10:00, En cours, Tournoi de Minecraft\nCall Of Duty Black Ops III, N/A, 14/04/2021 14:45:00, En cours, Tournoi de COD\nCall Of Duty Warzone, 8, 05/05/2021 16:00:00, En cours, Tournoi de Warzone\nMotoGP 21, 16, 10/05/2021 13:00:00, En cours, Tournoi de MotoGP\n{40, 10, 20, 10, 20, 20}",
+                        "text": "Nom du tournoi, Nb Equipes, Date/Heure du lancement, Statut, Description, Action\nCSGO CFPT, 8, 01/05/2021 15:30:00, En cours, Tournoi de CSGO\nModern Warfare, 16, 24/04/2021 09:00:00, En cours, Tournoi de MW\nMinecraft, 16, 18/04/2021 17:10:00, En cours, Tournoi de Minecraft\nCall Of Duty Black Ops III, N/A, 14/04/2021 14:45:00, En cours, Tournoi de COD\nCall Of Duty Warzone, 8, 05/05/2021 16:00:00, En cours, Tournoi de Warzone\nMotoGP 21, 16, 10/05/2021 13:00:00, En cours, Tournoi de MotoGP\n{20, 10, 20, 10, 20, 20}",
                         "verticalScrollbar": "true",
                         "hasHeader": "false"
                     }
@@ -60,7 +60,7 @@
                     "x": "148",
                     "y": "520",
                     "properties": {
-                        "text": "Nom du tournoi, Nb Equipes, Date/Heure du lancement, Statut, Description, Action\nCSGO CFPT, 16, 04/04/2021 15:36:25, Terminé, Tournoi de CSGO\nModern Warfare, 16, 24/03/2021 09:34:58, Terminé, Tournoi de MW\nMinecraft, 8, 15/03/2021 17:10:45, Terminé, Tournoi de Minecraft\n{40, 10, 20, 10, 20, 10}",
+                        "text": "Nom du tournoi, Nb Equipes, Date/Heure du lancement, Statut, Description, Action\nCSGO CFPT, 16, 04/04/2021 15:36:25, Terminé, Tournoi de CSGO\nModern Warfare, 16, 24/03/2021 09:34:58, Terminé, Tournoi de MW\nMinecraft, 8, 15/03/2021 17:10:45, Terminé, Tournoi de Minecraft\n{20, 10, 20, 10, 20, 10}",
                         "verticalScrollbar": "true",
                         "hasHeader": "false"
                     }
@@ -130,7 +130,7 @@
                     "x": "153",
                     "y": "164",
                     "properties": {
-                        "text": "Filtrer les résultats:"
+                        "text": "Filtrer les tournois:"
                     }
                 },
                 {
@@ -223,29 +223,19 @@
                     "ID": "26",
                     "typeID": "Label",
                     "zOrder": "16",
-                    "w": "75",
-                    "measuredW": "67",
+                    "w": "154",
+                    "measuredW": "151",
                     "measuredH": "21",
                     "x": "360",
                     "y": "225",
                     "properties": {
-                        "text": "Texte libre: "
+                        "text": "Recherche de mots-clés: "
                     }
-                },
-                {
-                    "ID": "27",
-                    "typeID": "TextInput",
-                    "zOrder": "17",
-                    "w": "148",
-                    "measuredW": "79",
-                    "measuredH": "27",
-                    "x": "435",
-                    "y": "222"
                 },
                 {
                     "ID": "28",
                     "typeID": "Button",
-                    "zOrder": "18",
+                    "zOrder": "17",
                     "w": "223",
                     "h": "27",
                     "measuredW": "94",
@@ -259,7 +249,7 @@
                 {
                     "ID": "29",
                     "typeID": "Label",
-                    "zOrder": "19",
+                    "zOrder": "18",
                     "w": "145",
                     "measuredW": "122",
                     "measuredH": "21",
@@ -272,7 +262,7 @@
                 {
                     "ID": "35",
                     "typeID": "Button",
-                    "zOrder": "20",
+                    "zOrder": "19",
                     "w": "78",
                     "h": "27",
                     "measuredW": "65",
@@ -286,7 +276,7 @@
                 {
                     "ID": "36",
                     "typeID": "Button",
-                    "zOrder": "21",
+                    "zOrder": "20",
                     "w": "78",
                     "h": "27",
                     "measuredW": "65",
@@ -300,7 +290,7 @@
                 {
                     "ID": "37",
                     "typeID": "Button",
-                    "zOrder": "22",
+                    "zOrder": "21",
                     "w": "78",
                     "h": "27",
                     "measuredW": "65",
@@ -314,7 +304,7 @@
                 {
                     "ID": "38",
                     "typeID": "Button",
-                    "zOrder": "23",
+                    "zOrder": "22",
                     "w": "78",
                     "h": "25",
                     "measuredW": "65",
@@ -328,7 +318,7 @@
                 {
                     "ID": "39",
                     "typeID": "Button",
-                    "zOrder": "24",
+                    "zOrder": "23",
                     "w": "78",
                     "h": "27",
                     "measuredW": "65",
@@ -338,6 +328,16 @@
                     "properties": {
                         "text": "Détails"
                     }
+                },
+                {
+                    "ID": "40",
+                    "typeID": "TextArea",
+                    "zOrder": "24",
+                    "h": "46",
+                    "measuredW": "200",
+                    "measuredH": "140",
+                    "x": "520",
+                    "y": "213"
                 }
             ]
         },

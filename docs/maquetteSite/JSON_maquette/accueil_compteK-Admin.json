@@ -41,7 +41,7 @@
                     "x": "158",
                     "y": "312",
                     "properties": {
-                        "text": "Nom du tournoi, Nb Equipes, Date/Heure du lancement, Statut, Description, Actions\nCSGO CFPT, 8, 01/05/2021 15:30:00, En cours, Tournoi de CSGO\nModern Warfare, 16, 24/04/2021 09:00:00, En cours, Tournoi de MW\nMinecraft, 16, 18/04/2021 17:10:00, En cours, Tournoi de Minecraft\nCall Of Duty Black Ops III, N/A, 14/04/2021 14:45:00, En cours, Tournoi de COD\nCall Of Duty Warzone, 8, 05/05/2021 16:00:00, En cours, Tournoi de Warzone\nMotoGP 21, 16, 10/05/2021 13:00:00, En cours, Tournoi de MotoGP\n{30, 10, 20, 10, 20, 10, 10, 10}",
+                        "text": "Nom du tournoi, Nb Equipes, Date/Heure du lancement, Statut, Description, Actions\nCSGO CFPT, 8, 01/05/2021 15:30:00, En cours, Tournoi de CSGO\nModern Warfare, 16, 24/04/2021 09:00:00, En cours, Tournoi de MW\nMinecraft, 16, 18/04/2021 17:10:00, En cours, Tournoi de Minecraft\nCall Of Duty Black Ops III, N/A, 14/04/2021 14:45:00, En cours, Tournoi de COD\nCall Of Duty Warzone, 8, 05/05/2021 16:00:00, En cours, Tournoi de Warzone\nMotoGP 21, 16, 10/05/2021 13:00:00, En cours, Tournoi de MotoGP\n{20, 10, 20, 10, 20, 10, 10, 10}",
                         "verticalScrollbar": "true",
                         "hasHeader": "false"
                     }
@@ -52,12 +52,12 @@
                     "zOrder": "3",
                     "w": "906",
                     "h": "120",
-                    "measuredW": "622",
+                    "measuredW": "616",
                     "measuredH": "125",
                     "x": "158",
                     "y": "530",
                     "properties": {
-                        "text": "Nom du tournoi, Nb Equipes, Date/Heure du lancement, Statut, Description, Actions\nCSGO CFPT, 16, 04/04/2021 15:36:25, Terminé, Tournoi de CSGO\nModern Warfare, 16, 24/03/2021 09:34:58, Terminé, Tournoi de MW\nMinecraft, 8, 15/03/2021 17:10:45, Terminé, Tournoi de Minecraft\n{40, 10, 20, 10, 20, 10}",
+                        "text": "Nom du tournoi, Nb Equipes, Date/Heure du lancement, Statut, Description, Action\nCSGO CFPT, 16, 04/04/2021 15:36:25, Terminé, Tournoi de CSGO\nModern Warfare, 16, 24/03/2021 09:34:58, Terminé, Tournoi de MW\nMinecraft, 8, 15/03/2021 17:10:45, Terminé, Tournoi de Minecraft\n{20, 10, 20, 10, 20, 10}",
                         "verticalScrollbar": "true",
                         "hasHeader": "false"
                     }
@@ -127,7 +127,7 @@
                     "x": "163",
                     "y": "174",
                     "properties": {
-                        "text": "Filtrer les résultats:"
+                        "text": "Filtrer les tournois:"
                     }
                 },
                 {
@@ -211,32 +211,9 @@
                     }
                 },
                 {
-                    "ID": "54",
-                    "typeID": "Label",
-                    "zOrder": "16",
-                    "w": "75",
-                    "measuredW": "67",
-                    "measuredH": "21",
-                    "x": "370",
-                    "y": "235",
-                    "properties": {
-                        "text": "Texte libre: "
-                    }
-                },
-                {
-                    "ID": "55",
-                    "typeID": "TextInput",
-                    "zOrder": "17",
-                    "w": "148",
-                    "measuredW": "79",
-                    "measuredH": "27",
-                    "x": "445",
-                    "y": "232"
-                },
-                {
                     "ID": "56",
                     "typeID": "Button",
-                    "zOrder": "18",
+                    "zOrder": "16",
                     "w": "223",
                     "h": "27",
                     "measuredW": "94",
@@ -250,7 +227,7 @@
                 {
                     "ID": "57",
                     "typeID": "ButtonBar",
-                    "zOrder": "19",
+                    "zOrder": "17",
                     "w": "228",
                     "h": "27",
                     "measuredW": "209",
@@ -264,7 +241,7 @@
                 {
                     "ID": "58",
                     "typeID": "ButtonBar",
-                    "zOrder": "20",
+                    "zOrder": "18",
                     "w": "228",
                     "h": "27",
                     "measuredW": "209",
@@ -278,7 +255,7 @@
                 {
                     "ID": "59",
                     "typeID": "ButtonBar",
-                    "zOrder": "21",
+                    "zOrder": "19",
                     "w": "228",
                     "h": "27",
                     "measuredW": "209",
@@ -292,7 +269,7 @@
                 {
                     "ID": "60",
                     "typeID": "ButtonBar",
-                    "zOrder": "22",
+                    "zOrder": "20",
                     "w": "228",
                     "h": "27",
                     "measuredW": "209",
@@ -306,7 +283,7 @@
                 {
                     "ID": "61",
                     "typeID": "ButtonBar",
-                    "zOrder": "23",
+                    "zOrder": "21",
                     "w": "228",
                     "h": "27",
                     "measuredW": "209",
@@ -320,7 +297,7 @@
                 {
                     "ID": "62",
                     "typeID": "Label",
-                    "zOrder": "24",
+                    "zOrder": "22",
                     "w": "145",
                     "measuredW": "131",
                     "measuredH": "21",
@@ -333,7 +310,7 @@
                 {
                     "ID": "63",
                     "typeID": "CircleButton",
-                    "zOrder": "25",
+                    "zOrder": "23",
                     "w": "64",
                     "h": "48",
                     "measuredW": "48",
@@ -350,7 +327,7 @@
                 {
                     "ID": "64",
                     "typeID": "Label",
-                    "zOrder": "26",
+                    "zOrder": "24",
                     "measuredW": "127",
                     "measuredH": "24",
                     "x": "847",
@@ -359,6 +336,29 @@
                         "size": "16",
                         "text": "Créer un tournoi: "
                     }
+                },
+                {
+                    "ID": "65",
+                    "typeID": "Label",
+                    "zOrder": "25",
+                    "w": "154",
+                    "measuredW": "151",
+                    "measuredH": "21",
+                    "x": "370",
+                    "y": "237",
+                    "properties": {
+                        "text": "Recherche de mots-clés: "
+                    }
+                },
+                {
+                    "ID": "66",
+                    "typeID": "TextArea",
+                    "zOrder": "26",
+                    "h": "46",
+                    "measuredW": "200",
+                    "measuredH": "140",
+                    "x": "530",
+                    "y": "225"
                 }
             ]
         },
