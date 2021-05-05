@@ -29,6 +29,10 @@
   border: none;
   border-radius: 5px;
 }
+.filter textarea {
+  margin: auto;
+  max-width: 30vw;
+}
 
 * {
   outline: none;
