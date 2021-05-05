@@ -116,4 +116,70 @@
 
 ### Après-midi:
 
-- 12:40 :
+- 12:40 : J'avance la doc...
+
+- 13:30 : La partie avant la planification est terminée, je passe à l'implémentation du MCD, pour cela j'utiliserai phpMyAdmin.
+
+- 14:00 : Voici la première version du MPD basé sur le deuxième version du MCD
+
+<img src="../MCD/mpd.png">
+
+- 14:15 : Début de la pause ☕
+
+- 14:35 : Fin de la pause, dès à présent je vais travailler sur ma classe utilisateur_tM. M. Aigroz m'a indiqué ma fonction SelectAll() retournait un tableau de valeur et non pas un tableau d'objet. Suite à cela je vais retravailler cette fonction afin que j'obtienne les résultats désiré.
+
+- 15:45 : Voici la fonction retravaillée:
+
+```php
+    /**
+     * Fonction qui retourne un tableau d'objets, chaque objet dans le tableau est un utilisateur
+     *
+     * @return array
+     */
+    public function SelectAll(): array
+    {
+        $results = array();
+
+        $query = Database::getInstance()->prepare("SELECT * FROM UTILISATEUR");
+        $query->execute();
+
+        while ($rowInDb = $query->fetch(PDO::FETCH_ASSOC)) {
+
+            $utilisateur = new Utilisateur_tM();
+
+            $utilisateur->setId($rowInDb['ID']);
+            $utilisateur->setNickname($rowInDb['NICKNAME']);
+            $utilisateur->setEmail($rowInDb['EMAIL']);
+            $utilisateur->setMdp($rowInDb['MDP']);
+            $utilisateur->setAdmin((int)$rowInDb['ADMIN']);
+
+            array_push($results, $utilisateur);
+        }
+
+        return $results;
+    }
+```
+
+Afin de pouvoir comparé, voici la fonction précédente:
+
+```php
+    /**
+     * Fonction qui retourne tous les utilisateurs et leurs infos stockées dans la BDD
+     *
+     * @return array
+     */
+    public function SelectAll(): array
+    {
+
+        $query = Database::getInstance()->prepare("SELECT * FROM utilisateur");
+        $query->setFetchMode(PDO::FETCH_ASSOC);
+        $query->execute();
+
+        $result = $query->fetchAll();
+        return $result;
+    }
+```
+
+- 16:00 : Je passe à la partie documentation de la journée 📄
+
+- 16:45 : Fin d'une longue et triste journée...
