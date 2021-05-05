@@ -74,7 +74,7 @@ class Db_Controller
     public function SelectAll(): array
     {
 
-        $query = Database::GetInstance()->prepare("SELECT * FROM utilisateur");
+        $query = Database::getInstance()->prepare("SELECT * FROM utilisateur");
         $query->setFetchMode(PDO::FETCH_ASSOC);
         $query->execute();
 
