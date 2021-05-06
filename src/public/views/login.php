@@ -1,5 +1,14 @@
 <?php
+
+/**
+ * @author Iliya Saroukhanian <iliya.srkhn@eduge.ch>
+ * @copyright 2021 Iliya Saroukhanian
+ * @version 1.0.0
+ */
+
 require_once('./src/model/classes/session.php');
+require_once('./src/model/db_model/database.php');
+require_once('./src/controllers/utilisateur_tM_controller.php');
 
 ?>
 

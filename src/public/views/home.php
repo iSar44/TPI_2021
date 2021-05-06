@@ -1,12 +1,19 @@
 <?php
+
+/**
+ * @author Iliya Saroukhanian <iliya.srkhn@eduge.ch>
+ * @copyright 2021 Iliya Saroukhanian
+ * @version 1.0.0
+ */
+
 require_once('./src/model/classes/session.php');
 require_once('./src/model/db_model/database.php');
-require_once('./src/model/classes/session.php');
 // require_once('./src/controllers/db_controller.php');
 // require_once('./src/model/classes/utilisateur.php');
 require_once('./src/model/classes/utilisateur_tM.php');
 require_once('./src/controllers/utilisateur_tM_controller.php');
 
+Session::getInstance();
 
 $u_controller = new Utilisateur_tM_Controller();
 
@@ -56,15 +63,6 @@ $res = $u_controller->SelectAll();
     <header class=" header-blue">
         <?php require_once('./src/public/views/struct/nav.php'); ?>
     </header>
-
-    <pre>
-    <?php
-
-    var_dump($res);
-
-    ?>
-    </pre>
-
 
     <section>
         <?php require_once('./src/public/views/struct/filterResults.php'); ?>
