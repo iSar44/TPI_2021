@@ -20,7 +20,13 @@
                 </li>
             </ul>
             <form class="d-flex me-auto navbar-form" target="_self">
-            </form><a class="btn btn-light action-button" style="font-size:inherit;" role="button" href="./?action=login">Log In</a>
+            </form>
+            <?php if ($_SESSION['isLoggedIn'] == false) : ?>
+                <a class="btn btn-light action-button" style="font-size:inherit;" role="button" href="./?action=login">Log In</a>
+            <?php else : ?>
+                <a class="navbar-brand" style="font-size: 20px;" disabled><?= $_SESSION['username']; ?></a>
+                <a class="btn btn-light action-button" style="font-size:inherit;" role="button" href="./?action=logout">Log Out</a>
+            <?php endif; ?>
         </div>
     </div>
 </nav>
