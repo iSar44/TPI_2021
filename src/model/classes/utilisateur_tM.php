@@ -1,20 +1,62 @@
 <?php
 
+/**
+ * @author Iliya Saroukhanian <iliya.srkhn@eduge.ch>
+ * @copyright 2021 Iliya Saroukhanian
+ * @version 1.0.0
+ */
+
+/**
+ * Classe qui représente un utilisateur du site tournamentManager (tM)
+ */
 class Utilisateur_tM
 {
 
     #region Champs
+    /**
+     * l'ID de l'utilisateur
+     *
+     * @var int
+     */
     private $id;
+
+    /**
+     * Le nickname de l'utilisateur
+     *
+     * @var string
+     */
     private $nickname;
+
+    /**
+     * L'email de l'utilisateur
+     *
+     * @var string
+     */
     private $email;
+
+    /**
+     * Le mot de passe de l'utilisateur
+     *
+     * @var string
+     */
     private $mdp;
+
+    /**
+     * Champ qui représente si l'utilisateur est un administrateur ou non
+     *
+     * @var int
+     */
     private $admin;
     #endregion
 
     #region Propriétés
+
     /**
      * Get the value of id
+     *
+     * @return int ID de l'utilisateur
      */
+
     public function getId()
     {
         return $this->id;
@@ -22,6 +64,9 @@ class Utilisateur_tM
 
     /**
      * Set the value of id
+     *
+     * @param int $id
+     * @return Utilisateur_tM retourne la classe Utilisateur_tM
      */
     public function setId($id): self
     {
@@ -103,13 +148,25 @@ class Utilisateur_tM
     }
     #endregion
 
-    public function __construct()
+    /**
+     * Constructeur de la classe utilisateur
+     *
+     * @param string $aNickname
+     * @param string $anEmail
+     * @param string $anAdmin
+     */
+    public function __construct($aNickname = "Un nickname", $anEmail = "email@email.com", $anAdmin = "0")
     {
-        $this->setNickname("Un nickname");
-        $this->setEmail("email@email.com");
-        $this->setMdp("Super");
-        $this->setAdmin(0);
+        $this->setNickname($aNickname);
+        $this->setEmail($anEmail);
+        $this->setAdmin($anAdmin);
     }
+
+    /**
+     * Méthode qui retourne l'utilisateur sous forme d'une chaîne de caractères
+     *
+     * @return string
+     */
 
     public function __toString()
     {
