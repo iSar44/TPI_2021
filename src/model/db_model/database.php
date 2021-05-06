@@ -40,7 +40,7 @@ class Database
      * ou dans le cas contraire elle retourn l'instance déjà créée
      * @return $objInstance
      */
-    public static function getInstance()
+    private static function getInstance()
     {
         if (!self::$objInstance) {
             try {
