@@ -183,3 +183,144 @@ Afin de pouvoir comparé, voici la fonction précédente:
 - 16:00 : Je passe à la partie documentation de la journée 📄
 
 - 16:45 : Fin d'une longue et triste journée...
+
+## <u>4ème jour - 06/05/2021 (Fin de la première semaine)</u>
+
+### Matin:
+
+- 7:30 : Arrivé en classe, je revois les choses qui ont été faites la veille afin d'éviter de se perdre dès le début de la journée
+
+- 8:05 : Webmeeting avec M. Aigroz.
+
+  - La première remarque était que la table RESULTAT n'est pas vraiment utile, je pourrais la remplacer avec une table MATCH dans laquelle je stockerai l'ID du vainqueur du match
+  - Le deuxième point consistait à revoir la fonction qui retourne tous les utilisateurs, suivant l'exemple qui a été déposé sur Classroom par M. Aigroz
+  - ❗ expliciter les champs dans la requête SQL, éviter '(SELECT \* FROM ....)'
+  - Dans le modèle de la base de données (database.php), déclarer le constructeur comme privé. Utiliser la fonction finale \_\_callStatic qui appellera elle-même la fonction getInstance()
+  - Dernières remarques, créer un en-tête dans tous les fichiers et **commenter les return de TOUTES les fonctions**
+
+- 8:40 : Fin du Webmeeting, je vais passer sur l'implémentation de la table MATCHS dans la bdd
+
+- 9:00 : Voici le nouveau MCD
+
+<img src="../MCD/TPI_2021_v2.png">
+
+- 9:10 : Voici le MPD:
+
+<img src="../MCD/mpd_v2.png">
+
+- 9:30 : Visites des experts
+
+- 11:40 : Début de la pause de midi
+
+### Après-midi:
+
+- 12:40 : Fin de la pause de midi, dès à présent je vais me focaliser sur le mécanisme sur la logique de l'authentification
+
+- 16:25 : Cela m'a pris plus de temps que je voulais, cependant l'authentification fonctionne sans bug et tous les cas d'erreur sont gérés ✅
+
+Voici la logique pour l'authentification:
+
+```php
+if ($submit) {
+
+    if (count($_POST) === NB_POST_INPUT) {
+
+        if (preg_match($regexEmail, $_POST['email'])) {
+
+            $userEmail = $_POST['email'];
+        }
+
+        if ($u_controller->CheckIfEmailExists($userEmail)) {
+
+            if (isset($_POST['password'])) {
+
+                $userPassword = $_POST['password'];
+
+                $hashedPassword = $u_controller->GetHashPassword($userEmail);
+
+                if (password_verify($userPassword, $hashedPassword)) {
+
+                    $_SESSION['isLoggedIn'] = true;
+
+                    $_SESSION['username'] = $u_controller->GetNicknameOfUser($userEmail);
+
+                    header('Location: ./');
+                } else {
+                    $error = true;
+                }
+            }
+        } else {
+
+            $error = true;
+        }
+    } else {
+        $error = true;
+    }
+}
+```
+
+Et voici les fonctions qui en lien avec l'authentification qui se trouvent dans le fichier utlisateur_tM_controller.php
+
+```php
+public function CheckIfEmailExists($anEmail): bool
+{
+    $query = Database::prepare("SELECT * FROM UTILISATEUR WHERE `EMAIL` = :EMAIL");
+
+    $query->bindParam(':EMAIL', $anEmail, PDO::PARAM_STR);
+
+    try {
+
+        $query->execute();
+        $userExists = $query->fetch();
+
+        if ($userExists != false) {
+            $userExists = true;
+        }
+
+        return $userExists;
+    } catch (PDOException $e) {
+
+        return false;
+    }
+}
+
+public function GetHashPassword($anEmail): string
+{
+    $query = Database::prepare("SELECT MDP FROM UTILISATEUR WHERE `EMAIL` = :EMAIL");
+
+    $query->bindParam(':EMAIL', $anEmail, PDO::PARAM_STR);
+    $query->setFetchMode(PDO::FETCH_ASSOC);
+
+    try {
+        $query->execute();
+        $queryResult = $query->fetch();
+
+        $pwd = $queryResult['MDP'];
+
+        return $pwd;
+    } catch (PDOException $e) {
+        return false;
+    }
+}
+
+public function GetNicknameOfUser($anEmail): string
+{
+    $query = Database::prepare("SELECT `NICKNAME` FROM UTILISATEUR WHERE `EMAIL` = :EMAIL");
+
+    $query->bindParam(':EMAIL', $anEmail, PDO::PARAM_STR);
+    $query->setFetchMode(PDO::FETCH_ASSOC);
+
+    try {
+        $query->execute();
+        $queryResult = $query->fetch();
+
+        $nickname = $queryResult['NICKNAME'];
+
+        return $nickname;
+    } catch (PDOException $e) {
+        return false;
+    }
+}
+```
+
+- 16:45 : Fin de la journée ❗
