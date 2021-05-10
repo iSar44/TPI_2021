@@ -7,6 +7,8 @@
  */
 
 require_once('./src/model/classes/session.php');
+require_once('./src/model/db_model/database.php');
+require_once('./src/controllers/tournoi_tM_controller.php');
 
 Session::getInstance();
 
@@ -40,7 +42,7 @@ Session::getInstance();
         <?php require_once('./src/public/views/struct/nav.php'); ?>
     </header>
 
-    <div style="margin-top:5vh; max-height:70vh; overflow-y:scroll;">
+    <div style="margin-top:5vh;">
         <?php require_once('./src/public/views/struct/createForm.php'); ?>
     </div>
 
