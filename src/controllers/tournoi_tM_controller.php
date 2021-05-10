@@ -54,8 +54,59 @@ class Tournoi_tM_Controller
      */
     public function CreateTournament(Tournoi_tM $nouveauTournoi): bool
     {
+        $query = Database::prepare("INSERT INTO `TOURNOIS` (`TITRE`, `DESCRIPTION`, `DATE_HEURE_DEMARRAGE`, `NB_EQUIPES`, `DATE_HEURE_DEBUT_INSCRIPTION`, `DATE_HEURE_FIN_INSCRIPTION`, `TEMPS_ENTRE_RONDES`) VALUES (:TITRE, :DESCRIPTION, :DATE_HEURE_DEMARRAGE, :NB_EQUIPES, :DATE_HEURE_DEBUT_INSCRIPTION, :DATE_HEURE_FIN_INSCRIPTION, :TEMPS_ENTRE_RONDES)");
 
-        return true;
+        $titre = $nouveauTournoi->getTitre();
+        $description = $nouveauTournoi->getDescription();
+        $dateHeureDemarrage = $nouveauTournoi->getDateHeureDemarrage();
+        $nbEquipes = $nouveauTournoi->getNbEquipes();
+        $dateHeureDebutInscription = $nouveauTournoi->getDateHeureDebutInscription();
+        $dateHeureFinInscription = $nouveauTournoi->getDateHeureFinInscription();
+
+        if ($nouveauTournoi->getTempsEntreRondes() == "") {
+            $tempsEntreRondes = "00:00";
+        } else {
+            $tempsEntreRondes = $nouveauTournoi->getTempsEntreRondes();
+        }
+
+        $query->bindParam(':TITRE', $titre, PDO::PARAM_STR, 50);
+        $query->bindParam(':DESCRIPTION', $description, PDO::PARAM_STR, 100);
+        $query->bindParam(':DATE_HEURE_DEMARRAGE', $dateHeureDemarrage);
+        $query->bindParam(':NB_EQUIPES', $nbEquipes, PDO::PARAM_INT);
+        $query->bindParam(':DATE_HEURE_DEBUT_INSCRIPTION', $dateHeureDebutInscription);
+        $query->bindParam(':DATE_HEURE_FIN_INSCRIPTION', $dateHeureFinInscription);
+        $query->bindParam(':TEMPS_ENTRE_RONDES', $tempsEntreRondes);
+
+        $insertSuccess = $query->execute();
+
+        return $insertSuccess;
+    }
+
+
+    public function SelectAll()
+    {
+        $results = array();
+
+        $query = Database::prepare("SELECT `TITRE`, `NB_EQUIPES`, `DATE_HEURE_DEMARRAGE`, `DESCRIPTION` FROM TOURNOIS");
+        $query->execute();
+
+        while ($rowInDb = $query->fetch(PDO::FETCH_ASSOC)) {
+
+            $tournoi = new Tournoi_tM();
+
+            // $tournoi->setId($rowInDb['ID']);
+            $tournoi->setTitre($rowInDb['TITRE']);
+            $tournoi->setDescription($rowInDb['DESCRIPTION']);
+            $tournoi->setDateHeureDemarrage($rowInDb['DATE_HEURE_DEMARRAGE']);
+            $tournoi->setNbEquipes($rowInDb['NB_EQUIPES']);
+            // $tournoi->setDateHeureDebutInscription($rowInDb['DATE_HEURE_DEBUT_INSCRIPTION']);
+            // $tournoi->setDateHeureFinInscription($rowInDb['DATE_HEURE_FIN_INSCRIPTION']);
+            // $tournoi->setTempsEntreRondes($rowInDb['TEMPS_ENTRE_RONDES']);
+
+            array_push($results, $tournoi);
+        }
+
+        return $results;
     }
     #endregion
 
