@@ -10,14 +10,17 @@ require_once('./src/model/db_model/database.php');
 require_once('./src/model/classes/utilisateur_tM.php');
 
 /**
- * Contrôleur de la classe Utilisateur_tM
+ * Classe qui représente le contrôleur de la classe Utilisateur_tM
  */
 class Utilisateur_tM_Controller
 {
+    #region Champ
     private Utilisateur_tM $user_tM;
+    #endregion
 
+    #region Accesseur/Mutateur
     /**
-     * Get the value of user_tM
+     * Accesseur qui retourne l'utilisateur
      *
      * @return Utilisateur_tM
      */
@@ -27,7 +30,7 @@ class Utilisateur_tM_Controller
     }
 
     /**
-     * Set the value of user_tM
+     * Mutateur qui "set" l'utilisateur
      *
      * @param Utilisateur_tM $user_tM
      *
