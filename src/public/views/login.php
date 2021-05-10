@@ -32,7 +32,7 @@ require_once('./src/controllers/utilisateur_tM_controller.php');
     <link rel="stylesheet" href="/TPI_2021/src/public/assets/css/Login-Form-Dark.css">
     <link rel="stylesheet" href="/TPI_2021/src/public/assets/css/Footer-Basic.css">
     <link rel="shortcut icon" href="/TPI_2021/src/public/ressources/favicon.ico" type="image/x-icon">
-    <title>Home</title>
+    <title>Log In</title>
 </head>
 
 
