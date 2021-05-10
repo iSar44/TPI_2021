@@ -324,3 +324,35 @@ public function GetNicknameOfUser($anEmail): string
 ```
 
 - 16:45 : Fin de la journée ❗
+
+## <u>5ème jour - 10/05/2021 (Début de la deuxième semaine)</u>
+
+### Matin:
+
+- 7:30 : Comme M. Aigroz me la précisé, je me suis pas mal avancé sur le projet en lui par contre il faut que j'intègre et explique mes maquettes dans la documentation technique. Je vais consacrer cette matinée à cela afin de ne pas prendre trop de retard sur la doc.
+
+- 9:40 : Début de la pause.
+
+- 10:05 : Fin de la pause, je continue à travailler sur la doc.
+
+- 10:40 : Toutes les maquettes ont été intégrées et expliquées dans la documentation. Dès lors je vais continuer le développement.
+
+- 10:45 : Problème avec la redirection vers la page de création de tournoi fixé.
+
+- 11:40 : Visuel du formulaire de création de tournoi terminé. Pause de midi.
+
+### Après-midi:
+
+- 12:40 - 14:15: ❗ Conflit entre le serveur MySQL et MariaDB, le site ne trouve plus ma base de données 😢
+
+- 14:35: Il devient critique de finaliser complètement ma base de données. Je vais écrire à M. Aigroz afin de pouvoir régler cela!
+
+- 15:00: J'ai écrit un email à M. Aigroz. J'espère que j'obtiendrai bientôt une réponse. Je vais continuer à avancer le développement du site.
+
+- 15:50: Le formulaire de création de tournoi est fonctionnel ✅
+
+<img src="../maquetteSite/screenshots/createTournament.png">
+
+- 16:30: Problème avec la conversion de la chaine de caractères qui représente la date au format DateTime de php.
+
+- 16:45: Fin de la journée, pas mal de problème à résoudre mais on est sur la bonne voie.
