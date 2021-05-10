@@ -12,12 +12,15 @@ switch ($action) {
     case 'login':
         require __DIR__ . '/src/public/views/login.php';
         break;
-    case 'logout' && isset($_SESSION['isLoggedIn']):
-        require __DIR__ . '/src/public/views/logout.php';
+    case 'logout':
+        if (isset($_SESSION['isLoggedIn'])) {
+            require __DIR__ . '/src/public/views/logout.php';
+        }
         break;
-        //Issue with redirection 
-    case 'create' && isset($_SESSION['isLoggedIn']):
-        require __DIR__ . '/src/public/views/createTournament.php';
+    case 'create':
+        if (isset($_SESSION['isLoggedIn'])) {
+            require __DIR__ . '/src/public/views/createTournament.php';
+        }
         break;
     default:
         http_response_code(404);
