@@ -20,30 +20,22 @@
                         </tr>
                     </thead>
                     <tbody class="text-center">
-                        <tr>
-                            <td>Ana</td>
-                            <td>Diseñador</td>
-                            <td>Diseño</td>
-                            <td>Text</td>
-                            <td>Text</td>
-                            <td class="text-center">
-                                <a class="btn btn-primary" role="button" style="  margin: 2px;"><i class="bi bi-eye-fill"></i></a>
-                                <a class="btn btn-success" role="button" style="  background: rgb(11,171,56); margin: 2px;"><i class="bi bi-pencil-fill"></i></a>
-                                <a class="btn btn-danger" role="button" style="  margin: 2px;"><i class="bi bi-trash-fill"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Fer<br /></td>
-                            <td>Desarrollador</td>
-                            <td>Development</td>
-                            <td>Text</td>
-                            <td>Text</td>
-                            <td class="text-center">
-                                <a class="btn btn-primary" role="button" style="  margin: 2px;"><i class="bi bi-eye-fill"></i></a>
-                                <a class="btn btn-success" role="button" style="  background: rgb(11,171,56); margin: 2px;"><i class="bi bi-pencil-fill"></i></a>
-                                <a class="btn btn-danger" role="button" style="  margin: 2px;"><i class="bi bi-trash-fill"></i></a>
-                            </td>
-                        </tr>
+                        <?php
+                        foreach ($res as $attr) {
+                            echo "<tr>";
+                            echo "<td>" . $attr->getTitre() . "</td>";
+                            echo "<td>" . $attr->getNbEquipes() . "</td>";
+                            echo "<td>" . $attr->getDateHeureDemarrage() . "</td>";
+                            echo "<td>X</td>";
+                            echo "<td>" . $attr->getDescription() . "</td>";
+                            echo "<td class='text-center'>";
+                            echo "<a class='btn btn-primary' role='button' style='margin: 2px;'><i class='bi bi-eye-fill'></i></a>";
+                            echo "<a class='btn btn-success' role='button' style='background: rgb(11,171,56); margin: 2px;'><i class='bi bi-pencil-fill'></i></a>";
+                            echo "<a class='btn btn-danger' role='button' style='margin: 2px;'><i class='bi bi-trash-fill'></i></a>";
+                            echo "</td>";
+                            echo "</tr>";
+                        }
+                        ?>
                     </tbody>
                 </table>
             </div>
