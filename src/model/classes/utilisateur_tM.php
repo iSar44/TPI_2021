@@ -11,7 +11,6 @@
  */
 class Utilisateur_tM
 {
-
     #region Champs
     /**
      * l'ID de l'utilisateur
@@ -49,24 +48,22 @@ class Utilisateur_tM
     private $admin;
     #endregion
 
-    #region Propriétés
-
+    #region Accesseurs/Mutateurs
     /**
-     * Get the value of id
+     * Accesseur qui retourne l'ID de l'utilisateur
      *
-     * @return int ID de l'utilisateur
+     * @return int $id
      */
-
     public function getId()
     {
         return $this->id;
     }
 
     /**
-     * Set the value of id
+     * Mutateur qui "set" l'ID de l'utilisateur
      *
      * @param int $id
-     * @return Utilisateur_tM retourne la classe Utilisateur_tM
+     * @return self
      */
     public function setId($id): self
     {
@@ -76,7 +73,9 @@ class Utilisateur_tM
     }
 
     /**
-     * Get the value of nickname
+     * Accesseur qui retourne le nickname de l'utilisateur
+     *
+     * @return string $nickname
      */
     public function getNickname()
     {
@@ -84,7 +83,10 @@ class Utilisateur_tM
     }
 
     /**
-     * Set the value of nickname
+     * Mutateur qui "set" le nickname de l'utilisateur
+     *
+     * @param string $nickname
+     * @return self
      */
     public function setNickname($nickname): self
     {
@@ -94,7 +96,9 @@ class Utilisateur_tM
     }
 
     /**
-     * Get the value of email
+     * Accesseur qui retourne l'email de l'utilisateur
+     *
+     * @return string $email
      */
     public function getEmail()
     {
@@ -102,7 +106,10 @@ class Utilisateur_tM
     }
 
     /**
-     * Set the value of email
+     * Mutateur qui "set" l'email de l'utilisateur
+     *
+     * @param string $email
+     * @return self
      */
     public function setEmail($email): self
     {
@@ -112,7 +119,9 @@ class Utilisateur_tM
     }
 
     /**
-     * Get the value of mdp
+     * Accesseur qui retourne le mot de passe de l'utilisateur
+     *
+     * @return string $mdp
      */
     public function getMdp()
     {
@@ -120,7 +129,10 @@ class Utilisateur_tM
     }
 
     /**
-     * Set the value of mdp
+     * Mutateur qui "set" le mot de passe de l'utilisateur
+     *
+     * @param string $mdp
+     * @return self
      */
     public function setMdp($mdp): self
     {
@@ -130,7 +142,9 @@ class Utilisateur_tM
     }
 
     /**
-     * Get the value of admin
+     * Accesseur qui retourne la valeur qui représente si l'utilisateur est un administrateur ou non
+     *
+     * @return int $admin
      */
     public function getAdmin()
     {
@@ -138,7 +152,10 @@ class Utilisateur_tM
     }
 
     /**
-     * Set the value of admin
+     * Mutateur qui "set" la valeur qui représente si l'utilisateur est un administrateur ou non
+     *
+     * @param int $admin
+     * @return self
      */
     public function setAdmin($admin): self
     {
@@ -148,8 +165,9 @@ class Utilisateur_tM
     }
     #endregion
 
+    #region Constructeur
     /**
-     * Constructeur de la classe utilisateur
+     * Constructeur de la classe Utilisateur_tM
      *
      * @param string $aNickname
      * @param string $anEmail
@@ -161,15 +179,17 @@ class Utilisateur_tM
         $this->setEmail($anEmail);
         $this->setAdmin($anAdmin);
     }
+    #endregion
 
+    #region Fonction
     /**
      * Méthode qui retourne l'utilisateur sous forme d'une chaîne de caractères
      *
      * @return string
      */
-
-    public function __toString()
+    public function __toString(): string
     {
         return printf("NICKNAME: %s; EMAIL: %s; MDP: %s, ADMIN: %s", $this->getNickname(), $this->getEmail(), $this->getMdp(), $this->getAdmin());
     }
+    #endregion
 }
