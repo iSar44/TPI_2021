@@ -12,10 +12,11 @@ require_once('./src/model/db_model/database.php');
 // require_once('./src/model/classes/utilisateur.php');
 require_once('./src/model/classes/utilisateur_tM.php');
 require_once('./src/controllers/utilisateur_tM_controller.php');
+require_once('./src/controllers/tournoi_tM_controller.php');
 
 Session::getInstance();
 
-$u_controller = new Utilisateur_tM_Controller();
+$t_manager = new Tournoi_tM_Controller();
 
 // $message = "";
 
@@ -30,7 +31,7 @@ $u_controller = new Utilisateur_tM_Controller();
 
 
 
-$res = $u_controller->SelectAll();
+$res = $t_manager->SelectAll();
 
 
 
