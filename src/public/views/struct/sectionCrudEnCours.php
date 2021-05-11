@@ -1,3 +1,8 @@
+<?php
+
+$u_controller = new Utilisateur_tM_Controller();
+
+?>
 <div class="container-fluid">
     <div class="row">
         <div class="col-12 col-sm-6 col-md-6">
@@ -31,11 +36,20 @@
                             echo "<td><h5>" . $displayDate . "</h5></td>";
                             echo $statut;
                             echo "<td class='text-center'>";
-                            echo "<a class='btn btn-primary' role='button' style='margin: 2px;'><i class='bi bi-eye-fill'></i></a>";
-                            if (strtotime($aTournament->getDateHeureDebutInscription()) > $currentDate && isset($_SESSION['isLoggedIn'])) {
-                                echo "<a class='btn btn-success' role='button' style='background: rgb(11,171,56); margin: 2px;' href='./?action=edit&id=" . $aTournament->getId() . "'><i class='bi bi-pencil-fill'></i></a>";
-                                echo "<a class='btn btn-danger' role='button' style='margin: 2px;' href='./?action=delete&id=" . $aTournament->getId() . "'><i class='bi bi-trash-fill'></i></a>";
+
+                            if (isset($u_controller) && $u_controller->CheckIfUserIsAdmin($_SESSION['username']) === 1) {
+                                echo "<a href='./?action=getDetails&admin=true&id=" . $aTournament->getId() . "' class='btn btn-primary' role='button' style='margin: 2px;'><i class='bi bi-eye-fill'></i></a>";
+                            } elseif (isset($_SESSION['isLoggedIn'])) {
+                                echo "<a href='./?action=getDetails&admin=false&id=" . $aTournament->getId() . "' class='btn btn-primary' role='button' style='margin: 2px;'><i class='bi bi-eye-fill'></i></a>";
+                            } else {
+                                echo "<a href='./?action=login' class='btn btn-primary' role='button' style='margin: 2px;'><i class='bi bi-eye-fill'></i></a>";
                             }
+
+                            if (strtotime($aTournament->getDateHeureDebutInscription()) > $currentDate && isset($u_controller) && $u_controller->CheckIfUserIsAdmin($_SESSION['username']) === 1) {
+                                echo "<a href='./?action=edit&id=" . $aTournament->getId() . "' class='btn btn-success' role='button' style='background: rgb(11,171,56); margin: 2px;'><i class='bi bi-pencil-fill'></i></a>";
+                                echo "<a href='./?action=delete&id=" . $aTournament->getId() . "' class='btn btn-danger' role='button' style='margin: 2px;'><i class='bi bi-trash-fill'></i></a>";
+                            }
+
                             echo "</td>";
                             echo "</tr>";
                         }
