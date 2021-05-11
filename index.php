@@ -22,6 +22,16 @@ switch ($action) {
             require __DIR__ . '/src/public/views/createTournament.php';
         }
         break;
+    case 'delete':
+        if (isset($_SESSION['isLoggedIn'])) {
+            require __DIR__ . '/src/public/views/home.php';
+        }
+        break;
+    case 'edit':
+        if (isset($_SESSION['isLoggedIn'])) {
+            require __DIR__ . '/src/public/views/edit.php';
+        }
+        break;
     default:
         http_response_code(404);
         break;
