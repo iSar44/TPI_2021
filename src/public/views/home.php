@@ -29,8 +29,6 @@ if (isset($_GET['id'])) {
 $currentDate = time();
 
 
-
-
 ?>
 
 <!DOCTYPE html>
