@@ -52,10 +52,6 @@ if ($submit) {
 
 ?>
 
-
-
-
-
 <form method="POST" action="#">
     <div class="form-group mb-3" style="margin:auto; max-width: 60vw;">
         <?php if (isset($error) && $error == true) : ?>
