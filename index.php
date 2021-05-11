@@ -1,6 +1,8 @@
 <?php
 require_once('./src/model/classes/session.php');
 
+date_default_timezone_set('CET');
+
 Session::getInstance();
 
 $action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_STRING);
@@ -18,7 +20,7 @@ switch ($action) {
         }
         break;
     case 'create':
-        if (isset($_SESSION['isLoggedIn'])) {
+        if (isset($_SESSION['admin']) && $_SESSION['admin'] === 1) {
             require __DIR__ . '/src/public/views/createTournament.php';
         }
         break;
@@ -32,6 +34,11 @@ switch ($action) {
             require __DIR__ . '/src/public/views/edit.php';
         }
         break;
+    case 'getDetails':
+        if (isset($_SESSION['admin']) && $_SESSION['admin'] === 1) {
+            require __DIR__ . '/src/public/views/getDetails.php';
+        } else {
+        }
     default:
         http_response_code(404);
         break;
