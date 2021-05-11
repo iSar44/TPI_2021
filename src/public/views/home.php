@@ -18,20 +18,16 @@ Session::getInstance();
 
 $t_manager = new Tournoi_tM_Controller();
 
-// $message = "";
+$allTournaments = $t_manager->SelectAll();
 
-// if (isset($_POST['send'])) {
-
-
-//     $newUser = new Utilisateur($_POST['username'], $_POST['fname'], $_POST['lname'], $_POST['age'], $_POST['phoneNumber'], $_POST['email'], $_POST['pwd']);
-//     $dbControl->AddUser($newUser);
-
-//     $message .= "SUCCESS!";
-// }
+if (isset($_GET['id'])) {
+    $t_manager->DeleteTournament($_GET['id']);
+    unset($_GET['id']);
+}
 
 
+$currentDate = time();
 
-$res = $t_manager->SelectAll();
 
 
 
