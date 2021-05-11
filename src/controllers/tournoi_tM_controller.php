@@ -82,12 +82,44 @@ class Tournoi_tM_Controller
         return $insertSuccess;
     }
 
+    public function SelectTournament($idTournoi)
+    {
+        $results = array();
+
+        $query = Database::prepare("SELECT `TITRE`, `DESCRIPTION`, `DATE_HEURE_DEMARRAGE`, `NB_EQUIPES`, `DATE_HEURE_DEBUT_INSCRIPTION`, `DATE_HEURE_FIN_INSCRIPTION`, `TEMPS_ENTRE_RONDES` FROM TOURNOIS WHERE `ID` = :ID");
+
+        $query->bindParam(":ID", $idTournoi, PDO::PARAM_INT);
+        $query->setFetchMode(PDO::FETCH_ASSOC);
+
+        try {
+            $query->execute();
+
+            while ($rowInDb = $query->fetch()) {
+
+                $tournoi = new Tournoi_tM();
+
+                $tournoi->setTitre($rowInDb['TITRE']);
+                $tournoi->setDescription($rowInDb['DESCRIPTION']);
+                $tournoi->setDateHeureDemarrage($rowInDb['DATE_HEURE_DEMARRAGE']);
+                $tournoi->setNbEquipes($rowInDb['NB_EQUIPES']);
+                $tournoi->setDateHeureDebutInscription($rowInDb['DATE_HEURE_DEBUT_INSCRIPTION']);
+                $tournoi->setDateHeureFinInscription($rowInDb['DATE_HEURE_FIN_INSCRIPTION']);
+                $tournoi->setTempsEntreRondes($rowInDb['TEMPS_ENTRE_RONDES']);
+
+                array_push($results, $tournoi);
+            }
+        } catch (PDOException $e) {
+            return "Error: " . $e;
+        }
+
+        return $results;
+    }
 
     public function SelectAll()
     {
         $results = array();
 
-        $query = Database::prepare("SELECT `ID`, `TITRE`, `DESCRIPTION`, `DATE_HEURE_DEMARRAGE`, `NB_EQUIPES`, `DATE_HEURE_DEBUT_INSCRIPTION`, `DATE_HEURE_FIN_INSCRIPTION`, `TEMPS_ENTRE_RONDES`  FROM TOURNOIS");
+        $query = Database::prepare("SELECT `ID`, `TITRE`, `DESCRIPTION`, `DATE_HEURE_DEMARRAGE`, `NB_EQUIPES`, `DATE_HEURE_DEBUT_INSCRIPTION`, `DATE_HEURE_FIN_INSCRIPTION`, `TEMPS_ENTRE_RONDES` FROM TOURNOIS");
         $query->execute();
 
         while ($rowInDb = $query->fetch(PDO::FETCH_ASSOC)) {
@@ -110,7 +142,7 @@ class Tournoi_tM_Controller
     }
 
     /**
-     * Fonction qui efface un tournoi de la base de données
+     * Fonction qui efface un tournoi stocké dans la base de données
      *
      * @param int $idTournoi
      * @return boolean
@@ -125,21 +157,44 @@ class Tournoi_tM_Controller
         return $delSuccess;
     }
 
-    // public function EditTournament($idTournoi): bool
-    // {
-    //     $query = Database::prepare("UPDATE TOURNOI SET `TITRE` = ?, `DESCRIPTION` = ?, `DATE_HEURE_DEMARRAGE` = ?, `NB_EQUIPES` = ?, `DATE_HEURE_DEBUT_INSCRIPTION` = ?, `DATE_HEURE_FIN_INSCRIPTION` = ?, `TEMPS_ENTRE_RONDES` = ? WHERE `ID` = " . $idTournoi . "");
 
+    /**
+     * Fonction qui permet de modifier un tournoi stocké dans la base de données
+     *
+     * @param Tournoi_tM $unTournoi
+     * @param int $idTournoi
+     * @return boolean
+     */
+    public function EditTournament(Tournoi_tM $unTournoi, $idTournoi): bool
+    {
+        $query = Database::prepare("UPDATE TOURNOIS SET `TITRE` = :TITRE, `DESCRIPTION` = :DESCRIPTION, `DATE_HEURE_DEMARRAGE` = :DATE_HEURE_DEMARRAGE, `NB_EQUIPES` = :NB_EQUIPES, `DATE_HEURE_DEBUT_INSCRIPTION` = :DATE_HEURE_DEBUT_INSCRIPTION, `DATE_HEURE_FIN_INSCRIPTION` = :DATE_HEURE_FIN_INSCRIPTION, `TEMPS_ENTRE_RONDES` = :TEMPS_ENTRE_RONDES WHERE `ID` = :ID");
 
-    //     $query->bindParam(':TITRE', $titre, PDO::PARAM_STR, 50);
-    //     $query->bindParam(':DESCRIPTION', $description, PDO::PARAM_STR, 100);
-    //     $query->bindParam(':DATE_HEURE_DEMARRAGE', $dateHeureDemarrage);
-    //     $query->bindParam(':NB_EQUIPES', $nbEquipes, PDO::PARAM_INT);
-    //     $query->bindParam(':DATE_HEURE_DEBUT_INSCRIPTION', $dateHeureDebutInscription);
-    //     $query->bindParam(':DATE_HEURE_FIN_INSCRIPTION', $dateHeureFinInscription);
-    //     $query->bindParam(':TEMPS_ENTRE_RONDES', $tempsEntreRondes);
+        $titre = $unTournoi->getTitre();
+        $description = $unTournoi->getDescription();
+        $dateHeureDemarrage = $unTournoi->getDateHeureDemarrage();
+        $nbEquipes = $unTournoi->getNbEquipes();
+        $dateHeureDebutInscription = $unTournoi->getDateHeureDebutInscription();
+        $dateHeureFinInscription = $unTournoi->getDateHeureFinInscription();
 
-    //     return
-    // }
+        if ($unTournoi->getTempsEntreRondes() == "") {
+            $tempsEntreRondes = "00:00";
+        } else {
+            $tempsEntreRondes = $unTournoi->getTempsEntreRondes();
+        }
+
+        $query->bindParam(':ID', $idTournoi, PDO::PARAM_INT);
+        $query->bindParam(':TITRE', $titre, PDO::PARAM_STR, 50);
+        $query->bindParam(':DESCRIPTION', $description, PDO::PARAM_STR, 100);
+        $query->bindParam(':DATE_HEURE_DEMARRAGE', $dateHeureDemarrage);
+        $query->bindParam(':NB_EQUIPES', $nbEquipes, PDO::PARAM_INT);
+        $query->bindParam(':DATE_HEURE_DEBUT_INSCRIPTION', $dateHeureDebutInscription);
+        $query->bindParam(':DATE_HEURE_FIN_INSCRIPTION', $dateHeureFinInscription);
+        $query->bindParam(':TEMPS_ENTRE_RONDES', $tempsEntreRondes);
+
+        $editSuccess = $query->execute();
+
+        return $editSuccess;
+    }
 
     #endregion
 
