@@ -10,14 +10,10 @@ $dateHeureDebutInscription = filter_input(INPUT_POST, 'dateHeureDebutInscription
 $dateHeureFinInscription = filter_input(INPUT_POST, 'dateHeureFinInscription');
 $tempsEntreRondes = filter_input(INPUT_POST, 'tempsEntreRondes');
 
-$t_controller = new Tournoi_tM_Controller();
-
-
-
-
 
 if ($submit) {
 
+    #region Deprecated Code
     // if (isset($titreTournoi)) {
     //     continue;
     // }
@@ -41,10 +37,16 @@ if ($submit) {
     // if (isset($dateHeureFinInscription)) {
     //     continue;
     // }
+    #endregion
 
-    $newTournoi = new Tournoi_tM($titreTournoi, $description, $dateHeureDemarrage, $nbEquipes, $dateHeureDebutInscription, $dateHeureFinInscription, $tempsEntreRondes);
+    if ($dateHeureDemarrage > $dateHeureFinInscription && $dateHeureFinInscription > $dateHeureDebutInscription) {
 
-    $t_controller->CreateTournament($newTournoi);
+        $newTournoi = new Tournoi_tM($titreTournoi, $description, $dateHeureDemarrage, $nbEquipes, $dateHeureDebutInscription, $dateHeureFinInscription, $tempsEntreRondes);
+        $t_controller->CreateTournament($newTournoi);
+        $noError = true;
+    } else {
+        $error = true;
+    }
 }
 
 
@@ -56,6 +58,25 @@ if ($submit) {
 
 <form method="POST" action="#">
     <div class="form-group mb-3" style="margin:auto; max-width: 60vw;">
+        <?php if (isset($error) && $error == true) : ?>
+            <div style="max-width: 60vw;" class="alert alert-danger alert-dismissible fade show" role="alert">
+                <div style="text-align:center;">
+                    <strong>Erreur!</strong>
+                    <br />
+                    Vérifier bien que le tournoi débute après la fin des inscriptions!
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            </div>
+        <?php elseif (isset($noError) && $noError == true) : ?>
+            <div style="max-width: 60vw;" class="alert alert-success alert-dismissible fade show" role="alert">
+                <div style="text-align:center;">
+                    <strong>Tournoi créé!</strong>
+                    <br />
+                    Le tournoi a été inséré dans la base de données!
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            </div>
+        <?php endif; ?>
         <div id="formdiv">
             <div class="row" style="margin-right:0px;margin-left:0px;padding-top:24px;">
                 <div class="col-md-8 offset-md-1">
@@ -124,7 +145,10 @@ if ($submit) {
             <div class="row" style="margin-right:0px;margin-left:0px;padding-top:24px;">
                 <div class="col-md-8 offset-md-1">
                     <p style="font-family:Roboto, sans-serif;font-size:24px;">
-                        <strong>Temps entre les rondes: (optionnel)</strong>
+                        <strong>
+                            Temps entre les rondes: (optionnel)
+                            <h6>Format: HH:MM</h6>
+                        </strong>
                     </p>
                 </div>
                 <div class="col-md-10 offset-md-1">
