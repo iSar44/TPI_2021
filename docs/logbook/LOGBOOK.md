@@ -359,6 +359,8 @@ public function GetNicknameOfUser($anEmail): string
 
 ## <u>6ème jour - 11/05/2021</u>
 
+### Matin:
+
 - 7:30: Début d'une nouvelle journée. Lors du webmeeting de la veille, M. Aigroz m'a aidé à finaliser mon modèle de données. Voici la version proposée.
 
 <img src="../database/modele_tM.png">
@@ -423,3 +425,13 @@ foreach ($allTournaments as $aTournament) {
 ```
 
 - 11:40: Pause de midi!
+
+### Après-midi:
+
+- 12:40: Fin de la pause, je passe à la création du formulaire de modification de tournoi
+
+- 14:15: La modification de tournoi est fonctionnelle ✅ Début de la pause.
+
+- 14:35: Fin de la pause, je vais débuter la conception de la page du détail du tournoi
+
+- 16:45: Fin de la journée. Le développement avance.
