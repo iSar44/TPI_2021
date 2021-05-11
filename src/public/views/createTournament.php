@@ -9,6 +9,8 @@
 require_once('./src/model/classes/session.php');
 require_once('./src/model/db_model/database.php');
 require_once('./src/controllers/tournoi_tM_controller.php');
+require_once('./src/model/classes/utilisateur_tM.php');
+require_once('./src/controllers/utilisateur_tM_controller.php');
 
 Session::getInstance();
 
