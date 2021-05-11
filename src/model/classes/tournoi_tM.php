@@ -278,5 +278,11 @@ class Tournoi_tM
         $this->setTempsEntreRondes($unTempsEntreRondes);
     }
 
+
+    public function getProperties()
+    {
+        return get_object_vars($this);
+    }
+
     #endregion
 }
