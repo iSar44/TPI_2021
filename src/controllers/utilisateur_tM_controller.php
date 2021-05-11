@@ -132,6 +132,31 @@ class Utilisateur_tM_Controller
         }
     }
 
+    /**
+     * Fonction qui vérifie si l'utilisateur est un administrateur ou un joueur
+     *
+     * @param string $aNickname
+     * @return integer
+     */
+    public function CheckIfUserIsAdmin($aNickname): int
+    {
+        $query = Database::prepare("SELECT `ADMIN` FROM UTILISATEUR WHERE `NICKNAME` = :NICKNAME");
+
+        $query->bindParam(':NICKNAME', $aNickname, PDO::PARAM_STR);
+        $query->setFetchMode(PDO::FETCH_ASSOC);
+
+        try {
+            $query->execute();
+            $queryResult = $query->fetch();
+
+            $admin = (int)$queryResult['ADMIN'];
+
+            return $admin;
+        } catch (PDOException $e) {
+            return "Error: " . $e;
+        }
+    }
+
 
     /**
      * Fonction qui retourne un tableau d'objets, chaque objet dans le tableau est un utilisateur
