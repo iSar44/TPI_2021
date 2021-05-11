@@ -277,5 +277,6 @@ class Tournoi_tM
         $this->setDateHeureFinInscription($uneDateHeureFinInscription);
         $this->setTempsEntreRondes($unTempsEntreRondes);
     }
+
     #endregion
 }
