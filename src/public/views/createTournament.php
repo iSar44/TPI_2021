@@ -12,6 +12,8 @@ require_once('./src/controllers/tournoi_tM_controller.php');
 
 Session::getInstance();
 
+$t_controller = new Tournoi_tM_Controller();
+
 ?>
 
 <!DOCTYPE html>
