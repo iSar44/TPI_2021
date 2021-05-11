@@ -29,7 +29,6 @@
                             echo "<td><h5>" . $aTournament->getDescription() . "</h5></td>";
                             echo "<td><h5>" . $aTournament->getNbEquipes() . "</h5></td>";
                             echo "<td><h5>" . $displayDate . "</h5></td>";
-                            // ($attr->getDateHeureDemarrage() < $currentDate) ? "<td>En cours</td>" :  "<td>A venir</td>";
                             echo $statut;
                             echo "<td class='text-center'>";
                             echo "<a class='btn btn-primary' role='button' style='margin: 2px;'><i class='bi bi-eye-fill'></i></a>";
