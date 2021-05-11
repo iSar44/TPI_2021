@@ -356,3 +356,70 @@ public function GetNicknameOfUser($anEmail): string
 - 16:30: Problème avec la conversion de la chaine de caractères qui représente la date au format DateTime de php.
 
 - 16:45: Fin de la journée, pas mal de problème à résoudre mais on est sur la bonne voie.
+
+## <u>6ème jour - 11/05/2021</u>
+
+- 7:30: Début d'une nouvelle journée. Lors du webmeeting de la veille, M. Aigroz m'a aidé à finaliser mon modèle de données. Voici la version proposée.
+
+<img src="../database/modele_tM.png">
+
+- 7:45: Le problème avec les clés étangères persiste, ça devient très pénible et cela commence à me ralentir par rapport au développement.. Il faut que je trouve quelque chose et rapidement
+
+- 8:40: ENFIN!!! J'ai réussi à faire le Forward Engineer du diagramme EER, le problème était que Workbench rajoutait dans le script SQL un attribut "VISIBLE" aux clés étrangères qui faisait planter l'import. Je peux ENFIN continuer le développement! 🎆
+
+- 9:40: Les tournois se créent et sont correctement stockés dans la bdd. Début de la pause.
+
+- 10:05: Fin de la pause. Je vais travailler sur l'affichage des tournois sur la page d'accueil.
+
+- 10:40: La suppression des tournois fonctionne.
+
+```php
+/**
+* Fonction qui efface un tournoi de la base de données
+*
+* @param int $idTournoi
+* @return boolean
+*/
+public function DeleteTournament($idTournoi): bool
+{
+    $query = Database::prepare("DELETE FROM TOURNOIS WHERE ID = :ID");
+
+    $query->bindParam(":ID", $idTournoi);
+
+    $delSuccess = $query->execute();
+    return $delSuccess;
+}
+```
+
+- 11:00: Problème avec les comparaisons de date. M. Garcia me conseillera à ce sujet
+
+- 11:20: Problème réglé, il fallait que je fasse des comparaisons non pas sur des dates mais sur des timestamp grâce à la fonction:
+
+```php
+strtotime()
+```
+
+Exemple ci-dessous:
+
+```php
+foreach ($allTournaments as $aTournament) {
+    $statut = (strtotime($aTournament->getDateHeureDemarrage()) < $currentDate) ? "<td><h5>En cours</h5></td>" :  "<td><h5>A venir</h5></td>";
+    $displayDate = date("d/m/Y H:i:s", strtotime($aTournament->getDateHeureDemarrage()));
+    echo "<tr>";
+    echo "<td><h5>" . $aTournament->getTitre() . "</h5></td>";
+    echo "<td><h5>" . $aTournament->getDescription() . "</h5></td>";
+    echo "<td><h5>" . $aTournament->getNbEquipes() . "</h5></td>";
+    echo "<td><h5>" . $displayDate . "</h5></td>";
+    echo $statut;
+    echo "<td class='text-center'>";
+    echo "<a class='btn btn-primary' role='button' style='margin: 2px;'><i class='bi bi-eye-fill'></i></a>";
+    if (strtotime($aTournament->getDateHeureDebutInscription()) > $currentDate && isset($_SESSION['isLoggedIn'])) {
+    echo "<a class='btn btn-success' role='button' style='background: rgb(11,171,56); margin: 2px;' href='./?action=edit&id=" . $aTournament->getId() . "'><i class='bi bi-pencil-fill'></i></a>";
+    echo "<a class='btn btn-danger' role='button' style='margin: 2px;' href='./?action=delete&id=" . $aTournament->getId() . "'><i class='bi bi-trash-fill'></i></a>";
+    }
+    echo "</td>";
+    echo "</tr>";
+}
+```
+
+- 11:40: Pause de midi!
