@@ -6,11 +6,15 @@
  * @version 1.0.0
  */
 
+require_once('./src/web.inc.all.php');
+
+
 /**
  * Classe qui représente un tournoi
  */
 class Tournoi_tM
 {
+
     #region Champs
     /**
      * L'ID du tournoi
@@ -67,6 +71,22 @@ class Tournoi_tM
      * @var time
      */
     private $tempsEntreRondes;
+
+    /**
+     * Le tableau des teams
+     *
+     * @var array
+     */
+    private $teams;
+
+    /**
+     * Le tableau des rondes
+     *
+     * @var array
+     */
+    private $rounds;
+
+
     #endregion
 
     #region Accesseurs/Mutateurs
@@ -253,9 +273,46 @@ class Tournoi_tM
 
         return $this;
     }
+
+    /**
+     * Get the value of teams
+     */
+    public function getTeams()
+    {
+        return $this->teams;
+    }
+
+    /**
+     * Set the value of teams
+     */
+    public function setTeams($teams): self
+    {
+        $this->teams = $teams;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of rounds
+     */
+    public function getRounds()
+    {
+        return $this->rounds;
+    }
+
+    /**
+     * Set the value of rounds
+     */
+    public function setRounds($rounds): self
+    {
+        $this->rounds = $rounds;
+
+        return $this;
+    }
     #endregion
 
     #region Constructeur
+
     /**
      * Constructeur de la classe Tournoi_tM
      *
@@ -267,7 +324,7 @@ class Tournoi_tM
      * @param datetime $uneDateHeureFinInscription
      * @param time $unTempsEntreRondes
      */
-    public function __construct($unTitre = "", $uneDescription = "", $uneDateHeureDemarrage = "", $unNbEquipes = "", $uneDateHeureDebutInscription = "", $uneDateHeureFinInscription = "", $unTempsEntreRondes = "")
+    public function __construct($unTitre = "", $uneDescription = "", $uneDateHeureDemarrage = "", $unNbEquipes = 0, $uneDateHeureDebutInscription = "", $uneDateHeureFinInscription = "", $unTempsEntreRondes = "")
     {
         $this->setTitre($unTitre);
         $this->setDescription($uneDescription);
