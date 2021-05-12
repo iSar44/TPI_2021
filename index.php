@@ -35,9 +35,12 @@ switch ($action) {
         }
         break;
     case 'getDetails':
-        if (isset($_SESSION['admin']) && $_SESSION['admin'] === 1) {
+        if (isset($_SESSION['isLoggedIn'])) {
             require __DIR__ . '/src/public/views/getDetails.php';
-        } else {
+        }
+    case 'test':
+        if (isset($_SESSION['isLoggedIn'])) {
+            require __DIR__ . '/src/tests/test_tournament.php';
         }
     default:
         http_response_code(404);
