@@ -173,8 +173,9 @@ class Utilisateur_tM
      * @param string $anEmail
      * @param string $anAdmin
      */
-    public function __construct($aNickname = "Un nickname", $anEmail = "email@email.com", $anAdmin = "0")
+    public function __construct($anId = -1, $aNickname = "Un nickname", $anEmail = "email@email.com", $anAdmin = "0")
     {
+        $this->setId($anId);
         $this->setNickname($aNickname);
         $this->setEmail($anEmail);
         $this->setAdmin($anAdmin);
