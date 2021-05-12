@@ -13,10 +13,10 @@ $u_controller = new Utilisateur_tM_Controller();
     <div class="row">
         <div class="col-12">
             <div class="table-responsive" id="tabContainer">
-                <table class="table table-hover table-bordered table-striped table tablesorter" id="ipi-table">
+                <table class="table table-hover table-bordered table-striped table tablesorter tournament-list" id="ipi-table">
                     <thead class="thead-dark">
                         <tr>
-                            <th class="text-center">Nom du tournoi</th>
+                            <th class="text-center">Titre du tournoi</th>
                             <th class="text-center">Description</th>
                             <th class="text-center">Nombre d&#39;equipes</th>
                             <th class="text-center">Date/heure du démarrage</th>
@@ -37,10 +37,12 @@ $u_controller = new Utilisateur_tM_Controller();
                             echo $statut;
                             echo "<td class='text-center'>";
 
-                            if (isset($u_controller) && $u_controller->CheckIfUserIsAdmin($_SESSION['username']) === 1) {
-                                echo "<a href='./?action=getDetails&admin=true&id=" . $aTournament->getId() . "' class='btn btn-primary' role='button' style='margin: 2px;'><i class='bi bi-eye-fill'></i></a>";
-                            } elseif (isset($_SESSION['isLoggedIn'])) {
-                                echo "<a href='./?action=getDetails&admin=false&id=" . $aTournament->getId() . "' class='btn btn-primary' role='button' style='margin: 2px;'><i class='bi bi-eye-fill'></i></a>";
+                            if (isset($_SESSION['username'])) {
+                                if ($u_controller->CheckIfUserIsAdmin($_SESSION['username']) === 1) {
+                                    echo "<a href='./?action=getDetails&id=" . $aTournament->getId() . "' class='btn btn-primary' role='button' style='margin: 2px;'><i class='bi bi-eye-fill'></i></a>";
+                                } else {
+                                    echo "<a href='./?action=getDetails&id=" . $aTournament->getId() . "' class='btn btn-primary' role='button' style='margin: 2px;'><i class='bi bi-eye-fill'></i></a>";
+                                }
                             } else {
                                 echo "<a href='./?action=login' class='btn btn-primary' role='button' style='margin: 2px;'><i class='bi bi-eye-fill'></i></a>";
                             }
