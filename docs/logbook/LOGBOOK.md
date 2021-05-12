@@ -435,3 +435,54 @@ foreach ($allTournaments as $aTournament) {
 - 14:35: Fin de la pause, je vais débuter la conception de la page du détail du tournoi
 
 - 16:45: Fin de la journée. Le développement avance.
+
+## <u>7ème jour - 12/05/2021</u>
+
+### Matin:
+
+- 7:30: Je vais avancer la page du détail du tournoi.
+
+- 9:00: La page du détail s'adapte dans le cas si l'utilisateur est administrateur ou pas. Dans le cas de l'utilisateur simple, si les inscriptions ont déjà débuté, un bouton "S'inscrire" apparaît en bas du détail, ex:
+
+<img src="../maquetteSite/screenshots/detailTournoiUser.png">
+
+- 9:10: Je vais m'occuper du filtrage de la recherche sur la page d'accueil
+
+- 9:40: Pause. Le filtre fonctionne sur l'input type="search" par contre il filtre toutes les colonnes.. Il faut que je filtre uniquement les deux premières.
+
+- 10:05: Fin de la pause. Je continue à travailler sur le filtre
+
+- 10:30: J'ai finalement réussi à faire filtrer uniquement les deux premières colonnes ✅ Voici le script ci-dessous:
+
+```javascript
+/**
+ * Source: https://stackoverflow.com/questions/43622127/filtering-table-multiple-columns
+ */
+function SearchFilter() {
+  let input = document.getElementById("myInput");
+  let filter = input.value.toUpperCase();
+  let table = document.getElementById("ipi-table");
+  let tr = table.getElementsByTagName("tr");
+
+  for (var i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0]; // for column one
+    td1 = tr[i].getElementsByTagName("td")[1]; // for column two
+    if (td) {
+      if (
+        td.innerHTML.toUpperCase().indexOf(filter) > -1 ||
+        td1.innerHTML.toUpperCase().indexOf(filter) > -1
+      ) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+```
+
+### Après-midi:
+
+- 10:50 - 14:50 : M. Aigroz m'aide avec la suite de la logique du tournoi
+
+- 15:00: Je passe aux tests des fonctions
