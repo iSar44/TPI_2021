@@ -6,13 +6,7 @@
  * @version 1.0.0
  */
 
-require_once('./src/model/classes/session.php');
-require_once('./src/model/db_model/database.php');
-// require_once('./src/controllers/db_controller.php');
-// require_once('./src/model/classes/utilisateur.php');
-require_once('./src/model/classes/utilisateur_tM.php');
-require_once('./src/controllers/utilisateur_tM_controller.php');
-require_once('./src/controllers/tournoi_tM_controller.php');
+require_once('./src/web.inc.all.php');
 
 Session::getInstance();
 
@@ -72,6 +66,8 @@ $currentDate = time();
     <?php require_once('./src/public/views/struct/footer.php'); ?>
     <!-- JS script for Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+    <script src="/TPI_2021/src/public/assets/js/searchInputFilter.js" type="text/javascript"></script>
+
 </body>
 
 </html>

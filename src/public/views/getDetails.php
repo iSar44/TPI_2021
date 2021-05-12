@@ -6,20 +6,18 @@
  * @version 1.0.0
  */
 
-require_once('./src/model/classes/session.php');
-require_once('./src/model/db_model/database.php');
-require_once('./src/model/classes/utilisateur_tM.php');
-require_once('./src/controllers/utilisateur_tM_controller.php');
-require_once('./src/controllers/tournoi_tM_controller.php');
+require_once('./src/web.inc.all.php');
 
 Session::getInstance();
 
 $t_manager = new Tournoi_tM_Controller();
 
-$selectedTournament = $t_manager->SelectTournament($_GET['id']);
-echo "<pre>";
-var_dump($selectedTournament);
-echo "</pre>";
+$currentDate = time();
+
+$tournoi = $t_manager->SelectTournament($_GET['id']);
+// echo "<pre>";
+// var_dump($selectedTournament);
+// echo "</pre>";
 
 ?>
 
@@ -40,7 +38,7 @@ echo "</pre>";
     <link rel="stylesheet" href="/TPI_2021/src/public/assets/css/TableSearchSort.css">
     <link rel="stylesheet" href="/TPI_2021/src/public/assets/css/Filter.css">
     <link rel="stylesheet" href="/TPI_2021/src/public/assets/css/Footer-Basic.css">
-    <link rel="stylesheet" href="/TPI_2021/src/public/assets/css/Details.css">
+    <link rel="stylesheet" href="/TPI_2021/src/public/assets/css/Show-Details.css">
     <link rel="shortcut icon" href="/TPI_2021/src/public/ressources/favicon.ico" type="image/x-icon">
     <title>Home</title>
 </head>
@@ -52,7 +50,7 @@ echo "</pre>";
         <?php require_once('./src/public/views/struct/nav.php'); ?>
     </header>
 
-    <div class="content">
+    <div>
         <?php require_once('./src/public/views/struct/tournamentDetails.php'); ?>
     </div>
 
