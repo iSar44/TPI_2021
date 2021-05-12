@@ -6,52 +6,18 @@
  * @version 1.0.0
  */
 
+require_once('./src/web.inc.all.php');
+
 /**
  * Classe qui répresente une équipe du site tournamentManager
  */
-class Equipe_tM
+class Equipe_tM extends Utilisateur_tM
 {
-
-    #region 
-    /**
-     * l'ID de l'équipe
-     *
-     * @var int
-     */
-    private $id;
-
-    /**
-     * Le nom de l'équipe
-     *
-     * @var string
-     */
+    #region Champs
     private $nomEquipe;
+    #endregion
 
-    /**
-     * L'ID de l'utilisateur
-     *
-     * @var int
-     */
-    private $utilisateurId;
-
-    /**
-     * Get the value of id
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Set the value of id
-     */
-    public function setId($id): self
-    {
-        $this->id = $id;
-
-        return $this;
-    }
-
+    #region Accesseurs/Mutateurs
     /**
      * Get the value of nomEquipe
      */
@@ -69,22 +35,21 @@ class Equipe_tM
 
         return $this;
     }
+    #endregion
+
 
     /**
-     * Get the value of utilisateurId
+     * Undocumented function
+     *
+     * @param integer $anId
+     * @param string $aNickname
+     * @param string $anEmail
+     * @param integer $anAdmin
+     * @param string $nomEquipe
      */
-    public function getUtilisateurId()
+    public function __construct($anId = -1, $aNickname = "Un nickname", $anEmail = "email@email.com", $anAdmin = 0, $nomEquipe = "")
     {
-        return $this->utilisateurId;
-    }
-
-    /**
-     * Set the value of utilisateurId
-     */
-    public function setUtilisateurId($utilisateurId): self
-    {
-        $this->utilisateurId = $utilisateurId;
-
-        return $this;
+        parent::__construct($anId, $aNickname, $anEmail, $anAdmin);
+        $this->setNomEquipe($nomEquipe);
     }
 }
