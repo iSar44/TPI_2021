@@ -6,8 +6,7 @@
  * @version 1.0.0
  */
 
-require_once('./src/model/db_model/database.php');
-require_once('./src/model/classes/utilisateur_tM.php');
+require_once('./src/web.inc.all.php');
 
 /**
  * Classe qui représente le contrôleur de la classe Utilisateur_tM
@@ -63,7 +62,7 @@ class Utilisateur_tM_Controller
             return $userExists;
         } catch (PDOException $e) {
 
-            return false;
+            return $e->getMessage();
         }
     }
 
@@ -90,7 +89,7 @@ class Utilisateur_tM_Controller
             return $userExists;
         } catch (PDOException $e) {
 
-            return false;
+            return $e->getMessage();
         }
     }
 
@@ -109,7 +108,7 @@ class Utilisateur_tM_Controller
 
             return $pwd;
         } catch (PDOException $e) {
-            return false;
+            return $e->getMessage();
         }
     }
 
@@ -128,7 +127,7 @@ class Utilisateur_tM_Controller
 
             return $nickname;
         } catch (PDOException $e) {
-            return false;
+            return $e->getMessage();
         }
     }
 
@@ -153,8 +152,10 @@ class Utilisateur_tM_Controller
 
             return $admin;
         } catch (PDOException $e) {
-            return "Error: " . $e;
+            return $e->getMessage();
         }
+        // fails
+        return 0;
     }
 
 
