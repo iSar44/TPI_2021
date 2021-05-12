@@ -15,11 +15,12 @@ $u_controller = new Utilisateur_tM_Controller();
                 <li class="nav-item">
                     <a class="nav-link" href="./">Accueil</a>
                 </li>
-                <?php if (isset($u_controller) && $u_controller->CheckIfUserIsAdmin($_SESSION['username']) === 1) : ?>
+                <?php if (isset($u_controller) && isset($_SESSION['username']) && $u_controller->CheckIfUserIsAdmin($_SESSION['username']) === 1) : ?>
                     <li class="nav-item dropdown">
                         <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#">Plus</a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="./?action=create&admin=true">Créer un tournoi</a>
+                            <a class="dropdown-item" href="./?action=test">Créer un tournoi</a>
+                            <!-- <a class="dropdown-item" href="./?action=create&admin=true">Créer un tournoi</a> -->
                             <a class="dropdown-item" href="#">Second Item</a>
                             <a class="dropdown-item" href="#">Third Item</a>
                         </div>
