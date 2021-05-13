@@ -7,9 +7,17 @@ class Ronde_tM
     /**
      * Tableau des matches
      *
-     * @var array Tableau contenant les matches
+     * @var array Tableau contenant les matches (Match_tM)
      */
     private $matches;
+
+    /**
+     * Tableau des IDs des matches de la ronde afin de pouvoir les lire depuis la bdd
+     *
+     * @var array
+     */
+    private $matchesIds;
+
 
     /**
      * l'ID du tournoi concerné
@@ -39,6 +47,24 @@ class Ronde_tM
     public function setMatches($matches): self
     {
         $this->matches = $matches;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of matchesIds
+     */
+    public function getMatchesIds()
+    {
+        return $this->matchesIds;
+    }
+
+    /**
+     * Set the value of matchesIds
+     */
+    public function setMatchesIds($matchesIds): self
+    {
+        $this->matchesIds = $matchesIds;
 
         return $this;
     }
