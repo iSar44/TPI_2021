@@ -9,11 +9,12 @@
 require_once('./src/web.inc.all.php');
 
 
-$tournoi = new Tournoi_tM("Test1", "TestUnit Tournoi", "2021-06-20 10:00:00", 8, "2021-06-10 10:00:00", "2021-06-12 10:00:00", "00:30:00");
+$tournoi = new Tournoi_tM(1, "Test1", "TestUnit Tournoi", "2021-06-20 10:00:00", 8, "2021-06-10 10:00:00", "2021-06-12 10:00:00", "00:30:00");
 $tournoiControl = new Tournoi_tM_Controller();
 
-$equipe = new Equipe_tM(10, "TestEquipe");
 $equipeControl = new Equipe_tM_Controller();
+$equipe1 = $equipeControl->FindTeam(8);
+$equipe2 = $equipeControl->FindTeam(9);
 
 
 
@@ -45,5 +46,29 @@ $equipeControl = new Equipe_tM_Controller();
 #region Test de la fonction UnregisterTeam($idTournoi, $idEquipe) - TEST PASSED
 // echo "<pre>";
 // var_dump($tournoiControl->UnregisterTeam(1, 9));
+// echo "</pre>";
+#endregion
+
+#region Test de la fonction LoadTournamentTeams(Tournoi_tM $unTournoi) - TEST PASSED!
+// echo "<pre>";
+// var_dump($tournoiControl::LoadTournamentTeams($tournoi));
+// echo "</pre>";
+#endregion
+
+#region Test de la fonction CreateRoundTournament(Tournoi_tM $unTournoi, $level, $nbMatches, $tempsPreparation = "00:00") - TEST PASSED!
+// echo "<pre>";
+// var_dump($tournoiControl->CreateRoundTournament($tournoi, 1, 8));
+// echo "</pre>";
+#endregion
+
+#region Test de la fonction CreateMatchTournament(Equipe_tM $team1, Equipe_tM $team2) - TEST PASSED!
+// echo "<pre>";
+// var_dump($tournoiControl->CreateMatchTournament($equipe1, $equipe2));
+// echo "</pre>";
+#endregion
+
+#region Test de la fonction LoadTournamentRounds(Tournoi_tM $unTournoi) - TEST FAILED
+// echo "<pre>";
+// var_dump($tournoiControl::LoadTournamentRounds($tournoi));
 // echo "</pre>";
 #endregion
