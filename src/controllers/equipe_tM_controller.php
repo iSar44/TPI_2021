@@ -62,18 +62,21 @@ class Equipe_tM_Controller
 
     public function FindTeam($idUser)
     {
-        $query = Database::prepare("SELECT `UTILISATEUR_ID`, `NOM_EQUIPE` FROM EQUIPE WHERE UTILISATEUR_ID = :UTILISATEUR_ID");
-
+        $query = Database::prepare("SELECT `UTILISATEUR_ID`, `NOM_EQUIPE`, `NICKNAME`, `EMAIL`, `ADMIN` FROM `EQUIPE`, `UTILISATEUR` WHERE UTILISATEUR_ID = :UTILISATEUR_ID AND ID = :ID");
         $query->bindParam(':UTILISATEUR_ID', $idUser, PDO::PARAM_INT);
+        $query->bindParam(':ID', $idUser, PDO::PARAM_INT);
 
         try {
             $query->execute();
-            if ($rowInDb = $query->fetch()) {
+            if ($rowInDb = $query->fetch(PDO::FETCH_ASSOC)) {
 
                 $equipe = new Equipe_tM();
 
                 $equipe->setId($rowInDb['UTILISATEUR_ID']);
                 $equipe->setNomEquipe($rowInDb['NOM_EQUIPE']);
+                $equipe->setNickname($rowInDb['NICKNAME']);
+                $equipe->setEmail($rowInDb['EMAIL']);
+                $equipe->setAdmin($rowInDb['ADMIN']);
 
                 return $equipe;
             }
