@@ -17,7 +17,11 @@ $equipe1 = $equipeControl->FindTeam(8);
 $equipe2 = $equipeControl->FindTeam(9);
 
 
-
+#region Test de la fonction SelectTournament() - TEST PASSED
+// echo "<pre>";
+// var_dump($tournoiControl->SelectTournament(1));
+// echo "</pre>";
+#endregion
 
 #region Test de la fonction CreateTournament(Tournoi_tM $unTournoi) - TEST PASSED
 // echo "<pre>";
@@ -67,8 +71,14 @@ $equipe2 = $equipeControl->FindTeam(9);
 // echo "</pre>";
 #endregion
 
-#region Test de la fonction LoadTournamentRounds(Tournoi_tM $unTournoi) - TEST FAILED
+#region Test de la fonction LoadTournamentRounds(Tournoi_tM $unTournoi) - TEST PASSED
 // echo "<pre>";
 // var_dump($tournoiControl::LoadTournamentRounds($tournoi));
+// echo "</pre>";
+#endregion
+
+#region Test de la fonction CheckIfTeamsHaveMet(Tournoi_tM $unTournoi, Equipe_tM $team1, Equipe_tM $team2) - TEST PASSED
+// echo "<pre>";
+// var_dump($tournoiControl->CheckIfTeamsHaveMet($tournoi, $equipe1, $equipe2));
 // echo "</pre>";
 #endregion
