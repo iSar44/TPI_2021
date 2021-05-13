@@ -324,8 +324,9 @@ class Tournoi_tM
      * @param datetime $uneDateHeureFinInscription
      * @param time $unTempsEntreRondes
      */
-    public function __construct($unTitre = "", $uneDescription = "", $uneDateHeureDemarrage = "", $unNbEquipes = 0, $uneDateHeureDebutInscription = "", $uneDateHeureFinInscription = "", $unTempsEntreRondes = "")
+    public function __construct($id = -1, $unTitre = "", $uneDescription = "", $uneDateHeureDemarrage = "", $unNbEquipes = 0, $uneDateHeureDebutInscription = "", $uneDateHeureFinInscription = "", $unTempsEntreRondes = "")
     {
+        $this->setId($id);
         $this->setTitre($unTitre);
         $this->setDescription($uneDescription);
         $this->setDateHeureDemarrage($uneDateHeureDemarrage);
