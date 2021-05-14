@@ -51,7 +51,7 @@ class Equipe_tM_Controller
 
             $equipe = new Equipe_tM();
 
-            $equipe->setId($rowInDb['UTILISATEUR_ID']);
+            $equipe->setId((int)$rowInDb['UTILISATEUR_ID']);
             $equipe->setNomEquipe($rowInDb['NOM_EQUIPE']);
 
             array_push($resultEquipes, $equipe);
@@ -72,11 +72,11 @@ class Equipe_tM_Controller
 
                 $equipe = new Equipe_tM();
 
-                $equipe->setId($rowInDb['UTILISATEUR_ID']);
+                $equipe->setId((int)$rowInDb['UTILISATEUR_ID']);
                 $equipe->setNomEquipe($rowInDb['NOM_EQUIPE']);
                 $equipe->setNickname($rowInDb['NICKNAME']);
                 $equipe->setEmail($rowInDb['EMAIL']);
-                $equipe->setAdmin($rowInDb['ADMIN']);
+                $equipe->setAdmin((int)$rowInDb['ADMIN']);
 
                 return $equipe;
             }
