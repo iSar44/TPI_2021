@@ -60,7 +60,7 @@ class Equipe_tM_Controller
         return $resultEquipes;
     }
 
-    public function FindTeam($idUser)
+    public static function FindTeam($idUser)
     {
         $query = Database::prepare("SELECT `UTILISATEUR_ID`, `NOM_EQUIPE`, `NICKNAME`, `EMAIL`, `ADMIN` FROM `EQUIPE`, `UTILISATEUR` WHERE UTILISATEUR_ID = :UTILISATEUR_ID AND ID = :ID");
         $query->bindParam(':UTILISATEUR_ID', $idUser, PDO::PARAM_INT);
