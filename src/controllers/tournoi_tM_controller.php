@@ -265,10 +265,69 @@ class Tournoi_tM_Controller
         return false;
     }
 
+    public function GetResultsFromTournament(Tournoi_tM $unTournoi)
+    {
+
+        // $getPrevLevelQuery = Database::prepare("SELECT MAX(`RONDE_has_MATCHES`.`RONDE_ETAPE`) 
+        // FROM `tournamentManager`.`RONDE_has_MATCHES`
+        // WHERE `RONDE_has_MATCHES`.`RONDE_TOURNOIS_ID` = :RONDE_TOURNOIS_ID");
+
+        $tournoiId = $unTournoi->getId();
+
+        $tabRounds = array();
+        $tabMatches = array();
+
+        // $getPrevLevelQuery->bindParam(':RONDE_TOURNOIS_ID', $tournoiId, PDO::PARAM_INT);
+
+        // $getPrevLevelQuery->execute();
+        // if ($rowInDb = $getPrevLevelQuery->fetch(PDO::FETCH_ASSOC)) {
+
+        //     $prevLevel = (int)$rowInDb['MAX(`RONDE_has_MATCHES`.`RONDE_ETAPE`)'];
+        // }
+
+
+        $queryGetResult = Database::prepare("SELECT `RONDE_has_MATCHES`.`RONDE_ETAPE`, `MATCHES`.`EQUIPE_UTILISATEUR_ID1`, `MATCHES`.`EQUIPE_UTILISATEUR_ID2`, `MATCHES`.`VAINQUEUR_ID`
+        FROM `tournamentManager`.`MATCHES`
+        INNER JOIN `tournamentManager`.`RONDE_has_MATCHES`
+        WHERE `MATCHES`.`ID` = `RONDE_has_MATCHES`.`MATCHES_ID`
+        AND `RONDE_has_MATCHES`.`RONDE_TOURNOIS_ID` = :RONDE_TOURNOIS_ID");
+
+        $queryGetResult->bindParam(':RONDE_TOURNOIS_ID', $tournoiId, PDO::PARAM_INT);
+
+        try {
+            $queryGetResult->execute();
+            while ($rowInDb = $queryGetResult->fetch(PDO::FETCH_ASSOC)) {
+
+                $ronde = new Ronde_tM();
+                $level = (int)$rowInDb['RONDE_ETAPE'];
+
+                $match = new Match_tM();
+                $match->setIdTeam1((int)$rowInDb['EQUIPE_UTILISATEUR_ID1']);
+                $match->SetIdTeam2((int)$rowInDb['EQUIPE_UTILISATEUR_ID2']);
+                $match->setIdWinner((int)$rowInDb['VAINQUEUR_ID']);
+
+                array_push($tabMatches, $match);
+
+                $ronde->setLevel($level);
+                $ronde->setMatches($tabMatches);
+
+                array_push($tabRounds, $ronde);
+            }
+
+            return $tabRounds;
+        } catch (PDOException $e) {
+            echo "Exception - GetResultsFromTournament :" . $e->getMessage();
+            return false;
+        }
+        return false;
+    }
+
+
     public static function StartTournament(Tournoi_tM $unTournoi)
     {
         // Chargement des équipes
         self::LoadTournamentTeams($unTournoi);
+        // self::LoadTournamentRounds($unTournoi);
 
         $allRounds = $unTournoi->getRounds();
         $firstRound = $allRounds[0];
@@ -346,6 +405,50 @@ class Tournoi_tM_Controller
         return false;
     }
 
+
+    /**
+     * Arrange les matchs des équipes
+     *
+     * @param Tournoi_tM $unTournoi
+     * @param array $arr Le tableau des équipes pour lesquels on doit organiser les matches
+     * @return array Un tableau qui contient les équipes dans l'ordre des matches, première équipe contre deuxième équipe, troisième contre quatrième équipe etc...
+     */
+    private static function ArrangeMatchTeams(Tournoi_tM $unTournoi, $arr)
+    {
+        $finalMatchTeams = array();
+        //$count = count($arr);
+        for ($i = array_key_first($arr); $i < array_key_last($arr); $i++) {
+
+            $team1 = $arr[$i];
+
+            if (in_array($team1, $finalMatchTeams)) {
+                continue;
+            }
+
+            $team2 = null;
+
+            $bFound = false;
+            for ($y = $i + 1; $y < array_key_last($arr) + 1; $y++) {
+
+                $team2 = $arr[$y];
+
+                if (self::CheckIfTeamsHaveMet($unTournoi, $team1, $team2) == false) {
+                    $bFound = true;
+                    break;
+                }
+            }
+            if ($bFound && $team2 != null) {
+                array_push($finalMatchTeams, $team1);
+                array_push($finalMatchTeams, $team2);
+            } else {
+                //error
+                return false;
+            }
+        }
+        return $finalMatchTeams;
+    }
+
+
     public static function TournamentContinues(Tournoi_tM $unTournoi)
     {
 
@@ -389,9 +492,13 @@ class Tournoi_tM_Controller
             $currentRound = $nextRound[0];
 
             $queryGetIdsWinners = Database::prepare("SELECT DISTINCT `MATCHES`.`VAINQUEUR_ID` 
-            FROM `tournamentManager`.`MATCHES`, `tournamentManager`.`RONDE_has_MATCHES`
-            WHERE `RONDE_has_MATCHES`.`RONDE_ETAPE` = :RONDE_ETAPE
-            AND `RONDE_has_MATCHES`.`RONDE_TOURNOIS_ID` = :RONDE_TOURNOIS_ID");
+            FROM `tournamentManager`.`MATCHES`
+            INNER JOIN `tournamentManager`.`RONDE_has_MATCHES`
+            WHERE `MATCHES`.`ID` = `RONDE_has_MATCHES`.`MATCHES_ID`
+            AND `RONDE_has_MATCHES`.`RONDE_ETAPE` = :RONDE_ETAPE
+            AND `RONDE_has_MATCHES`.`RONDE_TOURNOIS_ID` = :RONDE_TOURNOIS_ID
+            ORDER BY `MATCHES`.`ID` DESC
+            LIMIT 4;");
 
             $queryGetIdsWinners->bindParam(':RONDE_ETAPE', $prevLevel, PDO::PARAM_INT);
             $queryGetIdsWinners->bindParam(':RONDE_TOURNOIS_ID', $tournoiId, PDO::PARAM_INT);
@@ -404,30 +511,59 @@ class Tournoi_tM_Controller
                 array_push($tabWinners, $equipeWinner);
             }
 
+            $arrWinnersIds = array();
+
+            foreach ($tabWinners as $winnerTeam) {
+
+                $idTeam = (int)$winnerTeam->getId();
+                array_push($arrWinnersIds, $idTeam);
+            }
+
             $queryGetIdsLosers = Database::prepare("SELECT DISTINCT `EQUIPE`.`UTILISATEUR_ID`
-            FROM `tournamentManager`.`EQUIPE`, `tournamentManager`.`MATCHES`, `tournamentManager`.`RONDE_has_MATCHES`
+            FROM `tournamentManager`.`EQUIPE`, `tournamentManager`.`MATCHES`, `tournamentManager`.`RONDE_has_MATCHES`, `tournamentManager`.`TOURNOIS_has_EQUIPE`
             WHERE `RONDE_has_MATCHES`.`RONDE_ETAPE` = :RONDE_ETAPE
             AND `RONDE_has_MATCHES`.`RONDE_TOURNOIS_ID` = :RONDE_TOURNOIS_ID
+            AND `EQUIPE`.`UTILISATEUR_ID` = `TOURNOIS_has_EQUIPE`.`EQUIPE_UTILISATEUR_ID`
             AND `EQUIPE`.`UTILISATEUR_ID` NOT IN (
-            SELECT `MATCHES`.`VAINQUEUR_ID` 
-            FROM `tournamentManager`.`MATCHES`
+                :winner1, :winner2, :winner3, :winner4
             )");
 
             $queryGetIdsLosers->bindParam(':RONDE_ETAPE', $prevLevel, PDO::PARAM_INT);
             $queryGetIdsLosers->bindParam(':RONDE_TOURNOIS_ID', $tournoiId, PDO::PARAM_INT);
+            $queryGetIdsLosers->bindParam(':winner1', $arrWinnersIds[0], PDO::PARAM_STR);
+            $queryGetIdsLosers->bindParam(':winner2', $arrWinnersIds[1], PDO::PARAM_STR);
+            $queryGetIdsLosers->bindParam(':winner3', $arrWinnersIds[2], PDO::PARAM_STR);
+            $queryGetIdsLosers->bindParam(':winner4', $arrWinnersIds[3], PDO::PARAM_STR);
 
             $queryGetIdsLosers->execute();
 
             while ($rowInDb = $queryGetIdsLosers->fetch(PDO::FETCH_ASSOC)) {
 
-                $equipeLoser = Equipe_tM_Controller::FindTeam((int)$rowInDb['UTILISATEUR_ID']);
-                array_push($tabLosers, $equipeLoser);
+                // $equipeLoser = Equipe_tM_Controller::FindTeam((int)$rowInDb['UTILISATEUR_ID']);
+                $equipeLoser = $rowInDb['UTILISATEUR_ID'];
+                array_push($tabLosers, (int)$equipeLoser);
             }
+
+            $count = 0;
+            foreach ($tabLosers as $team) {
+                $equipeLoser = Equipe_tM_Controller::FindTeam($team);
+                unset($tabLosers[$count]);
+                array_push($tabLosers, $equipeLoser);
+                $count++;
+            }
+
 
             // $tabWinners = array_chunk($tabWinners, 2);
             // $tabLosers = array_chunk($tabLosers, 2);
 
-            foreach ($tabWinners as $teamsWinnerMatch) {
+            $arrWinners = self::ArrangeMatchTeams($unTournoi, $tabWinners);
+            $arrLosers = self::ArrangeMatchTeams($unTournoi, $tabLosers);
+
+            $arrWinners = array_chunk($arrWinners, 2);
+            $arrLosers = array_chunk($arrLosers, 2);
+
+
+            foreach ($arrWinners as $teamsWinnerMatch) {
 
                 $match = new Match_tM();
 
@@ -440,12 +576,15 @@ class Tournoi_tM_Controller
                 $match->setIdTeam1($firstTeamId);
                 $match->setIdTeam2($secondTeamId);
 
-                if (self::CheckIfTeamsHaveMet($unTournoi, $firstTeam, $secondTeam) == false) {
+                #region Deprecated
+                // if (self::CheckIfTeamsHaveMet($unTournoi, $firstTeam, $secondTeam) == false) {
 
-                    self::CreateMatchTournament($firstTeam, $secondTeam);
-                }
+                //     self::CreateMatchTournament($firstTeam, $secondTeam);
+                // }
 
-                // while (self::CheckIfTeamsHaveMet($unTournoi, $firstTeam, $secondTeam)) {
+                // $condition = self::CheckIfTeamsHaveMet($unTournoi, $firstTeam, $secondTeam);
+
+                // while ($condition) {
 
                 //     shuffle($tabWinners);
                 //     shuffle($tabLosers);
@@ -458,7 +597,10 @@ class Tournoi_tM_Controller
 
                 //     $match->setIdTeam1($firstTeamId);
                 //     $match->setIdTeam2($secondTeamId);
+
+                //     $condition = self::CheckIfTeamsHaveMet($unTournoi, $firstTeam, $secondTeam);
                 // }
+                #endregion
 
                 self::CreateMatchTournament($firstTeam, $secondTeam);
 
@@ -480,7 +622,7 @@ class Tournoi_tM_Controller
                 $query->execute();
             }
 
-            foreach ($tabLosers as $teamsLoserMatch) {
+            foreach ($arrLosers as $teamsLoserMatch) {
 
                 $match = new Match_tM();
 
@@ -493,10 +635,29 @@ class Tournoi_tM_Controller
                 $match->setIdTeam1($firstTeamId);
                 $match->setIdTeam2($secondTeamId);
 
-                if (self::CheckIfTeamsHaveMet($unTournoi, $firstTeam, $secondTeam) === false) {
+                #region Deprecated
+                // if (self::CheckIfTeamsHaveMet($unTournoi, $firstTeam, $secondTeam) === false) {
 
-                    self::CreateMatchTournament($firstTeam, $secondTeam);
-                }
+                // }
+
+                // while (self::CheckIfTeamsHaveMet($unTournoi, $firstTeam, $secondTeam)) {
+
+                //     shuffle($tabWinners);
+                //     shuffle($tabLosers);
+
+                //     $firstTeam = $teamsWinnerMatch[0];
+                //     $firstTeamId = $firstTeam->getId();
+
+                //     $secondTeam = $teamsWinnerMatch[1];
+                //     $secondTeamId = $secondTeam->getId();
+
+                //     $match->setIdTeam1($firstTeamId);
+                //     $match->setIdTeam2($secondTeamId);
+                // }
+
+                #endregion
+
+                self::CreateMatchTournament($firstTeam, $secondTeam);
 
                 array_push($nextRoundAllMatches, $teamsLoserMatch);
                 array_push($nextRoundAllMatchesIds, $match);
@@ -565,10 +726,12 @@ class Tournoi_tM_Controller
 
         if ($rowInDb = $getPrevLevelQuery->fetch(PDO::FETCH_ASSOC)) {
 
-            $prevNbRound = (int)$rowInDb['MAX(`RONDE_has_MATCHES`.`RONDE_ETAPE`)'];
-            $nbRound = $prevNbRound + 1;
-        } else {
-            $nbRound = 1;
+            if ($rowInDb['MAX(`RONDE_has_MATCHES`.`RONDE_ETAPE`)'] == null) {
+                $nbRound = 1;
+            } else {
+                $prevNbRound = (int)$rowInDb['MAX(`RONDE_has_MATCHES`.`RONDE_ETAPE`)'];
+                $nbRound = $prevNbRound + 1;
+            }
         }
 
         /**
@@ -611,17 +774,16 @@ class Tournoi_tM_Controller
             echo "Exception - CreateAllRoundsForTournament() : " . $e->getMessage();
             return false;
         }
+
         // for ($nbRound = 1; $nbRound <= 5; $nbRound++) {
 
         // }
 
         $unTournoi->setRounds($tabRounds);
 
-        // if ($nbRound == 1) {
-        //     self::StartTournament($unTournoi);
-        // } else {
-        //     self::TournamentContinues($unTournoi);
-        // }
+        if ($nbRound == 1) {
+            self::StartTournament($unTournoi);
+        }
     }
 
     public static function StopRound(Tournoi_tM $unTournoi)
@@ -857,6 +1019,122 @@ class Tournoi_tM_Controller
             $round->setMatches($tabMatches);
         }
         // $round->setMatches($tabMatches);
+    }
+
+
+    public function GetIntermediateResultsOfTeam(Tournoi_tM $unTournoi, $rondeEtape, Equipe_tM $aTeam)
+    {
+        $tournoiId = $unTournoi->getId();
+        $teamId = $aTeam->getId();
+
+
+        $query = Database::prepare("SELECT COUNT(`MATCHES`.`VAINQUEUR_ID`)
+        FROM `tournamentManager`.`MATCHES`
+        INNER JOIN `tournamentManager`.`RONDE_has_MATCHES`
+        WHERE `RONDE_has_MATCHES`.`RONDE_TOURNOIS_ID` = :RONDE_TOURNOIS_ID
+        AND `RONDE_has_MATCHES`.`RONDE_ETAPE` = :RONDE_ETAPE
+        AND `RONDE_has_MATCHES`.`MATCHES_ID` = `MATCHES`.`ID`
+        AND `MATCHES`.`VAINQUEUR_ID` = :VAINQUEUR_ID");
+
+        $query->bindParam(':RONDE_TOURNOIS_ID', $tournoiId, PDO::PARAM_INT);
+        $query->bindParam(':RONDE_ETAPE', $rondeEtape, PDO::PARAM_INT);
+        $query->bindParam(':VAINQUEUR_ID', $teamId, PDO::PARAM_INT);
+
+
+        try {
+
+            $query->execute();
+
+            if ($rowInDb = $query->fetch(PDO::FETCH_ASSOC)) {
+
+                $result = (int)$rowInDb['COUNT(`MATCHES`.`VAINQUEUR_ID`)'];
+                return $result;
+            }
+        } catch (PDOException $e) {
+        }
+
+        return false;
+    }
+
+    public function GetTournamentRounds(Tournoi_tM $unTournoi)
+    {
+        $tabRounds = array();
+
+        // $query = Database::prepare("SELECT `RONDE_TOURNOIS_ID`, `RONDE_ETAPE`, `MATCHES_ID` FROM RONDE_has_MATCHES WHERE RONDE_TOURNOIS_ID = :RONDE_TOURNOIS_ID");
+        $query = Database::prepare("SELECT `RONDE_TOURNOIS_ID`, `RONDE_ETAPE`, `MATCHES_ID` 
+        FROM RONDE_has_MATCHES 
+        WHERE RONDE_TOURNOIS_ID = :RONDE_TOURNOIS_ID 
+        ORDER BY `RONDE_TOURNOIS_ID`, `RONDE_ETAPE`");
+
+        $tournoiId = $unTournoi->getId();
+        $query->bindParam(":RONDE_TOURNOIS_ID", $tournoiId, PDO::PARAM_INT);
+        $query->execute();
+
+        $previousLevel = -1;
+        $ronde = null;
+        $matchesIds = null;
+        while ($rowInDb = $query->fetch(PDO::FETCH_ASSOC)) {
+
+            $level = (int)$rowInDb['RONDE_ETAPE'];
+
+            if ($level != $previousLevel) {
+
+                if ($ronde != null) {
+
+                    $ronde->setMatchesIds($matchesIds);
+                    array_push($tabRounds, $ronde);
+                }
+
+                $ronde = new Ronde_tM();
+
+                $ronde->setTournamentId($tournoiId);
+                $ronde->setLevel($level);
+                $matchesIds = array();
+            }
+            array_push($matchesIds, (int)$rowInDb['MATCHES_ID']);
+            // $ronde->setMatches((int)$rowInDb['MATCHES_ID']);
+
+            $previousLevel = $level;
+            //array_push($tabRounds, $ronde);
+        }
+
+        if ($ronde != null) {
+            $ronde->setMatchesIds($matchesIds);
+            array_push($tabRounds, $ronde);
+        }
+        $unTournoi->setRounds($tabRounds);
+
+        //Parcourir les rondes et on récupère les matches
+        foreach ($tabRounds as $round) {
+
+            $tabMatches = array();
+            foreach ($round->getMatchesIds() as $matchId) {
+
+
+                $query = Database::prepare("SELECT `EQUIPE_UTILISATEUR_ID1`, `EQUIPE_UTILISATEUR_ID2`, `VAINQUEUR_ID`
+                FROM MATCHES, RONDE_has_MATCHES 
+                WHERE  RONDE_TOURNOIS_ID = :RONDE_TOURNOIS_ID 
+                AND `MATCHES`.`ID` = :MATCHES_ID");
+
+                $query->bindParam(":RONDE_TOURNOIS_ID", $tournoiId, PDO::PARAM_INT);
+                $query->bindParam(":MATCHES_ID", $matchId, PDO::PARAM_INT);
+                $query->execute();
+
+                if ($rowInDb = $query->fetch(PDO::FETCH_ASSOC)) {
+
+                    $match = new Match_tM();
+
+                    $match->setIdTeam1((int)$rowInDb['EQUIPE_UTILISATEUR_ID1']);
+                    $match->setIdTeam2((int)$rowInDb['EQUIPE_UTILISATEUR_ID2']);
+                    $match->setIdWinner((int)$rowInDb['VAINQUEUR_ID']);
+
+                    array_push($tabMatches, $match);
+                }
+            }
+            $round->setMatches($tabMatches);
+        }
+
+        return $tabRounds;
     }
 
     #endregion
