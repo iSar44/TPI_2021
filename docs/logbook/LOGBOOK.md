@@ -486,3 +486,98 @@ function SearchFilter() {
 - 10:50 - 14:50 : M. Aigroz m'aide avec la suite de la logique du tournoi
 
 - 15:00: Je passe aux tests des fonctions
+
+- 16:45: Fin de la journée
+
+## <u>8ème jour - 10/05/2021 (Début de la troisième semaine)</u>
+
+### Matin:
+
+- 7:30: J'ai malheureusement un problème bloquant.. MariaDB n'autorise pas les conditions LIMIT dans les sous-requête ce qui m'empêche de récupérer les vainqueurs de la ronde précendente afin de pouvoir les comparer avec les autres utilisateurs pour construire le tableau des équipes qui ont perdu l'étape précedente
+
+- 9:00: M. Zanardi m'a indiqué que je pouvais normalement faire cela en deux requêtes séparées, cependant cela ne sera pas optimal car ces requêtes ne pourront pas s'adapter aux nombres de matchs dans chaque ronde
+
+- 9:40: Début de la pause
+
+- 10:05: Fin de la pause
+
+- 10:30: Je continue l'implémentation de ces deux requêtes mais je rencontre certains problèmes, l'une d'elles est que je dois passer dans la condition NOT IN des valeurs d'entiers, mais mon tableau transforme mes entiers en caractères..
+
+- 11:30: Finalement la fonction semble fonctionner, voir l'extrait du code ci-dessous. Début de la pause de midi
+
+```php
+$queryGetIdsWinners = Database::prepare("SELECT DISTINCT `MATCHES`.`VAINQUEUR_ID`
+FROM `tournamentManager`.`MATCHES`
+INNER JOIN `tournamentManager`.`RONDE_has_MATCHES`
+WHERE `MATCHES`.`ID` = `RONDE_has_MATCHES`.`MATCHES_ID`
+AND `RONDE_has_MATCHES`.`RONDE_ETAPE` = :RONDE_ETAPE
+AND `RONDE_has_MATCHES`.`RONDE_TOURNOIS_ID` = :RONDE_TOURNOIS_ID
+ORDER BY `MATCHES`.`ID` DESC
+LIMIT 4;");
+
+$queryGetIdsWinners->bindParam(':RONDE_ETAPE', $prevLevel, PDO::PARAM_INT);
+$queryGetIdsWinners->bindParam(':RONDE_TOURNOIS_ID', $tournoiId, PDO::PARAM_INT);
+
+$queryGetIdsWinners->execute();
+
+while ($rowInDb = $queryGetIdsWinners->fetch(PDO::FETCH_ASSOC)) {
+
+    $equipeWinner = Equipe_tM_Controller::FindTeam((int)$rowInDb['VAINQUEUR_ID']);
+    array_push($tabWinners, $equipeWinner);
+}
+
+$arrWinnersIds = array();
+
+    foreach ($tabWinners as $winnerTeam) {
+
+        $idTeam = (int)$winnerTeam->getId();
+        array_push($arrWinnersIds, $idTeam);
+    }
+
+$queryGetIdsLosers = Database::prepare("SELECT DISTINCT `EQUIPE`.`UTILISATEUR_ID`
+FROM `tournamentManager`.`EQUIPE`, `tournamentManager`.`MATCHES`, `tournamentManager`.`RONDE_has_MATCHES`, `tournamentManager`.`TOURNOIS_has_EQUIPE`
+WHERE `RONDE_has_MATCHES`.`RONDE_ETAPE` = :RONDE_ETAPE
+AND `RONDE_has_MATCHES`.`RONDE_TOURNOIS_ID` = :RONDE_TOURNOIS_ID
+AND `EQUIPE`.`UTILISATEUR_ID` = `TOURNOIS_has_EQUIPE`.`EQUIPE_UTILISATEUR_ID`
+AND `EQUIPE`.`UTILISATEUR_ID` NOT IN (
+    :winner1, :winner2, :winner3, :winner4
+)");
+
+$queryGetIdsLosers->bindParam(':RONDE_ETAPE', $prevLevel, PDO::PARAM_INT);
+$queryGetIdsLosers->bindParam(':RONDE_TOURNOIS_ID', $tournoiId, PDO::PARAM_INT);
+$queryGetIdsLosers->bindParam(':winner1', $arrWinnersIds[0], PDO::PARAM_STR);
+$queryGetIdsLosers->bindParam(':winner2', $arrWinnersIds[1], PDO::PARAM_STR);
+$queryGetIdsLosers->bindParam(':winner3', $arrWinnersIds[2], PDO::PARAM_STR);
+$queryGetIdsLosers->bindParam(':winner4', $arrWinnersIds[3], PDO::PARAM_STR);
+
+$queryGetIdsLosers->execute();
+
+while ($rowInDb = $queryGetIdsLosers->fetch(PDO::FETCH_ASSOC)) {
+
+    // $equipeLoser = Equipe_tM_Controller::FindTeam((int)$rowInDb['UTILISATEUR_ID']);
+    $equipeLoser = $rowInDb['UTILISATEUR_ID'];
+    array_push($tabLosers, (int)$equipeLoser);
+}
+
+$count = 0;
+foreach ($tabLosers as $team) {
+    $equipeLoser = Equipe_tM_Controller::FindTeam($team);
+    unset($tabLosers[$count]);
+    array_push($tabLosers, $equipeLoser);
+    $count++;
+}
+```
+
+### Après-midi:
+
+- 12:40: Fin de la pause de midi, je vais approfondir l'interface
+
+- 13:40: Pendant le laps de temps entre le début et la fin des inscription, dans le détail du tournoi, le bouton "S'inscrire" s'affiche si l'utilisateur ne s'est pas inscrit, dans le cas contraire, s'il est déjà inscrit, le bouton "Se désinscire" s'affiche. Je vais passer à l'affichage des résultats intermédiaires des rondes
+
+- 14:15: Début de la pause.
+
+- 14:35: Fin de la pause. Je continue à travailler sur la page du détail du tournoi
+
+- 16:00: Le tableau des résultats affiche les points que chaque équipe a obtenu à chaque étape/ronde du tournoi
+
+- 16:45: Fin d'une longue journée, il reste encore pas mal de travailler cependant j'arriverai à tout finir, je n'ai pas le choix!
