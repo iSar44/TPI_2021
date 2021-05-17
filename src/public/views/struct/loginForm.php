@@ -29,6 +29,8 @@ if ($submit) {
 
                     $_SESSION['username'] = $u_controller->GetNicknameOfUser($userEmail);
 
+                    $_SESSION['idUser'] = $u_controller->GetIdOfUser($_SESSION['username']);
+
                     $_SESSION['admin'] = $u_controller->CheckIfUserIsAdmin($_SESSION['username']);
 
                     header('Location: ./');
