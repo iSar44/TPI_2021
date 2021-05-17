@@ -112,6 +112,26 @@ class Utilisateur_tM_Controller
         }
     }
 
+    public function GetIdOfUser($aNickname)
+    {
+        $query = Database::prepare("SELECT `ID` FROM UTILISATEUR WHERE `NICKNAME` = :NICKNAME");
+
+        $query->bindParam(':NICKNAME', $aNickname, PDO::PARAM_STR);
+        $query->setFetchMode(PDO::FETCH_ASSOC);
+
+        try {
+            $query->execute();
+            $queryResult = $query->fetch();
+
+            $id = (int)$queryResult['ID'];
+
+            return $id;
+        } catch (PDOException $e) {
+            return $e->getMessage();
+        }
+    }
+
+
     public function GetNicknameOfUser($anEmail): string
     {
         $query = Database::prepare("SELECT `NICKNAME` FROM UTILISATEUR WHERE `EMAIL` = :EMAIL");
