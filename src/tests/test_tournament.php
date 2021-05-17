@@ -10,7 +10,7 @@ require_once('./src/web.inc.all.php');
 
 
 $tournoiControl = new Tournoi_tM_Controller();
-$tournoiK = $tournoiControl->SelectTournament(1);
+$tournoi16 = $tournoiControl->SelectTournament(2);
 
 $equipeControl = new Equipe_tM_Controller();
 
@@ -22,6 +22,14 @@ $cloud6 = $equipeControl->FindTeam(6);
 $mountain7 = $equipeControl->FindTeam(7);
 $forest8 = $equipeControl->FindTeam(8);
 $house9 = $equipeControl->FindTeam(9);
+$test10 = $equipeControl->FindTeam(10);
+$hill11 = $equipeControl->FindTeam(11);
+$hamilton12 = $equipeControl->FindTeam(12);
+$alonso13 = $equipeControl->FindTeam(13);
+$webber14 = $equipeControl->FindTeam(14);
+$mansell15 = $equipeControl->FindTeam(15);
+$stewart16 = $equipeControl->FindTeam(16);
+$senna17 = $equipeControl->FindTeam(17);
 
 
 
@@ -124,30 +132,65 @@ $house9 = $equipeControl->FindTeam(9);
 
 #region TEST -> Simulation d'un tournoi complet! (Equipes déjà inscrites)
 
-// //Création de la 1ère ronde
+// //Création de la 1ère ronde et début du tournoi
 // $tournoiControl->CreateRoundForTournament($tournoiK, 8);
 
-// //Début du tournoi (1ère ronde)
+#region Deprecated
+//Début du tournoi (1ère ronde)
 // $tournoiControl->StartTournament($tournoiK);
+#endregion
 
 //Résultats de la 1ère ronde
-// $tournoiControl->SetWinner($lake2, $cloud6);
-// $tournoiControl->SetWinner($mountain7, $road4);
-// $tournoiControl->SetWinner($river3, $tree5);
-// $tournoiControl->SetWinner($forest8, $house9);
+// $tournoiControl->SetWinner($mountain7, $lake2);
+// $tournoiControl->SetWinner($river3, $road4);
+// $tournoiControl->SetWinner($tree5, $forest8);
+// $tournoiControl->SetWinner($cloud6, $house9);
 
-// //Fin de la 1ème ronde, création et début de la 2ème
-$tournoiControl->StopRound($tournoiK);
+//Fin de la 1ème ronde, création et début de la 2ème
+// $tournoiControl->StopRound($tournoiK);
 
 // //Résultats de la 2ème ronde
-// $tournoiControl->SetWinner($lake2, $river3);
-// $tournoiControl->SetWinner($forest8, $mountain7);
-// $tournoiControl->SetWinner($road4, $tree5);
-// $tournoiControl->SetWinner($house9, $cloud6);
+// $tournoiControl->SetWinner($tree5, $river3);
+// $tournoiControl->SetWinner($cloud6, $mountain7);
+// $tournoiControl->SetWinner($road4, $lake2);
+// $tournoiControl->SetWinner($forest8, $house9);
 
-//Fin de la 2ème ronde, création et début de la 3ème
-$tournoiControl->StopRound($tournoiK);
+// //Fin de la 2ème ronde, création et début de la 3ème
+// $tournoiControl->StopRound($tournoiK);
+
+// Résultats de la 2ème ronde
+// $tournoiControl->SetWinner($forest8, $road4);
+// $tournoiControl->SetWinner($tree5, $cloud6);
+// $tournoiControl->SetWinner($river3, $lake2);
+// $tournoiControl->SetWinner($mountain7, $house9);
+
+// //Fin de la 3ème ronde, création et début de la 4ème
+//$tournoiControl->StopRound($tournoiK);
+
+#endregion
 
 
+#region SIMULATION tournoi avec 16 équipes
 
+//Register Team
+// $tournoiControl->RegisterTeam($tournoi16, $lake2);
+// $tournoiControl->RegisterTeam($tournoi16, $river3);
+// $tournoiControl->RegisterTeam($tournoi16, $road4);
+// $tournoiControl->RegisterTeam($tournoi16, $tree5);
+// $tournoiControl->RegisterTeam($tournoi16, $cloud6);
+// $tournoiControl->RegisterTeam($tournoi16, $mountain7);
+// $tournoiControl->RegisterTeam($tournoi16, $forest8);
+// $tournoiControl->RegisterTeam($tournoi16, $house9);
+// $tournoiControl->RegisterTeam($tournoi16, $test10);
+// $tournoiControl->RegisterTeam($tournoi16, $hill11);
+// $tournoiControl->RegisterTeam($tournoi16, $hamilton12);
+// $tournoiControl->RegisterTeam($tournoi16, $alonso13);
+// $tournoiControl->RegisterTeam($tournoi16, $webber14);
+// $tournoiControl->RegisterTeam($tournoi16, $mansell15);
+// $tournoiControl->RegisterTeam($tournoi16, $stewart16);
+// $tournoiControl->RegisterTeam($tournoi16, $senna17);
+
+
+//Création de la 1ère ronde et début du tournoi
+$tournoiControl->CreateRoundForTournament($tournoi16, 16, "00:00");
 #endregion
