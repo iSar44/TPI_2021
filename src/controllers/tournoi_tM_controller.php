@@ -495,7 +495,7 @@ class Tournoi_tM_Controller
      */
     public static function SecondToLastRound(Tournoi_tM $unTournoi): void
     {
-        $nbMatches = 0;
+        $nbMatches = 6;
 
         // self::LoadTournamentTeams($unTournoi);
         // self::LoadTournamentRounds($unTournoi);
@@ -507,6 +507,44 @@ class Tournoi_tM_Controller
             $teamResult = Equipe_tM_Controller::GetTeamResultsFromTournament($unTournoi, $team);
 
             if ($teamResult[1] == 3) {
+                unset($tabTeams[$key]);
+            }
+
+            if ($teamResult[1] == 0) {
+                unset($tabTeams[$key]);
+            }
+        }
+
+        $unTournoi->setTeams($tabTeams);
+
+        self::CreateRoundForTournament($unTournoi, $nbMatches);
+        self::TournamentContinues($unTournoi);
+    }
+
+    /**
+     * Undocumented function
+     *
+     * @param Tournoi_tM $unTournoi
+     * @return void
+     */
+    public static function LastRound(Tournoi_tM $unTournoi)
+    {
+        $nbMatches = 3;
+
+        // self::LoadTournamentTeams($unTournoi);
+        // self::LoadTournamentRounds($unTournoi);
+
+        $tabTeams = $unTournoi->getTeams();
+
+        foreach ($tabTeams as $key => $team) {
+
+            $teamResult = Equipe_tM_Controller::GetTeamResultsFromTournament($unTournoi, $team);
+
+            if ($teamResult[1] == 3) {
+                unset($tabTeams[$key]);
+            }
+
+            if ($teamResult[1] == 1) {
                 unset($tabTeams[$key]);
             }
 
@@ -547,12 +585,18 @@ class Tournoi_tM_Controller
             self::SecondToLastRound($unTournoi);
         }
 
-        if ($lastRoundLevel == 4) {
+        // if ($lastRoundLevel == 4) {
 
-            $nbMatches -= 2;
+        //     $nbMatches -= 3;
+        // }
+
+        if ($lastRoundLevel == 4) {
+            self::LastRound($unTournoi);
         }
 
-        self::CreateRoundForTournament($unTournoi, $nbMatches, "00:00");
+        if ($lastRoundLevel != 4 && $lastRoundLevel != 5) {
+            self::CreateRoundForTournament($unTournoi, $nbMatches, "00:00");
+        }
 
 
         //self::LoadTournamentRounds($unTournoi);
@@ -628,18 +672,20 @@ class Tournoi_tM_Controller
                 }
             }
 
-            if (!empty($arrTeamsWithOnePoint)) {
+            if ($lastRoundLevel < 5) {
+                if (!empty($arrTeamsWithOnePoint)) {
 
-                foreach ($arrTeamsWithOnePoint as $teamsWithOnePoint) {
+                    foreach ($arrTeamsWithOnePoint as $teamsWithOnePoint) {
 
-                    foreach ($teamsWithOnePoint as $teamAttr) {
+                        foreach ($teamsWithOnePoint as $teamAttr) {
 
-                        $team = new Equipe_tM();
+                            $team = new Equipe_tM();
 
-                        $team->setId($teamAttr->getId());
-                        $team->setNomEquipe($teamAttr->getNomEquipe());
+                            $team->setId($teamAttr->getId());
+                            $team->setNomEquipe($teamAttr->getNomEquipe());
 
-                        array_push($tabTeams1pt, $team);
+                            array_push($tabTeams1pt, $team);
+                        }
                     }
                 }
             }
@@ -1225,8 +1271,6 @@ class Tournoi_tM_Controller
                 }
 
                 if ((int)$rowInDb['COUNT(`MATCHES`.`VAINQUEUR_ID`)'] === $nbMatches) {
-
-                    sendMailToPlayersEndRound($unTournoi, $lastRoundLevel);
                     self::TournamentContinues($unTournoi);
                 }
             }

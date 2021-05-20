@@ -27,8 +27,9 @@ if (!empty($lastRound)) {
     $lastRoundLevel = $lastRound->getLevel();
 }
 
+$_SESSION['tournamentFinished'] = false;
 
-if ($currentDate >= strtotime($tournoi->getDateHeureDemarrage()) && $_SESSION['tournamentFinished'] != true) {
+if ($currentDate >= strtotime($tournoi->getDateHeureDemarrage()) && isset($_SESSION['tournamentFinished']) && $_SESSION['tournamentFinished'] != true) {
     $_SESSION['tournamentStarted'] = true;
 
     if (empty($rounds)) {
@@ -64,10 +65,12 @@ if ($currentDate >= strtotime($tournoi->getDateHeureDemarrage()) && $_SESSION['t
         if (Tournoi_tM_Controller::StopRound($tournoi) == false) {
             $msgToChangeRound = true;
             if ($lastRoundLevel == 5) {
+                sendMailTournamentEnded($unTournoi, $mailer);
                 $_SESSION['tournamentFinished'] = true;
                 $msgToChangeRound = false;
             }
         } else {
+            sendMailToPlayersEndRound($unTournoi, $mailer);
             $msgToChangeRound = false;
         }
     }
@@ -94,7 +97,7 @@ if ($currentDate >= strtotime($tournoi->getDateHeureDemarrage()) && $_SESSION['t
 
 
 
-if (!isset($_SESSION['admin'])) {
+if (isset($_SESSION['admin']) && $_SESSION['admin'] == 0) {
     $equipe = $e_controller::FindTeam($_SESSION['idUser']);
 }
 
@@ -288,7 +291,6 @@ $nomDesEquipes = $e_controller->GetTeamNamesInTournament($tournoi);
 
                                 $endResult = Equipe_tM_Controller::GetTeamResultsFromTournament($tournoi, $team);
 
-
                                 if ($score >= 1) {
                                     if ($level == 4 && $endResult[1] == 3) {
                                         $score = "Q";
@@ -299,7 +301,7 @@ $nomDesEquipes = $e_controller->GetTeamNamesInTournament($tournoi);
                                 } else {
                                     if ($level == 4 && $endResult[1] == 0) {
                                         $score = "DQ";
-                                        echo "<td style='margin:auto;color:green;font-size:1.5em;'><strong>" . $score . "</strong></td>";
+                                        echo "<td style='margin:auto;color:red;font-size:1.5em;'><strong>" . $score . "</strong></td>";
                                     } else {
                                         echo "<td style='margin:auto;color:red;font-size:1.5em;'><strong>" . $score . "</strong></td>";
                                     }
@@ -476,35 +478,34 @@ $nomDesEquipes = $e_controller->GetTeamNamesInTournament($tournoi);
 
 <?php if (isset($_SESSION['admin'])) : ?>
 
+    <?php if ($_SESSION['admin'] == 1) : ?>
 
-<?php else : ?> <?php if ($currentDate >= strtotime($tournoi->getDateHeureDebutInscription()) && $currentDate <= strtotime($tournoi->getDateHeureFinInscription()) && $e_controller->CheckIfTeamIsRegistered($tournoi, $equipe) == false) : ?> <form method="POST" action="#">
-            <div id="formdiv">
+    <?php else : ?>
 
-                <div class="row" style="padding-top:24px;">
-                    <div class="mx-auto" style="text-align:center;">
-                        <input class="btn btn-primary btn-lg" style="font-family:Roboto, sans-serif;" name="register" type="submit" value="S'inscrire" />
+        <?php if ($currentDate >= strtotime($tournoi->getDateHeureDebutInscription()) && $currentDate <= strtotime($tournoi->getDateHeureFinInscription()) && $e_controller->CheckIfTeamIsRegistered($tournoi, $equipe) == false) : ?> <form method="POST" action="#">
+                <div id="formdiv">
+
+                    <div class="row" style="padding-top:24px;">
+                        <div class="mx-auto" style="text-align:center;">
+                            <input class="btn btn-primary btn-lg" style="font-family:Roboto, sans-serif;" name="register" type="submit" value="S'inscrire" />
+                        </div>
                     </div>
                 </div>
-            </div>
-        </form>
+            </form>
 
-    <?php elseif ($e_controller->CheckIfTeamIsRegistered($tournoi, $equipe) && $currentDate <= strtotime($tournoi->getDateHeureFinInscription())) : ?>
-        <form method="POST" action="#">
-            <div id="formdiv">
+        <?php elseif ($e_controller->CheckIfTeamIsRegistered($tournoi, $equipe) && $currentDate <= strtotime($tournoi->getDateHeureFinInscription())) : ?>
+            <form method="POST" action="#">
+                <div id="formdiv">
 
-                <div class="row" style="padding-top:24px;">
-                    <div class="mx-auto" style="text-align:center;">
-                        <input class="btn btn-danger btn-lg" style="font-family:Roboto, sans-serif;" name="unregister" type="submit" value="Se désinscrire" />
+                    <div class="row" style="padding-top:24px;">
+                        <div class="mx-auto" style="text-align:center;">
+                            <input class="btn btn-danger btn-lg" style="font-family:Roboto, sans-serif;" name="unregister" type="submit" value="Se désinscrire" />
+                        </div>
                     </div>
                 </div>
-            </div>
-        </form>
+            </form>
 
-
+        <?php endif; ?>
     <?php endif; ?>
 
-    <?php if ($currentDate > strtotime($tournoi->getDateHeureFinInscription())) : ?>
-
-
-    <?php endif; ?>
 <?php endif; ?>

@@ -17,6 +17,15 @@ $transport = (new Swift_SmtpTransport(EMAIL_SERVER, EMAIL_PORT, EMAIL_TRANS))
 $mailer = new Swift_Mailer($transport);
 
 
+/**
+ * Fonction qui envoie des emails quand le tournoi commence
+ *
+ * @param Equipe_tM $ownTeam
+ * @param Equipe_tM $adversaryTeam
+ * @param Tournoi_tM $unTournoi
+ * @param Swift_Mailer $aMailer
+ * @return void
+ */
 function sendMailToPlayersStartTournament(Equipe_tM $ownTeam, Equipe_tM $adversaryTeam, Tournoi_tM $unTournoi, $aMailer)
 {
     $dateTournoiStart = $unTournoi->getDateHeureDemarrage();
@@ -43,6 +52,13 @@ function sendMailToPlayersStartTournament(Equipe_tM $ownTeam, Equipe_tM $adversa
 }
 
 
+/**
+ * Fonction qui envoie des emails à la fin de chaque ronde
+ *
+ * @param Tournoi_tM $unTournoi
+ * @param Swift_Mailer $aMailer
+ * @return void
+ */
 function sendMailToPlayersEndRound(Tournoi_tM $unTournoi, $aMailer)
 {
     $t_controller = new Tournoi_tM_Controller();
@@ -72,6 +88,37 @@ function sendMailToPlayersEndRound(Tournoi_tM $unTournoi, $aMailer)
 }
 
 
-function sendMailIfTeamIsDefeated()
+/**
+ * Fonction qui envoie des emails à la fin d'un tournoi
+ *
+ * @param Tournoi_tM $unTournoi
+ * @param Swift_Mailer $aMailer
+ * @return void
+ */
+function sendMailTournamentEnded(Tournoi_tM $unTournoi, $aMailer)
 {
+    $t_controller = new Tournoi_tM_Controller();
+
+    $rounds = $t_controller->GetTournamentRounds($unTournoi);
+    $teams = $t_controller->GetTournamentTeams($unTournoi);
+
+    $res = $t_controller->GetResultsFromTournament($unTournoi);
+    $output = serialize($res);
+
+    foreach ($teams as $aTeam) {
+
+        $teamName = $aTeam->getNomEquipe();
+        $email = $aTeam->getEmail();
+
+
+        $text = "<h2>Résultat des matchs du tournoi</h2><br/>
+        <p>Les résultats du tournoi sont: " . $output . "</p>";
+
+        $message = (new Swift_Message("Tournoi Terminé"))
+            ->setFrom([EMAIL_USERNAME => "tManager - Info"])
+            ->setTo([$email => $teamName])
+            ->setBody($text, 'text/html');
+
+        $aMailer->send($message);
+    }
 }

@@ -7,7 +7,7 @@ $u_controller = new Utilisateur_tM_Controller();
     <div class="row">
         <div class="col-12 col-sm-6 col-md-6">
             <br />
-            <h3 class="text-dark mb-4">Tournois en cours ou à venir :</h3>
+            <h3 class="text-dark mb-4">Liste des tournois :</h3>
         </div>
     </div>
     <div class="row">

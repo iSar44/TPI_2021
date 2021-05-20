@@ -20,7 +20,14 @@ $currentFilter = new Filter();
 $currentFilter->dateStart = filter_input(INPUT_POST, 'dateStart', FILTER_SANITIZE_STRING);
 $currentFilter->dateStop = filter_input(INPUT_POST, 'dateStop', FILTER_SANITIZE_STRING);
 $currentFilter->tournamentStatus = (int)filter_input(INPUT_POST, 'tournamentStatus', FILTER_SANITIZE_NUMBER_INT);
+if ($currentFilter->tournamentStatus == 0) {
+    $currentFilter->tournamentStatus == -1;
+}
 $currentFilter->nbEquipe = (int)filter_input(INPUT_POST, 'quantity', FILTER_SANITIZE_NUMBER_INT);
+if ($currentFilter->nbEquipe == 0) {
+    $currentFilter->nbEquipe == -1;
+}
+
 
 if (isset($_GET['id'])) {
     $t_manager->DeleteTournament($_GET['id']);
@@ -67,7 +74,8 @@ $currentDate = time();
     </section>
 
     <section>
-        <?php require_once('./src/public/views/struct/sectionCrudTermine.php'); ?>
+        <?php //require_once('./src/public/views/struct/sectionCrudTermine.php'); 
+        ?>
     </section>
 
     <!-- Footer -->

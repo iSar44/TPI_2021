@@ -197,4 +197,4 @@ $senna17 = $equipeControl->FindTeam(17);
 #endregion
 
 
-//sendMailToPlayersEndRound($tournoiK, $mailer);
+// sendMailTournamentEnded($tournoiK, $mailer);
