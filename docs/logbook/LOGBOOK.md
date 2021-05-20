@@ -489,7 +489,7 @@ function SearchFilter() {
 
 - 16:45: Fin de la journée
 
-## <u>8ème jour - 10/05/2021 (Début de la troisième semaine)</u>
+## <u>8ème jour - 17/05/2021 (Début de la troisième semaine)</u>
 
 ### Matin:
 
@@ -581,3 +581,399 @@ foreach ($tabLosers as $team) {
 - 16:00: Le tableau des résultats affiche les points que chaque équipe a obtenu à chaque étape/ronde du tournoi
 
 - 16:45: Fin d'une longue journée, il reste encore pas mal de travailler cependant j'arriverai à tout finir, je n'ai pas le choix!
+
+## <u>9ème jour - 18/05/2021</u>
+
+### Matin:
+
+- 7:30: Début d'une nouvelle journée, vu qu'il ne reste plus que 3 jours (celui-ci inclus) avant le rendu du projet, il faut que j'augmente la cadence ❗ Le but de la journée d'aujourd'hui est de régler la plupart des problèmes en lien avec la gestion du tournoi. Je m'attaque à la modification de ma fonction de création de ronde.
+
+- 10:30: Comme l'avais demandé M. Aigroz à la place de créer toutes les rondes d'un tournoi immédiatement, il est plus judicieux de les créer une à la fois. Voici la fonction modifiée.
+
+```php
+    /**
+     * Fonction qui crée une ronde pour un tournoi passé en paramètre
+     *
+     * @param Tournoi_tM $unTournoi
+     * @param int $nbMatches
+     * @param string $tempsPreparation
+     * @return void
+     */
+    public static function CreateRoundForTournament(Tournoi_tM $unTournoi, $nbMatches, $tempsPreparation = "00:00")
+    {
+        $tabRounds = array();
+
+        $tournoiId = $unTournoi->getId();
+
+        // $getPrevLevelQuery = Database::prepare("SELECT MAX(`RONDE_has_MATCHES`.`RONDE_ETAPE`)
+        // FROM `tournamentManager`.`RONDE_has_MATCHES`
+        // WHERE `RONDE_has_MATCHES`.`RONDE_TOURNOIS_ID` = :RONDE_TOURNOIS_ID");
+
+        $getPrevLevelQuery = Database::prepare("SELECT MAX(`RONDE`.`ETAPE`)
+        FROM `tournamentManager`.`RONDE`
+        WHERE `RONDE`.`TOURNOIS_ID` = :TOURNOIS_ID");
+
+        $getPrevLevelQuery->bindParam(':TOURNOIS_ID', $tournoiId, PDO::PARAM_INT);
+
+        $getPrevLevelQuery->execute();
+
+        if ($rowInDb = $getPrevLevelQuery->fetch(PDO::FETCH_ASSOC)) {
+
+            if ($rowInDb['MAX(`RONDE`.`ETAPE`)'] == null) {
+                $nbRound = 1;
+            } else {
+                $prevNbRound = (int)$rowInDb['MAX(`RONDE`.`ETAPE`)'];
+                $nbRound = $prevNbRound + 1;
+            }
+        }
+
+        /**
+         * For my future self
+         *
+         * $nbEquipes = $unTournoi->getNbEquipes();
+         *
+         * if($nbEquipes === 8){
+         *      $nbRound = 4
+         * }else{
+         *      $nbRound = 5;
+         * }
+         */
+        $query = Database::prepare("INSERT INTO `RONDE` (`TOURNOIS_ID`, `ETAPE`, `NB_MATCHES`, `TEMPS_PREPARATION`) VALUES (:TOURNOIS_ID, :ETAPE, :NB_MATCHES, :TEMPS_PREPARATION)");
+
+        $tournoiId = $unTournoi->getId();
+
+        $query->bindParam(':TOURNOIS_ID', $tournoiId, PDO::PARAM_INT);
+        $query->bindParam(':ETAPE', $nbRound, PDO::PARAM_INT);
+        $query->bindParam(':NB_MATCHES', $nbMatches, PDO::PARAM_INT);
+        $query->bindParam(':TEMPS_PREPARATION', $tempsPreparation, PDO::PARAM_STR);
+
+        try {
+            $query->execute();
+
+            $ronde = new Ronde_tM();
+            $tabMatchesIds = array();
+            $tabMatchesTeams = array();
+
+
+
+            $ronde->setTournamentId($tournoiId);
+            $ronde->setLevel($nbRound);
+            $ronde->setMatchesIds($tabMatchesIds);
+            $ronde->setMatches($tabMatchesTeams);
+
+            array_push($tabRounds, $ronde);
+        } catch (PDOException $e) {
+
+            echo "Exception - CreateRoundForTournament() : " . $e->getMessage();
+            return false;
+        }
+
+        // for ($nbRound = 1; $nbRound <= 5; $nbRound++) {
+
+        // }
+
+        $unTournoi->setRounds($tabRounds);
+
+        if ($nbRound == 1) {
+            self::StartTournament($unTournoi);
+        }
+    }
+```
+
+- 10:50: Dès lors jusqu'à la pause de midi, je vais tester cette fonction en long et en large afin de m'assurer que j'obtiens le résultat voulu.
+
+- 11:40: Mes tests sont bien passés ✅, début de la pause de midi
+
+### Après-midi:
+
+- 12:40: Fin de la pause de midi. Je vais à nouveau m'attaquer sur l'arrangement des matchs.
+
+- 13:00: 😨... Je viens de relire l'énoncé et je me suis aperçu que la manière dont j'arrangeais les matchs n'était pas du tout correcte. Il me semble qu'on reprenait à chaque fois les vainqueurs de la ronde précédente pour les opposer l'un à l'autre mais cela fonctionne uniquement dans la 1ère ronde, les matchs dans les rondes suivantes sont arranger en fonction des points cumulés par l'équipe... Ceci est un très gros problème, il faut que je retravaille presque entièrement les fonctions que j'ai déjà élaboré, M\*\*\*\*...
+
+- 16:00: J'ai décidé de partir sur une solution qui n'est sûrement pas très élégant cependant je la comprend et elle me permet de trier les équipes en fonction des points cumulés
+
+```php
+    /**
+     * Fonction qui permet de gérer l'avancement du tournoi
+     *
+     * @param Tournoi_tM $unTournoi
+     * @return void
+     */
+    public static function TournamentContinues(Tournoi_tM $unTournoi)
+    {
+
+        $nbTeams = $unTournoi->getNbEquipes();
+        $nbMatches = $nbTeams / 2;
+        // self::LoadTournamentTeams($unTournoi);
+        // self::LoadTournamentRounds($unTournoi);
+
+        $rounds = $unTournoi->getRounds();
+        $lastRound = end($rounds);
+        $lastRoundLevel = $lastRound->getLevel();
+
+        $teamsInTournament = $unTournoi->getTeams();
+
+        if ($lastRoundLevel == 3) {
+
+            self::SecondToLastRound($unTournoi);
+        }
+
+        if ($lastRoundLevel == 4) {
+
+            $nbMatches -= 2;
+        }
+
+        self::CreateRoundForTournament($unTournoi, $nbMatches, "00:00");
+
+
+        //self::LoadTournamentRounds($unTournoi);
+
+
+        $query = Database::prepare("SELECT COUNT(`RONDE_has_MATCHES`.`MATCHES_ID`)
+        FROM `tournamentManager`.`RONDE_has_MATCHES`
+        HAVING COUNT(`RONDE_has_MATCHES`.`RONDE_ETAPE`) = COUNT(`RONDE_has_MATCHES`.`MATCHES_ID`)");
+
+
+        $query->execute();
+
+        $tournoiId = $unTournoi->getId();
+
+        $nextRoundAllMatches = array();
+        $nextRoundAllMatchesIds = array();
+
+        $arrNbVictoiresParEquipe = array();
+
+        $arrTeamsWithZeroPoints = array();
+        $arrTeamsWithOnePoint = array();
+        $arrTeamsWithTwoPoints = array();
+        $arrTeamsWithThreePoints = array();
+
+        $tabTeams0pts = array();
+        $tabTeams1pt = array();
+        $tabTeams2pts = array();
+        $tabTeams3pts = array();
+
+        if ($query->fetch(PDO::FETCH_ASSOC)) {
+            // $tabWinners = array();
+            // $tabLosers = array();
+
+
+            foreach ($teamsInTournament as $team) {
+
+                $nbVictoires = Equipe_tM_Controller::GetTeamResultsFromTournament($unTournoi, $team);
+                array_push($arrNbVictoiresParEquipe, $nbVictoires);
+            }
+
+
+            foreach ($arrNbVictoiresParEquipe as $teams) {
+
+                if ($teams[1] == 0) {
+                    unset($teams[1]);
+                    array_push($arrTeamsWithZeroPoints, $teams);
+                } elseif ($teams[1] == 1) {
+                    unset($teams[1]);
+                    array_push($arrTeamsWithOnePoint, $teams);
+                } elseif ($teams[1] == 2) {
+                    unset($teams[1]);
+                    array_push($arrTeamsWithTwoPoints, $teams);
+                } elseif ($teams[1] == 3) {
+                    unset($teams[1]);
+                    array_push($arrTeamsWithThreePoints, $teams);
+                }
+            }
+
+            if ($lastRoundLevel < 4) {
+                if (!empty($arrTeamsWithZeroPoints)) {
+
+                    foreach ($arrTeamsWithZeroPoints as $teamsWithoutPoint) {
+                        foreach ($teamsWithoutPoint as $teamAttr) {
+
+                            $team = new Equipe_tM();
+
+                            $team->setId($teamAttr->getId());
+                            $team->setNomEquipe($teamAttr->getNomEquipe());
+
+                            array_push($tabTeams0pts, $team);
+                        }
+                    }
+                }
+            }
+
+            if (!empty($arrTeamsWithOnePoint)) {
+
+                foreach ($arrTeamsWithOnePoint as $teamsWithOnePoint) {
+
+                    foreach ($teamsWithOnePoint as $teamAttr) {
+
+                        $team = new Equipe_tM();
+
+                        $team->setId($teamAttr->getId());
+                        $team->setNomEquipe($teamAttr->getNomEquipe());
+
+                        array_push($tabTeams1pt, $team);
+                    }
+                }
+            }
+
+            if (!empty($arrTeamsWithTwoPoints)) {
+
+                foreach ($arrTeamsWithTwoPoints as $teamsWithTwoPoints) {
+
+                    foreach ($teamsWithTwoPoints as $teamAttr) {
+                        $team = new Equipe_tM();
+
+                        $team->setId($teamAttr->getId());
+                        $team->setNomEquipe($teamAttr->getNomEquipe());
+
+                        array_push($tabTeams2pts, $team);
+                    }
+                }
+            }
+
+            if ($lastRoundLevel < 4) {
+                if (!empty($arrTeamsWithThreePoints)) {
+
+                    foreach ($arrTeamsWithThreePoints as $teamsWithThreePoints) {
+
+                        foreach ($teamsWithThreePoints as $teamAttr) {
+
+                            $team = new Equipe_tM();
+
+                            $team->setId($teamAttr->getId());
+                            $team->setNomEquipe($teamAttr->getNomEquipe());
+
+                            array_push($tabTeams3pts, $team);
+                        }
+                    }
+                }
+            }
+        }
+    }
+```
+
+- 16:45: Fin de la journée... Ce problème de compréhension de l'énoncé est apparu au pire moment il me reste encore à finir presque la totalité de l'interface du détail du tournoi et maintenant je dois complètement retravailler ma logique... Il faut que j'arrive au bout de cela, je n'ai pas le choix. J'espère que demain sera une meilleure journée.
+
+## <u>10ème jour - 19/05/2021</u>
+
+### Matin:
+
+- 7:30: Plus que deux jours... Il faut impérativement que je puisse finir la logique à la fin de la journée **AU PLUS TARD** sinon je n'arriverai pas à rendre le travail demain. M. Aigroz est en classe aujourd'hui donc j'espère qu'il pourra m'orienter dans la bonne direction pendant que je retravaille la logique.
+
+- 10:30: M. Aigroz m'a aidé a élaboré la fonction qui arrange les matches qui utilise ma fonction CheckIfTeamsHaveMet(), la voici:
+
+```php
+    /**
+     * Fonction qui permet d'arranger les matches des équipes
+     *
+     * @param Tournoi_tM $unTournoi
+     * @param array $arr Le tableau des équipes pour lesquelles on doit organiser les matches
+     * @return array Un tableau qui contient les équipes dans l'ordre des matches, première équipe contre deuxième équipe, troisième contre quatrième équipe etc...
+     */
+    private static function ArrangeMatchTeams(Tournoi_tM $unTournoi, $arr): array
+    {
+        $finalMatchTeams = array();
+        //$count = count($arr);
+        for ($i = array_key_first($arr); $i < array_key_last($arr); $i++) {
+
+            $team1 = $arr[$i];
+
+            if (in_array($team1, $finalMatchTeams)) {
+                continue;
+            }
+
+            $team2 = null;
+
+            $bFound = false;
+            for ($y = $i + 1; $y < array_key_last($arr) + 1; $y++) {
+
+                $team2 = $arr[$y];
+
+                if (self::CheckIfTeamsHaveMet($unTournoi, $team1, $team2) == false) {
+                    $bFound = true;
+                    break;
+                }
+            }
+            if ($bFound && $team2 != null) {
+                array_push($finalMatchTeams, $team1);
+                array_push($finalMatchTeams, $team2);
+            } else {
+                //error
+                return false;
+            }
+        }
+        return $finalMatchTeams;
+    }
+
+```
+
+- 10:45: Je vais à présent la tester avec ma fonction qui gère la suite du tournoi pour voir si les matchs sont correctement arrangé au fil des rondes.
+
+- 11:30: Il semblerait que les deux fonctions donnent les résultats désirés! Peut-être que tout n'est pas encore perdu 🙏. Début de la pause de midi.
+
+### Après-midi:
+
+- 12:40: Fin de la pause de midi. Je me remet sur l'interface. Il faut que je crée le formulaire pour pouvoir renseigner le vainqueur de chaque match depuis le site web.
+
+- 14:30: Il me semble que je suis arrivé à une solution plutôt facile d'utilisation et élégante qui se trouve ci-dessous. L'administrateur n'a qu'à a appuyé sur le bouton avec le nom de l'équipe qui a gagné et le reste se fait par soi-même.
+
+<img src="../maquetteSite/screenshots/setResult.png">
+
+- 14:45: Il faut maintenant que je gère les qualifications et éliminations au bout de la troisième ronde.
+
+- 15:45: Voici la fonction qui gère cela:
+
+```php
+    /**
+     * Fonction qui gère l'avant-dernière ronde d'un tournoi.
+     *
+     * @param Tournoi_tM $unTournoi
+     * @return void
+     */
+    public static function SecondToLastRound(Tournoi_tM $unTournoi): void
+    {
+        $nbMatches = 0;
+
+        // self::LoadTournamentTeams($unTournoi);
+        // self::LoadTournamentRounds($unTournoi);
+
+        $tabTeams = $unTournoi->getTeams();
+
+        foreach ($tabTeams as $key => $team) {
+
+            $teamResult = Equipe_tM_Controller::GetTeamResultsFromTournament($unTournoi, $team);
+
+            if ($teamResult[1] == 3) {
+                unset($tabTeams[$key]);
+            }
+
+            if ($teamResult[1] == 0) {
+                unset($tabTeams[$key]);
+            }
+        }
+
+        $unTournoi->setTeams($tabTeams);
+
+        self::CreateRoundForTournament($unTournoi, $nbMatches);
+        self::TournamentContinues($unTournoi);
+    }
+```
+
+- 16:00: Il faut maintenant que je fasse la même chose pour la dernière ronde
+
+- 16:45: Fin de la journée.
+
+## <u>11ème et dernier jour - 20/05/2021</u>
+
+### Matin:
+
+- 7:30: Je fait de même pour la dernière ronde et tout à l'air de fonctionner. ✅
+
+- 9:00: Dès lors je vais passer l'entièreté du temps qu'il me reste pour finaliser la documentation.
+
+- 11:40: Pause de midi
+
+### Après-midi:
+
+- 12:40: Fin de la pause de midi:
+
+- 17:00: Rendu du TIP ✅
