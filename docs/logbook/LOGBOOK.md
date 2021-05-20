@@ -976,4 +976,4 @@ foreach ($tabLosers as $team) {
 
 - 12:40: Fin de la pause de midi:
 
-- 17:00: Rendu du TIP
+- 17:00: Rendu du TPI
