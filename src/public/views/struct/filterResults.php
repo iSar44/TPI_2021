@@ -72,22 +72,22 @@ if ($filterSearch) {
         <div class="row table-topper align-items-center">
             <div class="filter">
                 <h1>Filtrer les tournois</h1>
-                <form>
+                <form method="POST" action="#">
                     <span for="datetime">Du:</span>
                     <input type="datetime-local" name="dateStart" />
                     <span for="datetime">Au:</span>
                     <input type="datetime-local" name="dateStop" />
-                    <select>
-                        <option value="title" name="tournamentStatus" disabled selected>Statut</option>
-                        <option value="inscriptionEnCours">Inscription en cours</option>
-                        <option value="tournoiEnCours">Tournoi en cours</option>
-                        <option value="tournoiAVenir">Tournoi à venir</option>
-                        <option value="tournoiTermine">Tournoi terminé</option>
+                    <select name="tournamentStatus">
+                        <option value="-1" selected>*</option>
+                        <option value="1">Inscription en cours</option>
+                        <option value="2">Tournoi en cours</option>
+                        <option value="3">Tournoi à venir</option>
+                        <option value="4">Tournoi terminé</option>
                     </select>
-                    <select>
-                        <option value="title" name="quantity" disabled selected>Nombre d&#39;équipes</option>
-                        <option value="8">8</option>
-                        <option value="16">16</option>
+                    <select name="quantity">
+                        <option value="-1" selected>*</option>
+                        <option value="8">8 équipes</option>
+                        <option value="16">16 équipes</option>
                     </select>
                     <!-- <input type="text" placeholder="Recherche libre" /> -->
                     <br />

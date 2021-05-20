@@ -10,15 +10,11 @@ require_once('./src/web.inc.all.php');
 
 Session::getInstance();
 
-$t_manager = new Tournoi_tM_Controller();
-
+$e_controller = new Equipe_tM_Controller();
+$t_controller = new Tournoi_tM_Controller();
 $currentDate = time();
 
-$tournoi = $t_manager->SelectTournament($_GET['id']);
-// echo "<pre>";
-// var_dump($selectedTournament);
-// echo "</pre>";
-
+$tournoi = $t_controller->SelectTournament($_GET['id']);
 ?>
 
 <!DOCTYPE html>
@@ -40,7 +36,7 @@ $tournoi = $t_manager->SelectTournament($_GET['id']);
     <link rel="stylesheet" href="/TPI_2021/src/public/assets/css/Footer-Basic.css">
     <link rel="stylesheet" href="/TPI_2021/src/public/assets/css/Show-Details.css">
     <link rel="shortcut icon" href="/TPI_2021/src/public/ressources/favicon.ico" type="image/x-icon">
-    <title>Home</title>
+    <title>Détails</title>
 </head>
 
 

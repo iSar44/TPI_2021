@@ -41,7 +41,9 @@ switch ($action) {
     case 'test':
         if (isset($_SESSION['isLoggedIn'])) {
             require __DIR__ . '/src/tests/test_tournament.php';
+            // require __DIR__ . '/src/functions/index.php';
         }
+        break;
     default:
         http_response_code(404);
         break;

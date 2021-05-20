@@ -8,11 +8,19 @@
 
 require_once('./src/web.inc.all.php');
 
+
 Session::getInstance();
 
 $t_manager = new Tournoi_tM_Controller();
 
 $allTournaments = $t_manager->SelectAll();
+
+$currentFilter = new Filter();
+// Lecture des filtres
+$currentFilter->dateStart = filter_input(INPUT_POST, 'dateStart', FILTER_SANITIZE_STRING);
+$currentFilter->dateStop = filter_input(INPUT_POST, 'dateStop', FILTER_SANITIZE_STRING);
+$currentFilter->tournamentStatus = (int)filter_input(INPUT_POST, 'tournamentStatus', FILTER_SANITIZE_NUMBER_INT);
+$currentFilter->nbEquipe = (int)filter_input(INPUT_POST, 'quantity', FILTER_SANITIZE_NUMBER_INT);
 
 if (isset($_GET['id'])) {
     $t_manager->DeleteTournament($_GET['id']);

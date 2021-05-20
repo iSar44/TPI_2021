@@ -1,0 +1,77 @@
+<?php
+
+/**
+ * @author Iliya Saroukhanian <iliya.srkhn@eduge.ch>
+ * @copyright 2021 Iliya Saroukhanian
+ * @version 1.0.0
+ */
+
+require_once('./src/web.inc.all.php');
+require_once('./src/controllers/config/mailparam.php');
+
+
+$transport = (new Swift_SmtpTransport(EMAIL_SERVER, EMAIL_PORT, EMAIL_TRANS))
+    ->setUsername(EMAIL_USERNAME)
+    ->setPassword(EMAIL_PASSWORD);
+
+$mailer = new Swift_Mailer($transport);
+
+
+function sendMailToPlayersStartTournament(Equipe_tM $ownTeam, Equipe_tM $adversaryTeam, Tournoi_tM $unTournoi, $aMailer)
+{
+    $dateTournoiStart = $unTournoi->getDateHeureDemarrage();
+    $stringDate = strtotime((string)$dateTournoiStart);
+
+    $ownTeamName = $ownTeam->getNomEquipe();
+    $ownTeamEmail = $ownTeam->getEmail();
+
+    $adversaryTeamName = $adversaryTeam->getNomEquipe();
+
+    $titreTournoi = $unTournoi->getTitre();
+    $dateMatch = date("d/m/Y H:i:s", $stringDate);
+
+    $text = "<h2>Bienvenue au tournoi '" . $titreTournoi . "'</h2><br/>
+    <p>Le premier match opposera votre équipe <i><b>" . $ownTeamName . '</b></i> contre  <i><b>' . $adversaryTeamName . "</b></i></p>
+    La date et l'heure du premier match: <b>" . $dateMatch . "</b>";
+
+    $message = (new Swift_Message("Début du tournoi"))
+        ->setFrom([EMAIL_USERNAME => "tManager - Info"])
+        ->setTo([$ownTeamEmail => $ownTeamName])
+        ->setBody($text, 'text/html');
+
+    $aMailer->send($message);
+}
+
+
+function sendMailToPlayersEndRound(Tournoi_tM $unTournoi, $aMailer)
+{
+    $t_controller = new Tournoi_tM_Controller();
+
+    $rounds = $t_controller->GetTournamentRounds($unTournoi);
+    $latestRound = end($rounds);
+    $level = $latestRound->getLevel();
+
+    $teams = $t_controller->GetTournamentTeams($unTournoi);
+
+    foreach ($teams as $aTeam) {
+
+        $teamName = $aTeam->getNomEquipe();
+        $email = $aTeam->getEmail();
+        $res = $t_controller->GetIntermediateResultsOfTeam($unTournoi, $level, $aTeam);
+
+        $text = "<h2>Résultat pour la ronde" . $level . "</h2><br/>
+        <p>Votre équipe <i>" . $teamName . "</i> a cumulé " . $res . " point(s)!</p>";
+
+        $message = (new Swift_Message("Résultat Intermédiaire"))
+            ->setFrom([EMAIL_USERNAME => "tManager - Info"])
+            ->setTo([$email => $teamName])
+            ->setBody($text, 'text/html');
+
+        $aMailer->send($message);
+    }
+}
+
+
+function sendMailIfTeamIsDefeated()
+{
+}

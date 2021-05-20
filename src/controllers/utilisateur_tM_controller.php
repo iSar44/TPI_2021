@@ -43,7 +43,12 @@ class Utilisateur_tM_Controller
     }
 
 
-
+    /**
+     * Fonction qui vérifie si l'email passé en paramètre existe déjà dans la base de données
+     *
+     * @param string $anEmail
+     * @return boolean
+     */
     public function CheckIfEmailExists($anEmail): bool
     {
         $query = Database::prepare("SELECT * FROM UTILISATEUR WHERE `EMAIL` = :EMAIL");
@@ -69,7 +74,7 @@ class Utilisateur_tM_Controller
 
     /**
      * Fonction qui vérifie si l'email et le mot de passe fournis correspondent à un
-     * enregistrement dans la BDD
+     * enregistrement dans la base de données
      *
      * @param string $anEmail
      * @param string $aPassword
@@ -93,6 +98,12 @@ class Utilisateur_tM_Controller
         }
     }
 
+    /**
+     * Fonction qui permet d'obtenir le mot de passe hashé associé à l'email passé en paramètre
+     *
+     * @param string $anEmail
+     * @return string
+     */
     public function GetHashPassword($anEmail): string
     {
         $query = Database::prepare("SELECT MDP FROM UTILISATEUR WHERE `EMAIL` = :EMAIL");
@@ -112,7 +123,14 @@ class Utilisateur_tM_Controller
         }
     }
 
-    public function GetIdOfUser($aNickname)
+    /**
+     * Fonction qui permet d'obtenir l'ID de l'utilisateur dans la base de données en fonction du nickname passé
+     * en paramètre
+     *
+     * @param string $aNickname
+     * @return integer $id
+     */
+    public function GetIdOfUser($aNickname): int
     {
         $query = Database::prepare("SELECT `ID` FROM UTILISATEUR WHERE `NICKNAME` = :NICKNAME");
 
@@ -132,6 +150,12 @@ class Utilisateur_tM_Controller
     }
 
 
+    /**
+     * Fonction qui permet d'obtenir le nickname de l'utilisateur en fonction de l'email passe en paramètre
+     *
+     * @param string $anEmail
+     * @return string
+     */
     public function GetNicknameOfUser($anEmail): string
     {
         $query = Database::prepare("SELECT `NICKNAME` FROM UTILISATEUR WHERE `EMAIL` = :EMAIL");
@@ -155,7 +179,7 @@ class Utilisateur_tM_Controller
      * Fonction qui vérifie si l'utilisateur est un administrateur ou un joueur
      *
      * @param string $aNickname
-     * @return integer
+     * @return integer $admin
      */
     public function CheckIfUserIsAdmin($aNickname): int
     {
@@ -180,7 +204,7 @@ class Utilisateur_tM_Controller
 
 
     /**
-     * Fonction qui retourne un tableau d'objets, chaque objet dans le tableau est un utilisateur
+     * Fonction qui retourne un tableau d'objets, chaque objet dans le tableau est un utilisateur (Utilisateur_tM)
      *
      * @return array
      */

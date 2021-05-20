@@ -6,8 +6,12 @@
  * @version 1.0.0
  */
 
+//Composer
+require_once('./src/vendor/autoload.php');
+
 //Classes
 require_once('./src/model/classes/session.php');
+require_once('./src/model/classes/filter.php');
 require_once('./src/model/db_model/database.php');
 require_once('./src/model/classes/utilisateur_tM.php');
 require_once('./src/model/classes/equipe_tM.php');
@@ -19,3 +23,7 @@ require_once('./src/model/classes/match_tM.php');
 require_once('./src/controllers/utilisateur_tM_controller.php');
 require_once('./src/controllers/tournoi_tM_controller.php');
 require_once('./src/controllers/equipe_tM_controller.php');
+require_once('./src/controllers/mail_controller.php');
+
+//Email parameters
+require_once('./src/controllers/config/mailparam.php');

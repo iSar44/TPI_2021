@@ -10,7 +10,8 @@ require_once('./src/web.inc.all.php');
 
 
 $tournoiControl = new Tournoi_tM_Controller();
-$tournoi16 = $tournoiControl->SelectTournament(2);
+$tournoiK = $tournoiControl->SelectTournament(2);
+// $tournoi16 = $tournoiControl->SelectTournament(2);
 
 $equipeControl = new Equipe_tM_Controller();
 
@@ -155,7 +156,7 @@ $senna17 = $equipeControl->FindTeam(17);
 // $tournoiControl->SetWinner($road4, $lake2);
 // $tournoiControl->SetWinner($forest8, $house9);
 
-// //Fin de la 2ème ronde, création et début de la 3ème
+//Fin de la 2ème ronde, création et début de la 3ème
 // $tournoiControl->StopRound($tournoiK);
 
 // Résultats de la 2ème ronde
@@ -192,5 +193,8 @@ $senna17 = $equipeControl->FindTeam(17);
 
 
 //Création de la 1ère ronde et début du tournoi
-$tournoiControl->CreateRoundForTournament($tournoi16, 16, "00:00");
+// $tournoiControl->CreateRoundForTournament($tournoi16, 16, "00:00");
 #endregion
+
+
+//sendMailToPlayersEndRound($tournoiK, $mailer);
