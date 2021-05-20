@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * @author Iliya Saroukhanian <iliya.srkhn@eduge.ch>
+ * @copyright 2021 Iliya Saroukhanian
+ * @version 1.0.0
+ */
+
 define("NB_POST_INPUT", 3);
 
 $regexEmail = '/([\w\-]+\@[\w\-]+\.[\w\-]+)/';

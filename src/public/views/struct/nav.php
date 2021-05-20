@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * @author Iliya Saroukhanian <iliya.srkhn@eduge.ch>
+ * @copyright 2021 Iliya Saroukhanian
+ * @version 1.0.0
+ */
+
+
 $u_controller = new Utilisateur_tM_Controller();
 
 ?>
@@ -20,8 +27,8 @@ $u_controller = new Utilisateur_tM_Controller();
                         <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#">Plus</a>
                         <div class="dropdown-menu">
                             <!-- <a class="dropdown-item" href="./?action=test">Créer un tournoi</a> -->
-                            <a class="dropdown-item" href="./?action=test">Créer un tournoi</a>
-                            <!-- <a class="dropdown-item" href="./?action=create&admin=true">Créer un tournoi</a> -->
+                            <!-- <a class="dropdown-item" href="./?action=test">Créer un tournoi</a> -->
+                            <a class="dropdown-item" href="./?action=create&admin=true">Créer un tournoi</a>
                             <!-- <a class="dropdown-item" href="#">Second Item</a>
                             <a class="dropdown-item" href="#">Third Item</a> -->
                         </div>

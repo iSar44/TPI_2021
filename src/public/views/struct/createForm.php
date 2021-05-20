@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * @author Iliya Saroukhanian <iliya.srkhn@eduge.ch>
+ * @copyright 2021 Iliya Saroukhanian
+ * @version 1.0.0
+ */
+
+
 $submit = filter_input(INPUT_POST, 'creer');
 
 $titreTournoi = filter_input(INPUT_POST, 'titreTournoi', FILTER_SANITIZE_STRING);
