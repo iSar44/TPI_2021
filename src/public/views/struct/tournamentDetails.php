@@ -39,9 +39,34 @@ if ($currentDate >= strtotime($tournoi->getDateHeureDemarrage()) && isset($_SESS
 
         $t_controller::CreateRoundForTournament($tournoi, $nbMatches);
 
+        $getRounds = $t_controller->GetTournamentRounds($tournoi);
 
-        $_SESSION['tournamentStarted'] = true;
-    } elseif (count($rounds) == 1 && !isset($_SESSION['startEmailSent'])) {
+
+        //$_SESSION['tournamentStarted'] = true;
+
+
+        foreach ($getRounds as $uneRonde) {
+
+            $lesMatchs = $uneRonde->getMatches();
+
+            foreach ($lesMatchs as $unMatch) {
+
+                $team1Id = $unMatch->getIdTeam1();
+                $team2Id = $unMatch->getIdTeam2();
+
+                $infoTeam1 = $e_controller::FindTeam($team1Id);
+                $infoTeam2 = $e_controller::FindTeam($team2Id);
+
+                sendMailToPlayersStartTournament($infoTeam1, $infoTeam2, $tournoi, $mailer);
+                sendMailToPlayersStartTournament($infoTeam2, $infoTeam1, $tournoi, $mailer);
+            }
+        }
+
+        $_SESSION['startEmailSent'] = true;
+
+        header("Location: " . $_SERVER['REQUEST_URI']);
+        // header("Location: ./?action=getDetails&id" . $_GET['id'] . "");
+    } /*elseif (count($rounds) == 1 && !isset($_SESSION['startEmailSent'])) {
 
         foreach ($rounds as $uneRonde) {
 
@@ -61,16 +86,25 @@ if ($currentDate >= strtotime($tournoi->getDateHeureDemarrage()) && isset($_SESS
         }
 
         $_SESSION['startEmailSent'] = true;
-    } else {
+    } */ else {
+
+
         if (Tournoi_tM_Controller::StopRound($tournoi) == false) {
-            $msgToChangeRound = true;
-            if ($lastRoundLevel == 5) {
-                sendMailTournamentEnded($unTournoi, $mailer);
-                $_SESSION['tournamentFinished'] = true;
+
+            if ($_SESSION['tournamentFinished'] != true) {
+                $msgToChangeRound = true;
+            } else {
                 $msgToChangeRound = false;
+                $msgTournamentFinished = true;
             }
+            // if ($lastRoundLevel == 5) {
+            //     sendMailTournamentEnded($unTournoi, $mailer);
+            //     $_SESSION['tournamentFinished'] = true;
+            //     $msgToChangeRound = false;
+            // }
         } else {
-            sendMailToPlayersEndRound($unTournoi, $mailer);
+            // sendMailToPlayersEndRound($unTournoi, $mailer);
+            header("Location: " . $_SERVER['REQUEST_URI']);
             $msgToChangeRound = false;
         }
     }
@@ -193,6 +227,17 @@ $nomDesEquipes = $e_controller->GetTeamNamesInTournament($tournoi);
         </div>
     </div>
 <?php endif; ?>
+
+<?php if (isset($msgTournamentFinished) && $msgTournamentFinished == true) : ?>
+    <div class="col-sm-6 col-lg-5 alert alert-info alert-dismissible fade show" style="margin:auto; margin-bottom:5vh;" role="alert">
+        <div style="text-align:center;">
+            <strong>Tournoi terminé</strong>
+            <br />
+            Ce tournoi est terminé, les résultats définitifs sont affichés ci-dessous.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    </div>
+<?php endif; ?>
 <div class="row justify-content-center">
     <div class="col-sm-6 col-lg-5" style="padding-right: 0px;padding-left: 0px;">
         <div class="card clean-card text-center">
@@ -288,23 +333,34 @@ $nomDesEquipes = $e_controller->GetTeamNamesInTournament($tournoi);
 
                                 $team = $e_controller->FindTeamByTeamname($nomEquipe);
                                 $score = $t_controller->GetIntermediateResultsOfTeam($tournoi, $level, $team);
+                                $globalScore = $t_controller->GetGlobalResultsOfTeam($tournoi, $team);
 
                                 $endResult = Equipe_tM_Controller::GetTeamResultsFromTournament($tournoi, $team);
 
-                                if ($score >= 1) {
-                                    if ($level == 4 && $endResult[1] == 3) {
-                                        $score = "Q";
-                                        echo "<td style='margin:auto;color:green;font-size:1.5em;'><strong>" . $score . "</strong></td>";
-                                    } else {
-                                        echo "<td style='margin:auto;color:green;font-size:1.5em;'><strong>" . $score . "</strong></td>";
-                                    }
+                                // if ($score >= 1) {
+                                //     if ($level == 4 && $endResult[1] == 3) {
+                                //         $score = "Q";
+                                //         echo "<td style='margin:auto;color:green;font-size:1.5em;'><strong>" . $score . "</strong></td>";
+                                //     } else {
+                                //         echo "<td style='margin:auto;color:green;font-size:1.5em;'><strong>" . $score . "</strong></td>";
+                                //     }
+                                // } else {
+                                //     if ($level >= 4 && $endResult[1] == 0 || $level >= 5 && $endResult[1] <= 2) {
+                                //         $score = "DQ";
+                                //         echo "<td style='margin:auto;color:red;font-size:1.5em;'><strong>" . $score . "</strong></td>";
+                                //     } elseif ($level == 4 && $endResult[1] == 3) {
+                                //         $score = "Q";
+                                //         echo "<td style='margin:auto;color:green;font-size:1.5em;'><strong>" . $score . "</strong></td>";
+                                //     } else {
+                                //         echo "<td style='margin:auto;color:red;font-size:1.5em;'><strong>" . $score . "</strong></td>";
+                                //     }
+                                // }
+
+
+                                if ($score == 1) {
+                                    echo "<td style='margin:auto;color:green;font-size:1.5em;'><strong>" . $score . "</strong></td>";
                                 } else {
-                                    if ($level == 4 && $endResult[1] == 0) {
-                                        $score = "DQ";
-                                        echo "<td style='margin:auto;color:red;font-size:1.5em;'><strong>" . $score . "</strong></td>";
-                                    } else {
-                                        echo "<td style='margin:auto;color:red;font-size:1.5em;'><strong>" . $score . "</strong></td>";
-                                    }
+                                    echo "<td style='margin:auto;color:red;font-size:1.5em;'><strong>" . $score . "</strong></td>";
                                 }
                             }
                             echo "</tr>";
@@ -336,6 +392,9 @@ $nomDesEquipes = $e_controller->GetTeamNamesInTournament($tournoi);
                         <?php
                         foreach ($arrMatches as $matchInRonde) {
 
+                            $tId = (int)$_GET['id'];
+
+                            $matchInRonde->setTournamentId($tId);
                             $level = $matchInRonde->getLevel();
                             $idPlayers = $matchInRonde->getMatches();
 
@@ -352,7 +411,7 @@ $nomDesEquipes = $e_controller->GetTeamNamesInTournament($tournoi);
 
                             if ($team1 != $winner && $team2 != $winner) {
                                 if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
-                                    echo "<form method='POST'action='#'>";
+                                    echo "<form method='POST'action=" . $_SERVER['REQUEST_URI'] . ">";
                                     echo "<td>";
                                     echo "<input type='submit' name='setResultTeam1Wins' class='btn btn-warning' role='button' style='margin:auto' value='" . $e_controller->GetTeamName($team1) . "'/>";
                                     echo "<input type='hidden' name='firstTeam' value='" . $e_controller->GetTeamName($team1) . "'/>";
@@ -373,6 +432,7 @@ $nomDesEquipes = $e_controller->GetTeamNamesInTournament($tournoi);
                                     echo "</td>";
                                 }
                             } else {
+
                                 if ($team1 == $winner) {
                                     echo "<td style='margin:auto;background-color:lightgreen;'>" . $e_controller->GetTeamName($team1) . "</td>";
                                 } else {
@@ -417,7 +477,7 @@ $nomDesEquipes = $e_controller->GetTeamNamesInTournament($tournoi);
                     </thead>
                     <tbody class="text-center">
                         <?php
-                        if ($lastRoundLevel == 5) {
+                        if ($lastRoundLevel == 5 && $_SESSION['tournamentFinished'] == true) {
                             foreach ($teams as $aTeam) {
 
                                 $tabPoints = $e_controller::GetTeamResultsFromTournament($tournoi, $aTeam);
@@ -425,7 +485,7 @@ $nomDesEquipes = $e_controller->GetTeamNamesInTournament($tournoi);
 
                                 if ($tabPoints[1] >= 3) {
                                     $status = "QUALIFIED";
-                                } elseif ($tabPoints[1] <= 1) {
+                                } elseif ($tabPoints[1] <= 2) {
                                     $status = "DEFEATED";
                                 }
 

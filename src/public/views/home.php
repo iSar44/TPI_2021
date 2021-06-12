@@ -30,8 +30,12 @@ if ($currentFilter->nbEquipe == 0) {
 
 
 if (isset($_GET['id'])) {
-    $t_manager->DeleteTournament($_GET['id']);
+
+    $tToDelete = $t_manager->SelectTournament($_GET['id']);
+    $t_manager->DeleteTournament($tToDelete);
     unset($_GET['id']);
+
+    header("Location: ./");
 }
 
 

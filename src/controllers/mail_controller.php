@@ -63,6 +63,8 @@ function sendMailToPlayersEndRound(Tournoi_tM $unTournoi, $aMailer)
 {
     $t_controller = new Tournoi_tM_Controller();
 
+    $titreTournoi = $unTournoi->getTitre();
+
     $rounds = $t_controller->GetTournamentRounds($unTournoi);
     $latestRound = end($rounds);
     $level = $latestRound->getLevel();
@@ -73,15 +75,27 @@ function sendMailToPlayersEndRound(Tournoi_tM $unTournoi, $aMailer)
 
         $teamName = $aTeam->getNomEquipe();
         $email = $aTeam->getEmail();
-        $res = $t_controller->GetIntermediateResultsOfTeam($unTournoi, $level, $aTeam);
+        $res = $t_controller->GetGlobalResultsOfTeam($unTournoi, $aTeam);
 
-        $text = "<h2>Résultat pour la ronde" . $level . "</h2><br/>
-        <p>Votre équipe <i>" . $teamName . "</i> a cumulé " . $res . " point(s)!</p>";
+        if ($res == 3) {
 
-        $message = (new Swift_Message("Résultat Intermédiaire"))
-            ->setFrom([EMAIL_USERNAME => "tManager - Info"])
-            ->setTo([$email => $teamName])
-            ->setBody($text, 'text/html');
+            $text = "<h2>Résultat pour la ronde n°" . $level . "</h2>
+            <br/><p>Votre équipe <b><i>" . $teamName . "</i></b> est qualifiée car elle a cumulé " . $res . " points! <b>Bravo!</b></p>";
+
+            $message = (new Swift_Message("Résultat Final - Tournoi: " . $titreTournoi))
+                ->setFrom([EMAIL_USERNAME => "tManager - Info"])
+                ->setTo([$email => $teamName])
+                ->setBody($text, 'text/html');
+        } else {
+            $text = "<h2>Résultat pour la ronde n°" . $level . "</h2>
+            <br/><p>Votre équipe <b><i>" . $teamName . "</i></b> a cumulé " . $res . " point(s)!</p>";
+
+            $message = (new Swift_Message("Résultat Intermédiaire - Tournoi: " . $titreTournoi))
+                ->setFrom([EMAIL_USERNAME => "tManager - Info"])
+                ->setTo([$email => $teamName])
+                ->setBody($text, 'text/html');
+        }
+
 
         $aMailer->send($message);
     }

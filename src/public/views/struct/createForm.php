@@ -48,7 +48,7 @@ if ($submit) {
 
     if ($dateHeureDemarrage > $dateHeureFinInscription && $dateHeureFinInscription > $dateHeureDebutInscription) {
 
-        $newTournoi = new Tournoi_tM($titreTournoi, $description, $dateHeureDemarrage, $nbEquipes, $dateHeureDebutInscription, $dateHeureFinInscription, $tempsEntreRondes);
+        $newTournoi = new Tournoi_tM(-1, $titreTournoi, $description, $dateHeureDemarrage, $nbEquipes, $dateHeureDebutInscription, $dateHeureFinInscription, $tempsEntreRondes);
         $t_controller->CreateTournament($newTournoi);
         $noError = true;
     } else {

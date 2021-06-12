@@ -20,5 +20,7 @@
 define('EMAIL_SERVER', "smtp.gmail.com");
 define('EMAIL_PORT', 465);
 define('EMAIL_TRANS', "ssl");
-define('EMAIL_USERNAME', "baratie.info@gmail.com");
-define('EMAIL_PASSWORD', "helloWorld01!");
+//define email address
+define('EMAIL_USERNAME', "");
+//define email password
+define('EMAIL_PASSWORD', "");

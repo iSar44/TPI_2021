@@ -80,9 +80,9 @@
                 <h1>Filtrer les tournois</h1>
                 <form method="POST" action="#">
                     <span for="datetime">Du:</span>
-                    <input type="datetime-local" name="dateStart" />
+                    <input type="datetime-local" name="dateStart" value="<?= (isset($currentFilter->dateStart) && !empty($currentFilter->dateStart)) ? $currentFilter->dateStart : "" ?>" />
                     <span for="datetime">Au:</span>
-                    <input type="datetime-local" name="dateStop" />
+                    <input type="datetime-local" name="dateStop" value="<?= (isset($currentFilter->dateStop) && !empty($currentFilter->dateStop)) ? $currentFilter->dateStop : "" ?>" />
                     <select name="tournamentStatus">
                         <option value="-1" selected>Tous</option>
                         <option value="1">Inscription en cours</option>
